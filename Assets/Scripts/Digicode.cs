@@ -33,8 +33,6 @@ public class Digicode: MonoBehaviour
         script = new ourButtonInteraction[buttons.Length];
         password = new char[leds.Length];
         attempt = new char[leds.Length];
-        //Instanciations des scripts pour récupérer la variable isOn
-        //isOn -> variable qui indique si le bouton a été pressé et doit être traîté 
         for (int i = 0; i < buttons.Length; i++)
         {
             script[i] = buttons[i].GetComponent<ourButtonInteraction>();
@@ -66,7 +64,6 @@ public class Digicode: MonoBehaviour
                 script[i].m_onOff = !script[i].m_onOff;
                 script[i].m_toChange = true;
                 script[i].m_timerBeforeExtinguish = script[i].m_cooldownToExtinguish;
-                //attempt[incr] = Convert.ToChar(i);
                 switch (i)
                 {
                     case 0:
@@ -101,7 +98,6 @@ public class Digicode: MonoBehaviour
                         break;
                 }
                 leds[incr].GetComponent<Renderer>().material = numbers[i];
-                //leds[incr].GetComponent<Renderer>().material = buttons[i].GetComponent<Renderer>().material;
                 incr = (incr + 1) % (leds.Length);
                 break;
             }

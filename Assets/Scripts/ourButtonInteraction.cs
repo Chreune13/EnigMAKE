@@ -36,7 +36,7 @@ public class ourButtonInteraction : MonoBehaviour
         changeMaterial();
     }
 
-    private void OnTriggerEnter(Collider col)
+    public void OnClick()
     {
         if (m_timeBeforeClick > 0)
             return;
