@@ -19,6 +19,7 @@ public class Digicode: MonoBehaviour
     private ourButtonInteraction scriptValid;
     private ourButtonInteraction scriptCancel;
     private int incr;
+    [SerializeField]
     private char[] password;
     private char[] attempt;
     private bool isValid;
@@ -40,10 +41,10 @@ public class Digicode: MonoBehaviour
         scriptValid = validButton.GetComponent<ourButtonInteraction>();
         scriptCancel = cancelButton.GetComponent<ourButtonInteraction>();
         //Initialisation de notre mot de passe
-        password[0] = '1';
-        password[1] = '5';
-        password[2] = '1';
-        password[3] = '0';
+        //password[0] = '1';
+        //password[1] = '5';
+        //password[2] = '1';
+        //password[3] = '0';
        // Victoire.SetActive(false);
     }
 
