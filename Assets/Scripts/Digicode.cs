@@ -14,7 +14,7 @@ public class Digicode: MonoBehaviour
     [SerializeField] private GameObject[] buttons;
     [SerializeField] private GameObject validButton;
     [SerializeField] private GameObject cancelButton;
-    //[SerializeField] private GameObject Victoire;
+    public bool Done;
     private ourButtonInteraction[] script;
     private ourButtonInteraction scriptValid;
     private ourButtonInteraction scriptCancel;
@@ -40,12 +40,7 @@ public class Digicode: MonoBehaviour
         }
         scriptValid = validButton.GetComponent<ourButtonInteraction>();
         scriptCancel = cancelButton.GetComponent<ourButtonInteraction>();
-        //Initialisation de notre mot de passe
-        //password[0] = '1';
-        //password[1] = '5';
-        //password[2] = '1';
-        //password[3] = '0';
-       // Victoire.SetActive(false);
+        Done = false;
     }
 
     // Update is called once per frame
@@ -126,7 +121,7 @@ public class Digicode: MonoBehaviour
                 for (int i = 0; i < leds.Length; i++)
                 {
                     leds[i].GetComponent<Renderer>().material = allValid;
-                   // Victoire.SetActive(true);
+                    Done=true;
                     Time.timeScale = 0;
                 }
             }
