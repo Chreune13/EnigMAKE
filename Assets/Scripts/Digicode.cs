@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System;
 
-public class Digicode: MonoBehaviour
+public class Digicode: Enigme
 {
     // Start is called before the first frame update
     [SerializeField] private GameObject[] leds;
@@ -14,7 +14,6 @@ public class Digicode: MonoBehaviour
     [SerializeField] private GameObject[] buttons;
     [SerializeField] private GameObject validButton;
     [SerializeField] private GameObject cancelButton;
-    public bool Done;
     private ourButtonInteraction[] script;
     private ourButtonInteraction scriptValid;
     private ourButtonInteraction scriptCancel;
@@ -40,7 +39,6 @@ public class Digicode: MonoBehaviour
         }
         scriptValid = validButton.GetComponent<ourButtonInteraction>();
         scriptCancel = cancelButton.GetComponent<ourButtonInteraction>();
-        Done = false;
     }
 
     // Update is called once per frame
@@ -121,7 +119,7 @@ public class Digicode: MonoBehaviour
                 for (int i = 0; i < leds.Length; i++)
                 {
                     leds[i].GetComponent<Renderer>().material = allValid;
-                    Done=true;
+                    SetSolved();
                     Time.timeScale = 0;
                 }
             }
