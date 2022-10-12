@@ -5,20 +5,13 @@ using Unity.Netcode;
 using UnityEditor.PackageManager;
 using UnityEngine;
 
-public enum NetworkDeviceType
-{
-    DEFAULT,
-    SERVER,
-    GAMEMASTER,
-    CLIENT
-}
 
 public class LocalNetworkManager : MonoBehaviour
 {
     [NonSerialized]
     public static LocalNetworkManager Singleton;
 
-    NetworkDeviceType networkDeviceType = NetworkDeviceType.DEFAULT;
+    PlayerType clientType;
 
     bool PlayerWantSpawn = false;
     bool PlayerIsSpawn = false;
@@ -73,11 +66,12 @@ public class LocalNetworkManager : MonoBehaviour
         {
             PlayerIsSpawn = false;
 
-            if (networkDeviceType == NetworkDeviceType.GAMEMASTER)
+
+            /*if (networkDeviceType == NetworkDeviceType.GAMEMASTER)
                 StartGameMaster();
 
             if (networkDeviceType == NetworkDeviceType.CLIENT)
-                StartClient();
+                StartClient();*/
         }
     }
 
@@ -113,8 +107,6 @@ public class LocalNetworkManager : MonoBehaviour
     {
         PlayerWantSpawn = true;
 
-        networkDeviceType = NetworkDeviceType.SERVER;
-
         NetworkManager.Singleton.StartServer();
     }
 
@@ -122,7 +114,7 @@ public class LocalNetworkManager : MonoBehaviour
     {
         PlayerWantSpawn = true;
 
-        networkDeviceType = NetworkDeviceType.GAMEMASTER;
+        clientType = PlayerType.GAMEMASTER;
 
         NetworkManager.Singleton.StartClient();
     }
@@ -131,13 +123,13 @@ public class LocalNetworkManager : MonoBehaviour
     {
         PlayerWantSpawn = true;
 
-        networkDeviceType = NetworkDeviceType.CLIENT;
+        clientType = PlayerType.PLAYER;
 
         NetworkManager.Singleton.StartClient();
     }
 
-    public NetworkDeviceType GetNetworkDeviceType()
+    public PlayerType GetSelectedClientTypeType()
     {
-        return networkDeviceType;
+        return clientType;
     }
 }

@@ -19,24 +19,30 @@ public class LobbyUI : NetworkBehaviour
 
     void DisplayLobbyInterface()
     {
-        if ((LocalNetworkManager.Singleton?.WaitConnectionToServer() == false && LocalNetworkManager.Singleton?.IsConnectedToServer() == false) || IsServer)
-        {
+        if (IsServer)
             return;
-        }
 
-        if (LocalNetworkManager.Singleton?.WaitConnectionToServer() == true && LocalNetworkManager.Singleton?.IsConnectedToServer() == false)
+        if (LocalNetworkManager.Singleton.WaitConnectionToServer() == false && LocalNetworkManager.Singleton.IsConnectedToServer() == false)
+            return;
+
+        if (LocalNetworkManager.Singleton.WaitConnectionToServer() == true && LocalNetworkManager.Singleton.IsConnectedToServer() == false)
         {
             GUILayout.Label("En attente de connexion au serveur");
             return;
         }
 
-        if (LocalNetworkManager.Singleton?.GetNetworkDeviceType() == NetworkDeviceType.GAMEMASTER)
+        if (NetworkManager.Singleton.LocalClient == null)
+            return;
+
+        PlayerType clientType = NetworkManager.Singleton.LocalClient.PlayerObject.GetComponent<PlayerNetworkController>().clientType;
+
+        if (clientType == PlayerType.GAMEMASTER)
         {
             GUILayout.Label("GameMaster Interface");
             return;
         }
 
-        if (LocalNetworkManager.Singleton?.GetNetworkDeviceType() == NetworkDeviceType.CLIENT)
+        if (clientType == PlayerType.PLAYER)
         {
             GUILayout.Label("Client en attente du GameMaster");
             return;

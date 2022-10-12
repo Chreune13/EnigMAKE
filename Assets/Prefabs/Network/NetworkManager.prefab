@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6374285491579600840}
   - component: {fileID: 2520360288210024031}
-  - component: {fileID: 846657919452077973}
   - component: {fileID: 6837152218299347799}
   m_Layer: 0
   m_Name: NetworkManager
@@ -52,7 +51,12 @@ MonoBehaviour:
     ProtocolVersion: 0
     NetworkTransport: {fileID: 6837152218299347799}
     PlayerPrefab: {fileID: 2300169385228291681, guid: 5d456dfeff55f8a42af77039ff99cbc6, type: 3}
-    NetworkPrefabs: []
+    NetworkPrefabs:
+    - Override: 0
+      Prefab: {fileID: 2612830294631793736, guid: 3f4cfa1f51eba1f4bbcc98e78b2f1575, type: 3}
+      SourcePrefabToOverride: {fileID: 0}
+      SourceHashToOverride: 0
+      OverridingTargetPrefab: {fileID: 0}
     TickRate: 30
     ClientConnectionBufferTimeout: 10
     ConnectionApproval: 0
@@ -68,18 +72,6 @@ MonoBehaviour:
     LoadSceneTimeOut: 120
     SpawnTimeout: 1
     EnableNetworkLogs: 1
---- !u!114 &846657919452077973
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2457490396682023574}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 725957de356afb64e9c0b2a2ef8c68a2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &6837152218299347799
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -101,8 +93,8 @@ MonoBehaviour:
   m_MaxConnectAttempts: 60
   m_DisconnectTimeoutMS: 30000
   ConnectionData:
-    Address: 127.0.0.1
-    Port: 7777
+    Address: 192.168.1.140
+    Port: 15267
     ServerListenAddress: 
   DebugSimulator:
     PacketDelayMS: 0
