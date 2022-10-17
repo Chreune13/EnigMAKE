@@ -12,25 +12,46 @@ public enum PlayerType
 
 public class PlayerNetworkController : NetworkBehaviour
 {
-    [NonSerialized]
-    public PlayerType clientType;
+    NetworkVariable<ulong> playerId = new NetworkVariable<ulong>();
+
+    PlayerType playerType;
 
     // Start is called before the first frame update
     void Start()
     {
         if (IsOwner && IsClient)
         {
-            clientType = LocalNetworkManager.Singleton.GetSelectedClientTypeType();
+            SyncPlayerIdServerRpc(OwnerClientId);
+            playerType = LocalNetworkManager.Singleton.GetSelectedClientTypeType();
 
             LocalNetworkManager.Singleton.LocalPlayerIsSpawned();
-            NetworkGameManager.Singleton.NewPlayerConnect(OwnerClientId, clientType);
+            NetworkGameManager.Singleton.NewPlayerConnect(OwnerClientId, playerType);
         }
     }
 
     public override void OnDestroy()
     {
+        if (IsServer)
+        {
+            NetworkGameManager.Singleton.DisconnectPlayer(playerId.Value, true);
+        }
+        
         base.OnDestroy();
     }
 
-    
+    [ServerRpc]
+    void SyncPlayerIdServerRpc(ulong p_playerId)
+    {
+        playerId.Value = p_playerId;
+    }
+
+    public ulong GetPlayerId()
+    {
+        return playerId.Value;
+    }
+
+    public PlayerType GetPlayerType()
+    {
+        return playerType;
+    }
 }

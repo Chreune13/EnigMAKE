@@ -18,7 +18,6 @@ public class NetworkGameManager : NetworkBehaviour
 
     public static int MAX_PLAYER = 1;
 
-    NetworkVariable<int> ConnectedPlayersCount = new NetworkVariable<int>(0);
     PlayerNetworkData LastConnectedPlayer;
 
     PlayerNetworkData GameMasterNetworkData;
@@ -66,7 +65,7 @@ public class NetworkGameManager : NetworkBehaviour
             {
                 Debug.Log("A GameMaster is already connected");
 
-                DisconnectPlayer(LastConnectedPlayer.PlayerNetworkId);
+                DisconnectLastConnectedPlayer();
             }
             else
             {
@@ -93,7 +92,7 @@ public class NetworkGameManager : NetworkBehaviour
             {
                 Debug.Log("Cannot connect a new Player, limit reach");
 
-                DisconnectPlayer(LastConnectedPlayer.PlayerNetworkId);
+                DisconnectLastConnectedPlayer();
             }
         }
 
@@ -105,26 +104,46 @@ public class NetworkGameManager : NetworkBehaviour
         NewPlayerConnectServerRpc(playerId, ClientType);
     }
 
-    void DisconnectPlayer(ulong playerId)
+    void DisconnectLastConnectedPlayer()
     {
-        if(IsServer)
+        if (!IsServer)
+            return;
+
+        LastConnectedPlayer.PlayerNetworkDataIsSet = false;
+
+        NetworkManager.Singleton.DisconnectClient(LastConnectedPlayer.PlayerNetworkId);
+    }
+
+    public void DisconnectPlayer(ulong playerId, bool alreadyOnDestroy = false)
+    {
+        if (!IsServer)
+            return;
+
+        if(GameMasterNetworkData.PlayerNetworkDataIsSet)
         {
-            SyncPlayerCountConnectedServerRpc(ConnectedPlayersCount.Value - 1);
-
-            NetworkManager.Singleton.DisconnectClient(playerId);
-
-            for (int i = 0; i < MAX_PLAYER; i++)
+            if(GameMasterNetworkData.PlayerNetworkId == playerId)
             {
-                if (!PlayersNetworkData[i].PlayerNetworkDataIsSet)
-                    continue;
+                GameMasterNetworkData.PlayerNetworkDataIsSet = false;
 
-                if (PlayersNetworkData[i].PlayerNetworkId != playerId)
-                    continue;
-
-                PlayersNetworkData[i].PlayerNetworkDataIsSet = false;
-
-                break;
+                if(!alreadyOnDestroy) NetworkManager.Singleton.DisconnectClient(GameMasterNetworkData.PlayerNetworkId);
             }
+        }
+
+        for (int i = 0; i < MAX_PLAYER; i++)
+        {
+            if (!PlayersNetworkData[i].PlayerNetworkDataIsSet)
+                continue;
+
+            if (PlayersNetworkData[i].PlayerNetworkId != playerId)
+                continue;
+
+            PlayersNetworkData[i].PlayerNetworkDataIsSet = false;
+
+            if(!alreadyOnDestroy) NetworkManager.Singleton.DisconnectClient(PlayersNetworkData[i].PlayerNetworkId);
+
+            Debug.Log("Client disconnected");
+
+            break;
         }
     }
 
@@ -134,16 +153,5 @@ public class NetworkGameManager : NetworkBehaviour
         LastConnectedPlayer.PlayerNetworkDataIsSet = true;
         LastConnectedPlayer.PlayerNetworkId = playerId;
         LastConnectedPlayer.PlayerNetworkType = playerType;
-
-        ConnectedPlayersCount.Value += 1;
-
-        //Debug.Log("Player of type " + playerType + " count: " + ConnectedPlayersCount.Value);
-    }
-
-    [ServerRpc(RequireOwnership = false)]
-    void SyncPlayerCountConnectedServerRpc(int PlayerCount)
-    {
-        ConnectedPlayersCount.Value = PlayerCount;
-        Debug.Log(PlayerCount);
     }
 }

@@ -34,15 +34,15 @@ public class LobbyUI : NetworkBehaviour
         if (NetworkManager.Singleton.LocalClient == null)
             return;
 
-        PlayerType clientType = NetworkManager.Singleton.LocalClient.PlayerObject.GetComponent<PlayerNetworkController>().clientType;
+        PlayerType playerType = NetworkManager.Singleton.LocalClient.PlayerObject.GetComponent<PlayerNetworkController>().GetPlayerType();
 
-        if (clientType == PlayerType.GAMEMASTER)
+        if (playerType == PlayerType.GAMEMASTER)
         {
             GUILayout.Label("GameMaster Interface");
             return;
         }
 
-        if (clientType == PlayerType.PLAYER)
+        if (playerType == PlayerType.PLAYER)
         {
             GUILayout.Label("Client en attente du GameMaster");
             return;
