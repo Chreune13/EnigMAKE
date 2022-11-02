@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 6a64047875886514b8302a604868d7b6
+guid: df165c575685e0640a74aebd02f17fc0
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
@@ -7,8 +7,8 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: CofffreMedieval_Material
-    second: {fileID: 2100000, guid: 19052001c36598f4eb14564f47c0176b, type: 2}
+      name: CoffreEnfant_Material
+    second: {fileID: 2100000, guid: 8075c5122b321284f835d87dceee4282, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
