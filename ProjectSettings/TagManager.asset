@@ -9,6 +9,7 @@ TagManager:
   - MainMenuUI
   - AboutMenuUI
   - GoBackMenuUI
+  - Key
   layers:
   - Default
   - TransparentFX
