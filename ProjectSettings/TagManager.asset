@@ -3,7 +3,13 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - RoomLight
+  - UISection
+  - MainMenuUI
+  - AboutMenuUI
+  - GoBackMenuUI
+  - Key
   layers:
   - Default
   - TransparentFX
