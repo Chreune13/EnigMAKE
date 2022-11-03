@@ -1,0 +1,78 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5235050604766031792
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5235050604766031794}
+  - component: {fileID: 5235050604766031793}
+  m_Layer: 0
+  m_Name: Controller
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5235050604766031794
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5235050604766031792}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.4159996, z: -0.55299735}
+  m_LocalScale: {x: 0.35, y: 0.34999996, z: 0.35}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5235050604766031793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5235050604766031792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 333391a09258bcc488b753f41cbf4f3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leds:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  numbers:
+  - {fileID: 2100000, guid: 098535237d2b46d448d0fb8c8fbffbfb, type: 2}
+  - {fileID: 2100000, guid: 42975d605672dcc4f8ce5aced67d2b70, type: 2}
+  - {fileID: 2100000, guid: 3130151fe31f67c4c8df847e80fb11a8, type: 2}
+  - {fileID: 2100000, guid: 1729961d4edf7d541a6c7393f9bea16d, type: 2}
+  - {fileID: 2100000, guid: 7f4f19306b441554da4cb1100db07d14, type: 2}
+  - {fileID: 2100000, guid: e11fadbe9a7611149934ffaf9528f855, type: 2}
+  - {fileID: 2100000, guid: f6bb4c70c85d2ec4ab740b23dd90e4e0, type: 2}
+  - {fileID: 2100000, guid: 5bdf612cbee6bcd44a55400980732b59, type: 2}
+  - {fileID: 2100000, guid: 8e998c0ceb0d01f45a1d748a820a3f7b, type: 2}
+  - {fileID: 2100000, guid: f66b3451188f6d44ca61d3cf2e981bb8, type: 2}
+  reset: {fileID: 2100000, guid: 3d5abfb50a789dd44b5b290f4c027b7d, type: 2}
+  allValid: {fileID: 2100000, guid: 9932d8cd261c5704d93e5810a731d020, type: 2}
+  buttons:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  validButton: {fileID: 0}
+  cancelButton: {fileID: 0}
+  password: 3000300030003000

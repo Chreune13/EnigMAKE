@@ -31,7 +31,7 @@ public class Digicode: Enigme
         incr = 0;
         isValid = false;
         script = new ourButtonInteraction[buttons.Length];
-        password = new char[leds.Length];
+        //password = new char[leds.Length];
         attempt = new char[leds.Length];
         for (int i = 0; i < buttons.Length; i++)
         {
@@ -119,9 +119,11 @@ public class Digicode: Enigme
                 for (int i = 0; i < leds.Length; i++)
                 {
                     leds[i].GetComponent<Renderer>().material = allValid;
-                    SetSolved();
-                    Time.timeScale = 0;
+                   
+                    //Time.timeScale = 0;
+                    
                 }
+                SetSolved();
             }
             else if (isValid == false)
             {

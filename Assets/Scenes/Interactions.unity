@@ -268,7 +268,6 @@ GameObject:
   - component: {fileID: 142412603}
   - component: {fileID: 142412602}
   - component: {fileID: 142412601}
-  - component: {fileID: 142412600}
   - component: {fileID: 142412599}
   - component: {fileID: 142412605}
   m_Layer: 0
@@ -290,27 +289,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff46962d24d48e34fb1422f3d79e69f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 0
---- !u!95 &142412600
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 142412598}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 2bd1dad9e381dac4d80fb2a70ee08d42, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!65 &142412601
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -385,23 +363,31 @@ Transform:
   m_LocalPosition: {x: -2.955, y: -0.631, z: 0.389}
   m_LocalScale: {x: -0.034817, y: 1.2283, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 733249927}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &142412605
-BoxCollider:
+--- !u!95 &142412605
+Animator:
+  serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 142412598}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.99999994, y: 0.99999994, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2bd1dad9e381dac4d80fb2a70ee08d42, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &265503280
 GameObject:
   m_ObjectHideFlags: 0
@@ -1002,14 +988,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 335047880}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.331, y: -0.362, z: 0.613}
+  m_LocalPosition: {x: -2.477, y: -0.362, z: 0.619}
   m_LocalScale: {x: 0.20444626, y: 0.054746002, z: 0.043651216}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 455026245}
   - {fileID: 1084771393}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &335047885
 Animator:
@@ -2106,7 +2092,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e07b6721fb4daee45a1483655ce3e647, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 0
 --- !u!4 &733249927
 Transform:
   m_ObjectHideFlags: 0
@@ -2114,13 +2099,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 733249919}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.86, y: -0.33, z: 0.617}
-  m_LocalScale: {x: 0.18879, y: 0.13193499, z: 0.09916381}
+  m_LocalRotation: {x: -0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.2200034, y: 0.24505411, z: 0.22799999}
+  m_LocalScale: {x: -5.4223504, y: 0.10741267, z: 0.09916381}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_Father: {fileID: 142412604}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &733249928
 BoxCollider:
@@ -3920,7 +3905,7 @@ GameObject:
   - component: {fileID: 2111282213}
   - component: {fileID: 2111282212}
   m_Layer: 0
-  m_Name: EnigmeManger
+  m_Name: EnigmeManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3943,6 +3928,10 @@ MonoBehaviour:
     actions:
     - reff: {fileID: 142412599}
       actionId: 1
+  - reff: {fileID: 6711819132713036787}
+    actions:
+    - reff: {fileID: 142412599}
+      actionId: 1
 --- !u!4 &2111282213
 Transform:
   m_ObjectHideFlags: 0
@@ -3956,7 +3945,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &6711819131618761228
 MeshFilter:
@@ -5151,7 +5140,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 333391a09258bcc488b753f41cbf4f3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 0
   leds:
   - {fileID: 6711819133615046485}
   - {fileID: 6711819132269945177}
@@ -5183,7 +5171,7 @@ MonoBehaviour:
   - {fileID: 6711819133719567266}
   validButton: {fileID: 6711819133413111381}
   cancelButton: {fileID: 6711819131694630134}
-  password: 3100350030003100
+  password: 3000300030003000
 --- !u!33 &6711819133173109332
 MeshFilter:
   m_ObjectHideFlags: 0

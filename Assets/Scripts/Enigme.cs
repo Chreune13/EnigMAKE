@@ -6,7 +6,7 @@ public class Enigme : MonoBehaviour
 {
    
    private static int nextID=0;
-   public int ID = 0;
+   protected int ID = 0;
 
     private bool enigmeSolved=false;
 
@@ -14,6 +14,11 @@ public class Enigme : MonoBehaviour
     {
         ID = nextID++;
     }
+
+    public int getID()
+    { 
+        return ID;
+    }  
     protected void SetSolved()
     {
         enigmeSolved = true;

@@ -3,18 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-struct enigmListElem
+struct enigmlistelem
 {
     public Enigme reff;
-    public Actions[] actions;
-
+    public actions[] actions;
 }
-
 [System.Serializable]
-struct Actions
+struct actions
 {
     public Enigme reff;
-
     public int actionId;
 }
 
@@ -22,8 +19,9 @@ public class EnigmeManager : MonoBehaviour
 {
     public static EnigmeManager instance;
 
+
     [SerializeField]
-    private enigmListElem[] enigmes;
+    private enigmlistelem[] enigmes;
 
     private void Awake()
     {
@@ -53,7 +51,7 @@ public class EnigmeManager : MonoBehaviour
     {
         for (int i = 0; i < enigmes.Length; i++)
         {
-            if(enigmes[i].reff.ID==id)
+            if(enigmes[i].reff.getID()==id)
             {
                 for (int j = 0; j < enigmes[i].actions.Length; j++)
                 {
