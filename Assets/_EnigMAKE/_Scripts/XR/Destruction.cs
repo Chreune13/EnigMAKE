@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class Destruction : MonoBehaviour
 {
-    void DestructionObject()
+    void DestructionObject(GameObject p_object)
     {
-        Rigidbody[] rigibObject = GetComponentsInChildren<Rigidbody>();
+        Rigidbody[] rigibObject = p_object.GetComponentsInChildren<Rigidbody>();
 
         foreach (Rigidbody rigib in rigibObject)
         {
@@ -15,5 +15,9 @@ public class Destruction : MonoBehaviour
         }
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        DestructionObject(collision.gameObject);
+    }
 
 }
