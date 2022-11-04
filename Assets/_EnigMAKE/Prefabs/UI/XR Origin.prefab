@@ -467,7 +467,6 @@ GameObject:
   - component: {fileID: 8964331077228851561}
   - component: {fileID: 8964331077228851562}
   - component: {fileID: 8964331077228851559}
-  - component: {fileID: 6074468879111810755}
   - component: {fileID: 249549954439559188}
   - component: {fileID: 5237327182897819055}
   m_Layer: 0
@@ -967,22 +966,6 @@ MonoBehaviour:
       m_Flags: 0
     m_Reference: {fileID: 875253871413052681, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   m_ButtonPressPoint: 0.5
---- !u!114 &6074468879111810755
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8964331077228851564}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 951099334
-  AlwaysReplicateAsRoot: 0
-  DontDestroyWithOwner: 0
-  AutoObjectParentSync: 1
 --- !u!114 &249549954439559188
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1019,8 +1002,7 @@ GameObject:
   - component: {fileID: 8964331077345731859}
   - component: {fileID: 8964331077345731860}
   - component: {fileID: 8964331077345731861}
-  - component: {fileID: 1391895391644580763}
-  - component: {fileID: 2129407814291000118}
+  - component: {fileID: 2199374072508704521}
   - component: {fileID: 4150728892563979959}
   - component: {fileID: 574650122}
   m_Layer: 0
@@ -1170,23 +1152,7 @@ MonoBehaviour:
     m_SingletonActionBindings: []
     m_Flags: 0
   m_HasMigratedActions: 1
---- !u!114 &1391895391644580763
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8964331077345731863}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 951099334
-  AlwaysReplicateAsRoot: 0
-  DontDestroyWithOwner: 0
-  AutoObjectParentSync: 1
---- !u!114 &2129407814291000118
+--- !u!114 &2199374072508704521
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1343,8 +1309,7 @@ GameObject:
   - component: {fileID: 8964331078083790222}
   - component: {fileID: 8964331078083790223}
   - component: {fileID: 8964331078083790220}
-  - component: {fileID: 5668730799498819613}
-  - component: {fileID: 1333744577102323953}
+  - component: {fileID: 3095664300991398007}
   - component: {fileID: 7637023521027166726}
   m_Layer: 0
   m_Name: LeftHand Controller
@@ -1845,23 +1810,7 @@ MonoBehaviour:
       m_Flags: 0
     m_Reference: {fileID: 7779212132400271959, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   m_ButtonPressPoint: 0.5
---- !u!114 &5668730799498819613
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8964331078083790321}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 951099334
-  AlwaysReplicateAsRoot: 0
-  DontDestroyWithOwner: 0
-  AutoObjectParentSync: 1
---- !u!114 &1333744577102323953
+--- !u!114 &3095664300991398007
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

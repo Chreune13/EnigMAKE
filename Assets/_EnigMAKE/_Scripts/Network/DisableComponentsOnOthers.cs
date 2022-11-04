@@ -24,6 +24,12 @@ public class DisableComponentsOnOthers : NetworkBehaviour
                 if (component.GetType() == typeof(TransformNetworkSync))
                     continue;
 
+                if (component.GetType() == typeof(PlayerNetworkController))
+                    continue;
+
+                if (component.GetType() == typeof(CameraPlayerManagment))
+                    continue;
+
                 component.enabled = false;
             }
         }
