@@ -16,13 +16,30 @@ public class NetworkGameManager : NetworkBehaviour
     [NonSerialized]
     public static NetworkGameManager Singleton;
 
-    public static int MAX_PLAYER = 1;
+    [NonSerialized]
+    public static int MAX_PLAYER = 4;
 
     PlayerNetworkData LastConnectedPlayer;
 
     PlayerNetworkData GameMasterNetworkData;
 
     PlayerNetworkData[] PlayersNetworkData = new PlayerNetworkData[MAX_PLAYER];
+
+    [SerializeField]
+    private bool StartAsAServer = false;
+
+    PlayerType localClientType;
+
+    bool PlayerWantSpawn = false;
+    bool PlayerIsSpawn = false;
+
+    DisplayedInterface CurrentDisplayed = DisplayedInterface.NOTHING;
+
+    public Action SelectNothingCallback;
+    public Action SelectClientTypeAskingInterfaceCallback;
+    public Action SelectWaitingServerLogginInterfaceCallback;
+    public Action SelectGameMasterInterfaceCallback;
+    public Action SelectPlayerInterfaceCallback;
 
     private void Awake()
     {
@@ -38,9 +55,23 @@ public class NetworkGameManager : NetworkBehaviour
             Singleton = this;
         else
         {
-            if (Singleton != this)
+            Debug.LogError("Multiple instances of Singleton NetworkGameManager !");
+        }
+    }
+
+    private void Start()
+    {
+        if(StartAsAServer)
+        {
+            StartServer();
+        }
+        else
+        {
+            if (CurrentDisplayed != DisplayedInterface.CLIENT_TYPE_ASKING)
             {
-                Debug.LogError("Multiple instances of Singleton NetworkGameManager !");
+                CurrentDisplayed = DisplayedInterface.CLIENT_TYPE_ASKING;
+
+                SelectClientTypeAskingInterfaceCallback();
             }
         }
     }
@@ -49,9 +80,13 @@ public class NetworkGameManager : NetworkBehaviour
     void Update()
     {
         ProcessLastConnectedPlayer();
+
+        CheckLocalPlayerIsConnected();
+
+        UpdateInterfaceStatus();
     }
 
-    void ProcessLastConnectedPlayer()
+    private void ProcessLastConnectedPlayer()
     {
         if (!IsServer)
             return;
@@ -63,7 +98,7 @@ public class NetworkGameManager : NetworkBehaviour
         {
             if (GameMasterNetworkData.PlayerNetworkDataIsSet)
             {
-                Debug.Log("A GameMaster is already connected");
+                Debug.LogWarning("A GameMaster is already connected");
 
                 DisconnectLastConnectedPlayer();
             }
@@ -90,7 +125,7 @@ public class NetworkGameManager : NetworkBehaviour
 
             if(i == MAX_PLAYER)
             {
-                Debug.Log("Cannot connect a new Player, limit reach");
+                Debug.LogWarning("Cannot connect a new Player, limit reach");
 
                 DisconnectLastConnectedPlayer();
             }
@@ -99,12 +134,84 @@ public class NetworkGameManager : NetworkBehaviour
         LastConnectedPlayer.PlayerNetworkDataIsSet = false;
     }
 
+    private void CheckLocalPlayerIsConnected()
+    {
+        if (IsConnectedToServer() && !IsOnNetwork())
+        {
+            PlayerIsSpawn = false;
+
+
+            /*if (networkDeviceType == NetworkDeviceType.GAMEMASTER)
+                StartGameMaster();
+
+            if (networkDeviceType == NetworkDeviceType.CLIENT)
+                StartClient();*/
+        }
+    }
+
+    private void UpdateInterfaceStatus()
+    {
+        if (IsServer)
+            return;
+
+        if(!IsConnectedToServer())
+        {
+            if (WaitConnectionToServer())
+            {
+                if (CurrentDisplayed != DisplayedInterface.WAITING_SERVER_LOGGIN)
+                {
+                    CurrentDisplayed = DisplayedInterface.WAITING_SERVER_LOGGIN;
+
+                    SelectWaitingServerLogginInterfaceCallback();
+                }
+            }
+            else
+            {
+                if (CurrentDisplayed != DisplayedInterface.CLIENT_TYPE_ASKING)
+                {
+                    CurrentDisplayed = DisplayedInterface.CLIENT_TYPE_ASKING;
+
+                    SelectClientTypeAskingInterfaceCallback();
+                }
+            }
+
+            return;
+        }
+
+        if (NetworkManager.Singleton.LocalClient == null)
+            return;
+
+        PlayerType playerType = NetworkManager.Singleton.LocalClient.PlayerObject.GetComponent<PlayerNetworkController>().GetPlayerType();
+
+        if (playerType == PlayerType.GAMEMASTER)
+        {
+            if (CurrentDisplayed != DisplayedInterface.GAME_MASTER_INTERFACE)
+            {
+                CurrentDisplayed = DisplayedInterface.GAME_MASTER_INTERFACE;
+
+                SelectGameMasterInterfaceCallback();
+            }
+            return;
+        }
+
+        if (playerType == PlayerType.PLAYER)
+        {
+            if (CurrentDisplayed != DisplayedInterface.PLAYER_INTERFACE)
+            {
+                CurrentDisplayed = DisplayedInterface.PLAYER_INTERFACE;
+
+                SelectPlayerInterfaceCallback();
+            }
+            return;
+        }
+    }
+
     public void NewPlayerConnect(ulong playerId, PlayerType ClientType)
     {
         NewPlayerConnectServerRpc(playerId, ClientType);
     }
 
-    void DisconnectLastConnectedPlayer()
+    private void DisconnectLastConnectedPlayer()
     {
         if (!IsServer)
             return;
@@ -114,7 +221,7 @@ public class NetworkGameManager : NetworkBehaviour
         NetworkManager.Singleton.DisconnectClient(LastConnectedPlayer.PlayerNetworkId);
     }
 
-    public void DisconnectPlayer(ulong playerId, bool alreadyOnDestroy = false)
+    public void DisconnectConnectedPlayer(ulong playerId, bool orderClientToDisconnect)
     {
         if (!IsServer)
             return;
@@ -125,7 +232,11 @@ public class NetworkGameManager : NetworkBehaviour
             {
                 GameMasterNetworkData.PlayerNetworkDataIsSet = false;
 
-                if(!alreadyOnDestroy) NetworkManager.Singleton.DisconnectClient(GameMasterNetworkData.PlayerNetworkId);
+                if(orderClientToDisconnect) NetworkManager.Singleton.DisconnectClient(GameMasterNetworkData.PlayerNetworkId);
+
+                Debug.Log("Gamemaster disconnected");
+
+                return;
             }
         }
 
@@ -139,7 +250,7 @@ public class NetworkGameManager : NetworkBehaviour
 
             PlayersNetworkData[i].PlayerNetworkDataIsSet = false;
 
-            if(!alreadyOnDestroy) NetworkManager.Singleton.DisconnectClient(PlayersNetworkData[i].PlayerNetworkId);
+            if(orderClientToDisconnect) NetworkManager.Singleton.DisconnectClient(PlayersNetworkData[i].PlayerNetworkId);
 
             Debug.Log("Client disconnected");
 
@@ -148,10 +259,61 @@ public class NetworkGameManager : NetworkBehaviour
     }
 
     [ServerRpc(RequireOwnership = false)]
-    void NewPlayerConnectServerRpc(ulong playerId, PlayerType playerType)
+    private void NewPlayerConnectServerRpc(ulong playerId, PlayerType playerType)
     {
         LastConnectedPlayer.PlayerNetworkDataIsSet = true;
         LastConnectedPlayer.PlayerNetworkId = playerId;
         LastConnectedPlayer.PlayerNetworkType = playerType;
+    }
+
+    public void LocalPlayerIsSpawned()
+    {
+        PlayerWantSpawn = false;
+        PlayerIsSpawn = true;
+    }
+
+    public bool WaitConnectionToServer()
+    {
+        return PlayerWantSpawn && !PlayerIsSpawn;
+    }
+
+    public bool IsConnectedToServer()
+    {
+        return !PlayerWantSpawn && PlayerIsSpawn;
+    }
+
+    public bool IsOnNetwork()
+    {
+        return NetworkManager.Singleton.IsClient || NetworkManager.Singleton.IsServer;
+    }
+
+    private void StartServer()
+    {
+        PlayerWantSpawn = true;
+
+        NetworkManager.Singleton.StartServer();
+    }
+
+    public void StartGameMaster()
+    {
+        PlayerWantSpawn = true;
+
+        localClientType = PlayerType.GAMEMASTER;
+
+        NetworkManager.Singleton.StartClient();
+    }
+
+    public void StartClient()
+    {
+        PlayerWantSpawn = true;
+
+        localClientType = PlayerType.PLAYER;
+
+        NetworkManager.Singleton.StartClient();
+    }
+
+    public PlayerType GetSelectedClientType()
+    {
+        return localClientType;
     }
 }

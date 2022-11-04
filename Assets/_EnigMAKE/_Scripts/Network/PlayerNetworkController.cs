@@ -22,9 +22,9 @@ public class PlayerNetworkController : NetworkBehaviour
         if (IsOwner && IsClient)
         {
             SyncPlayerIdServerRpc(OwnerClientId);
-            playerType = LocalNetworkManager.Singleton.GetSelectedClientTypeType();
+            playerType = NetworkGameManager.Singleton.GetSelectedClientType();
 
-            LocalNetworkManager.Singleton.LocalPlayerIsSpawned();
+            NetworkGameManager.Singleton.LocalPlayerIsSpawned();
             NetworkGameManager.Singleton.NewPlayerConnect(OwnerClientId, playerType);
         }
     }
@@ -33,7 +33,7 @@ public class PlayerNetworkController : NetworkBehaviour
     {
         if (IsServer)
         {
-            NetworkGameManager.Singleton.DisconnectPlayer(playerId.Value, true);
+            NetworkGameManager.Singleton.DisconnectConnectedPlayer(playerId.Value, false);
         }
         
         base.OnDestroy();
