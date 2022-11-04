@@ -6,11 +6,11 @@ using UnityEngine;
 
 public class DisableComponentsOnOthers : NetworkBehaviour
 {
-    private void Awake()
+    private void Start()
     {
         if (!IsOwner)
         {
-            MonoBehaviour[] components = GetComponents<MonoBehaviour>();
+            MonoBehaviour[] components = GetComponentsInChildren<MonoBehaviour>();
 
             foreach (MonoBehaviour component in components)
             {
