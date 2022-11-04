@@ -380,11 +380,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8872485958821600136, guid: e14afb89cf6c3e84e8c6c7548ab27c2a, type: 3}
       propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8872485959610911795, guid: e14afb89cf6c3e84e8c6c7548ab27c2a, type: 3}
-      propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8964331077345731861, guid: e14afb89cf6c3e84e8c6c7548ab27c2a, type: 3}
+      propertyPath: m_PositionInput.m_Action.m_Id
+      value: ecfb83f5-a7e7-453a-81cb-b13c61bd1ace
+      objectReference: {fileID: 0}
+    - target: {fileID: 8964331077345731861, guid: e14afb89cf6c3e84e8c6c7548ab27c2a, type: 3}
+      propertyPath: m_RotationInput.m_Action.m_Id
+      value: 55ad25ec-270c-4e26-98b6-93e44d1c1c52
+      objectReference: {fileID: 0}
+    - target: {fileID: 8964331077345731861, guid: e14afb89cf6c3e84e8c6c7548ab27c2a, type: 3}
+      propertyPath: m_PositionInput.m_Action.m_SingletonActionBindings.Array.data[0].m_Id
+      value: 81678ddd-d1aa-4542-9ddf-4a78d107c23b
+      objectReference: {fileID: 0}
+    - target: {fileID: 8964331077345731861, guid: e14afb89cf6c3e84e8c6c7548ab27c2a, type: 3}
+      propertyPath: m_RotationInput.m_Action.m_SingletonActionBindings.Array.data[0].m_Id
+      value: e71ca1ea-37aa-4233-b989-844e99d1c35f
       objectReference: {fileID: 0}
     - target: {fileID: 8964331077885362896, guid: e14afb89cf6c3e84e8c6c7548ab27c2a, type: 3}
       propertyPath: m_Name

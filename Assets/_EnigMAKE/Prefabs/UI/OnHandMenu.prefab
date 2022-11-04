@@ -1425,7 +1425,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 524341042682910516}
-  - component: {fileID: 3621456606601078988}
   m_Layer: 0
   m_Name: OnHandMenu
   m_TagString: Untagged
@@ -1449,21 +1448,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 28.879, y: -72.808, z: 8.499}
---- !u!114 &3621456606601078988
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 524341042682910517}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b90f850b058d124499516ac3d37caaf3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  invokeMethod:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &524341042750538214
 GameObject:
   m_ObjectHideFlags: 0
@@ -1556,7 +1540,6 @@ GameObject:
   - component: {fileID: 8664688044848195790}
   - component: {fileID: 5844696394756632542}
   - component: {fileID: 898864465367574369}
-  - component: {fileID: 2079168713766939529}
   m_Layer: 5
   m_Name: Scene3
   m_TagString: Untagged
@@ -1667,8 +1650,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3621456606601078988}
-        m_TargetAssemblyTypeName: SceneLoader, Assembly-CSharp
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: SceneManagment, Assembly-CSharp
         m_MethodName: SceneToLoad
         m_Mode: 5
         m_Arguments:
@@ -1679,21 +1662,6 @@ MonoBehaviour:
           m_StringArgument: Scene 3
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &2079168713766939529
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 931387707754663306}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b90f850b058d124499516ac3d37caaf3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  invokeMethod:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &1223644594629349312
 GameObject:
   m_ObjectHideFlags: 0
@@ -3771,7 +3739,6 @@ GameObject:
   - component: {fileID: 2982358431442280441}
   - component: {fileID: 1023832906664574790}
   - component: {fileID: 1580990431220397819}
-  - component: {fileID: 9049573873791764699}
   m_Layer: 5
   m_Name: Scene2
   m_TagString: Untagged
@@ -3882,8 +3849,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3621456606601078988}
-        m_TargetAssemblyTypeName: SceneLoader, Assembly-CSharp
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: SceneManagment, Assembly-CSharp
         m_MethodName: SceneToLoad
         m_Mode: 5
         m_Arguments:
@@ -3894,21 +3861,6 @@ MonoBehaviour:
           m_StringArgument: Scene 2
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &9049573873791764699
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4885413159722845938}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b90f850b058d124499516ac3d37caaf3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  invokeMethod:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &5206444228244793550
 GameObject:
   m_ObjectHideFlags: 0
@@ -4521,7 +4473,6 @@ GameObject:
   - component: {fileID: 8777696689693907644}
   - component: {fileID: 1591046705188301810}
   - component: {fileID: 1136214000738175459}
-  - component: {fileID: 930874892270786571}
   m_Layer: 5
   m_Name: Scene1
   m_TagString: Untagged
@@ -4632,8 +4583,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3621456606601078988}
-        m_TargetAssemblyTypeName: SceneLoader, Assembly-CSharp
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: SceneManagment, Assembly-CSharp
         m_MethodName: SceneToLoad
         m_Mode: 5
         m_Arguments:
@@ -4644,21 +4595,6 @@ MonoBehaviour:
           m_StringArgument: Scene 1
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &930874892270786571
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7032511207513818272}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b90f850b058d124499516ac3d37caaf3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  invokeMethod:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &7533235362370539618
 GameObject:
   m_ObjectHideFlags: 0

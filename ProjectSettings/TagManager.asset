@@ -5,11 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - RoomLight
-  - UISection
-  - MainMenuUI
-  - AboutMenuUI
-  - GoBackMenuUI
   - Key
+  - SceneManagment
+  - UI
   layers:
   - Default
   - TransparentFX
