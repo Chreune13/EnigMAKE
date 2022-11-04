@@ -1442,6 +1442,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8964331078083790320}
     m_Modifications:
+    - target: {fileID: 524341041068723080, guid: 5bddfc6ac397f54438af3dfc8ec502d8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 5005270032600371599}
     - target: {fileID: 524341042682910516, guid: 5bddfc6ac397f54438af3dfc8ec502d8, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -1490,6 +1494,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: OnHandConstructionMenu
       objectReference: {fileID: 0}
+    - target: {fileID: 7385203641354886939, guid: 5bddfc6ac397f54438af3dfc8ec502d8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 5005270032600371599}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5bddfc6ac397f54438af3dfc8ec502d8, type: 3}
 --- !u!4 &593991563638870594 stripped
