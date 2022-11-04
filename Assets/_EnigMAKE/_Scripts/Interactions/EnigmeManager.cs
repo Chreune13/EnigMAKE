@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 [System.Serializable]
 struct enigmlistelem
@@ -23,9 +24,36 @@ public class EnigmeManager : MonoBehaviour
     [SerializeField]
     private enigmlistelem[] enigmes;
 
+    [SerializeField]
+    private GameObject EnigmeJeton;
+    [SerializeField]
+    private GameObject ActionJeton;
+
+    private int JetonID=0;
+
+    public void OnClick()
+    {
+        EnigmesClassement enigmesClassement = EnigmeJeton.GetComponentInChildren<EnigmesClassement>();
+        TMPro.TextMeshProUGUI enigme_textMeshProUGUI = EnigmeJeton.GetComponentInChildren<TMPro.TextMeshProUGUI>();
+
+        EnigmesClassement actionsClassement = ActionJeton.GetComponentInChildren<EnigmesClassement>();
+        TMPro.TextMeshProUGUI action_textMeshProUGUI = ActionJeton.GetComponentInChildren<TMPro.TextMeshProUGUI>();
+
+        enigmesClassement.SetID(JetonID);
+        actionsClassement.SetID(JetonID);
+
+        enigme_textMeshProUGUI.text = "E"+enigmesClassement.GetID().ToString();
+        action_textMeshProUGUI.text = "A" + actionsClassement.GetID().ToString();
+
+        Instantiate(EnigmeJeton);
+        Instantiate(ActionJeton);   
+
+        JetonID++;
+    }
     private void Awake()
     {
-        if(instance != null)
+        
+        if (instance != null)
         {
             Debug.LogError("Multiple instance of singleton EnigmeManager!");
             return;
