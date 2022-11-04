@@ -33,6 +33,8 @@ public class NetworkGameManager : NetworkBehaviour
     bool PlayerWantSpawn = false;
     bool PlayerIsSpawn = false;
 
+    DisplayedInterface CurrentDisplayed = DisplayedInterface.NOTHING;
+
     public Action SelectNothingCallback;
     public Action SelectClientTypeAskingInterfaceCallback;
     public Action SelectWaitingServerLogginInterfaceCallback;
@@ -65,7 +67,12 @@ public class NetworkGameManager : NetworkBehaviour
         }
         else
         {
-            if (UIManager.Singleton.GetCurrentDisplayed() != DisplayedInterface.CLIENT_TYPE_ASKING) SelectClientTypeAskingInterfaceCallback();
+            if (CurrentDisplayed != DisplayedInterface.CLIENT_TYPE_ASKING)
+            {
+                CurrentDisplayed = DisplayedInterface.CLIENT_TYPE_ASKING;
+
+                SelectClientTypeAskingInterfaceCallback();
+            }
         }
     }
 
@@ -150,9 +157,23 @@ public class NetworkGameManager : NetworkBehaviour
         if(!IsConnectedToServer())
         {
             if (WaitConnectionToServer())
-                if (UIManager.Singleton.GetCurrentDisplayed() != DisplayedInterface.WAITING_SERVER_LOGGIN) SelectWaitingServerLogginInterfaceCallback();
+            {
+                if (CurrentDisplayed != DisplayedInterface.WAITING_SERVER_LOGGIN)
+                {
+                    CurrentDisplayed = DisplayedInterface.WAITING_SERVER_LOGGIN;
+
+                    SelectWaitingServerLogginInterfaceCallback();
+                }
+            }
             else
-                if (UIManager.Singleton.GetCurrentDisplayed() != DisplayedInterface.CLIENT_TYPE_ASKING) SelectClientTypeAskingInterfaceCallback();
+            {
+                if (CurrentDisplayed != DisplayedInterface.CLIENT_TYPE_ASKING)
+                {
+                    CurrentDisplayed = DisplayedInterface.CLIENT_TYPE_ASKING;
+
+                    SelectClientTypeAskingInterfaceCallback();
+                }
+            }
 
             return;
         }
@@ -164,13 +185,23 @@ public class NetworkGameManager : NetworkBehaviour
 
         if (playerType == PlayerType.GAMEMASTER)
         {
-            if (UIManager.Singleton.GetCurrentDisplayed() != DisplayedInterface.GAME_MASTER_INTERFACE) SelectGameMasterInterfaceCallback();
+            if (CurrentDisplayed != DisplayedInterface.GAME_MASTER_INTERFACE)
+            {
+                CurrentDisplayed = DisplayedInterface.GAME_MASTER_INTERFACE;
+
+                SelectGameMasterInterfaceCallback();
+            }
             return;
         }
 
         if (playerType == PlayerType.PLAYER)
         {
-            if (UIManager.Singleton.GetCurrentDisplayed() != DisplayedInterface.PLAYER_INTERFACE) SelectPlayerInterfaceCallback();
+            if (CurrentDisplayed != DisplayedInterface.PLAYER_INTERFACE)
+            {
+                CurrentDisplayed = DisplayedInterface.PLAYER_INTERFACE;
+
+                SelectPlayerInterfaceCallback();
+            }
             return;
         }
     }

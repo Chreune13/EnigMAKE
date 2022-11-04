@@ -69,11 +69,6 @@ public class UIManager : MonoBehaviour
         NetworkGameManager.Singleton.SelectPlayerInterfaceCallback -= SelectPlayerInterface;
     }
 
-    public DisplayedInterface GetCurrentDisplayed()
-    {
-        return CurrentDisplayed;
-    }
-
     public void SelectClientTypeAskingInterface()
     {
         CurrentDisplayed = DisplayedInterface.CLIENT_TYPE_ASKING;
