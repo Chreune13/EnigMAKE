@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4630127799905031951}
   - component: {fileID: 5005270032600371599}
+  - component: {fileID: 8258222549038842670}
   m_Layer: 0
   m_Name: UISceneManagment
   m_TagString: SceneManagment
@@ -157,6 +158,18 @@ MonoBehaviour:
             m_BoolArgument: 1
           m_CallState: 2
     sceneId: 3
+--- !u!114 &8258222549038842670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1031948235903377157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cea03422e383f14c9acbea583468847, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1360151569993867831
 GameObject:
   m_ObjectHideFlags: 0
@@ -456,6 +469,7 @@ GameObject:
   - component: {fileID: 8964331077228851559}
   - component: {fileID: 6074468879111810755}
   - component: {fileID: 249549954439559188}
+  - component: {fileID: 5237327182897819055}
   m_Layer: 0
   m_Name: RightHand Controller
   m_TagString: Untagged
@@ -981,6 +995,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1765aa6a578f6f4bbe430513d151872, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5237327182897819055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8964331077228851564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cea03422e383f14c9acbea583468847, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8964331077345731863
 GameObject:
   m_ObjectHideFlags: 0
@@ -995,6 +1021,7 @@ GameObject:
   - component: {fileID: 8964331077345731861}
   - component: {fileID: 1391895391644580763}
   - component: {fileID: 2129407814291000118}
+  - component: {fileID: 4150728892563979959}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1170,6 +1197,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1765aa6a578f6f4bbe430513d151872, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4150728892563979959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8964331077345731863}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cea03422e383f14c9acbea583468847, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8964331077885362896
 GameObject:
   m_ObjectHideFlags: 0
@@ -1183,6 +1222,7 @@ GameObject:
   - component: {fileID: 8964331077885362927}
   - component: {fileID: 8964331077885362925}
   - component: {fileID: 7103888416783142183}
+  - component: {fileID: 5742784687073064973}
   m_Layer: 0
   m_Name: XR Origin
   m_TagString: Player
@@ -1265,6 +1305,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ceb461beda6d6b14eabe295cf323a0ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5742784687073064973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8964331077885362896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cea03422e383f14c9acbea583468847, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8964331078083790321
 GameObject:
   m_ObjectHideFlags: 0
@@ -1280,6 +1332,7 @@ GameObject:
   - component: {fileID: 8964331078083790220}
   - component: {fileID: 5668730799498819613}
   - component: {fileID: 1333744577102323953}
+  - component: {fileID: 7637023521027166726}
   m_Layer: 0
   m_Name: LeftHand Controller
   m_TagString: Untagged
@@ -1807,6 +1860,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1765aa6a578f6f4bbe430513d151872, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7637023521027166726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8964331078083790321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cea03422e383f14c9acbea583468847, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1114813841948263798
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1893,6 +1958,10 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 8964331077345731859}
+    - target: {fileID: 524341042168021046, guid: 55afe929f26a3cd4bbf965a2e68aab2b, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 524341042682910516, guid: 55afe929f26a3cd4bbf965a2e68aab2b, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -1940,6 +2009,10 @@ PrefabInstance:
     - target: {fileID: 524341042682910517, guid: 55afe929f26a3cd4bbf965a2e68aab2b, type: 3}
       propertyPath: m_Name
       value: OnHandMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 524341042682910517, guid: 55afe929f26a3cd4bbf965a2e68aab2b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 898864465367574369, guid: 55afe929f26a3cd4bbf965a2e68aab2b, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target

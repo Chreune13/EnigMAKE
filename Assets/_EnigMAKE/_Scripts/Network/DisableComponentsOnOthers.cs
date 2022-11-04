@@ -1,23 +1,31 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 
-public class DisableComponentsOnOthers : MonoBehaviour
+public class DisableComponentsOnOthers : NetworkBehaviour
 {
     // Start is called before the first frame update
     void Start()
     {
-        //Component[] components = GetComponents(typeof(MonoBehaviour));
+        if(!IsOwner)
+        {
+            MonoBehaviour[] components = GetComponents<MonoBehaviour>();
 
-        //foreach(Component component in components)
-        //{
-        //    Component obj = component as Transform;
-        //    if (obj != null)
-        //        continue;
+            foreach (MonoBehaviour component in components)
+            {
+                if (component.GetType() == typeof(DisableComponentsOnOthers))
+                    continue;
 
-        //    obj.
-            
-        //}
+                if (component.GetType() == typeof(Unity.Netcode.NetworkObject))
+                    continue;
+
+                if (component.GetType() == typeof(TransformNetworkSync))
+                    continue;
+
+                component.enabled = false;
+            }
+        }
     }
 }
