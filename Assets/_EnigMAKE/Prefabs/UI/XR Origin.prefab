@@ -1561,6 +1561,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: OnHandMenu
       objectReference: {fileID: 0}
+    - target: {fileID: 898864465367574369, guid: 55afe929f26a3cd4bbf965a2e68aab2b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 5005270032600371599}
+    - target: {fileID: 1136214000738175459, guid: 55afe929f26a3cd4bbf965a2e68aab2b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 5005270032600371599}
+    - target: {fileID: 1580990431220397819, guid: 55afe929f26a3cd4bbf965a2e68aab2b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 5005270032600371599}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 55afe929f26a3cd4bbf965a2e68aab2b, type: 3}
 --- !u!1 &8872485958821600136 stripped
