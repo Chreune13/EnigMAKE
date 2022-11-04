@@ -17,7 +17,10 @@ public class Destruction : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        DestructionObject(collision.gameObject);
-    }
+        if (collision.gameObject.tag == "Destruction")
+        {
+            DestructionObject(collision.gameObject);
+        }
 
+    }
 }

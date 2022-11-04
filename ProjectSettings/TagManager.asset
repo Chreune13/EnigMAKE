@@ -10,6 +10,7 @@ TagManager:
   - AboutMenuUI
   - GoBackMenuUI
   - Key
+  - Destruction
   layers:
   - Default
   - TransparentFX
