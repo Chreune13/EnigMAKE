@@ -7,7 +7,7 @@ using TMPro;
 struct enigmlistelem
 {
     public Enigme reff;
-    public actions[] actions;
+    public actions[] a;
 }
 [System.Serializable]
 struct actions
@@ -20,9 +20,11 @@ public class EnigmeManager : MonoBehaviour
 {
     public static EnigmeManager instance;
 
-
     [SerializeField]
-    private enigmlistelem[] enigmes;
+    private List<enigmlistelem> enigmes;
+
+    //private enigmlistelem enigme;
+
 
     [SerializeField]
     private GameObject EnigmeJeton;
@@ -61,34 +63,47 @@ public class EnigmeManager : MonoBehaviour
 
         instance = this;
     }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
 
-        //for (int i = 1; i < enigmes.Length; i++)
-        //{
-          
-        //   enigmes[i].reff.enabled = false; 
-        //}
-            
+    public void SetEnigmElem()
+    {
+        enigmes = new List<enigmlistelem>();
+
+        if (EnigmeJeton.GetComponentInChildren<EnigmesClassement>().IsTrigger() == true && ActionJeton.GetComponentInChildren<EnigmesClassement>().IsTrigger() == true)
+        {
+            print("présent");
+            /*enigme.reff = EnigmeJeton.GetComponentInChildren<EnigmesClassement>().GetEnigme();
+            for (int i = 0; i < 3; i++)
+            {
+                enigme.a[i].reff = ActionJeton.GetComponentInChildren<EnigmesClassement>().GetEnigme();
+                enigme.a[i].actionId = JetonID;
+
+
+            }*/
+            enigmes.Add(new enigmlistelem() { reff = EnigmeJeton.GetComponentInChildren<EnigmesClassement>().GetEnigme(),a=new actions[3] });
+        }
+        
 
     }
 
     public void goToNext(int id)
     {
-        for (int i = 0; i < enigmes.Length; i++)
+        
+        
+        for (int i = 0; i < enigmes.Count; i++)
         {
-            if(enigmes[i].reff.getID()==id)
+            if (enigmes[i].reff.getID() == id)
             {
-                for (int j = 0; j < enigmes[i].actions.Length; j++)
+
+                for (int j = 0; j < enigmes[i].a.Length; j++)
                 {
-                    enigmes[i].actions[j].reff.ExecuteAction(enigmes[i].actions[j].actionId);
+                    enigmes[i].a[j].reff.ExecuteAction(enigmes[i].a[j].actionId);
                 }
 
                 break;
             }
         }
+        
+       
     }
 
 }
