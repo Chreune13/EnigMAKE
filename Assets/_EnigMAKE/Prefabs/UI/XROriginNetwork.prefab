@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 5190988608588627446}
   - component: {fileID: 9081725484006716405}
   - component: {fileID: 8431558623022977854}
-  - component: {fileID: 915314721634982171}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -28,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 32033333554124582}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.15, y: 0.15, z: 0.15}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 882129856109932749}
@@ -84,19 +83,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &915314721634982171
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 32033333554124582}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1849516265158999145
 GameObject:
   m_ObjectHideFlags: 0
@@ -243,7 +229,6 @@ GameObject:
   - component: {fileID: 2502170918360818290}
   - component: {fileID: 8252577194021012277}
   - component: {fileID: 771637882393361798}
-  - component: {fileID: 1864043876707080034}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -316,19 +301,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &1864043876707080034
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5848755196136414354}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7540369683312314255
 GameObject:
   m_ObjectHideFlags: 0
@@ -340,7 +312,6 @@ GameObject:
   - component: {fileID: 7985892979358890908}
   - component: {fileID: 5053190736284788103}
   - component: {fileID: 5771257142254021198}
-  - component: {fileID: 6759844217258306595}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -357,7 +328,7 @@ Transform:
   m_GameObject: {fileID: 7540369683312314255}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.15, y: 0.15, z: 0.15}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 3459839057321274544}
@@ -413,19 +384,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &6759844217258306595
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7540369683312314255}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8479419181835162552
 GameObject:
   m_ObjectHideFlags: 0
@@ -436,6 +394,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2962543333802687255}
   - component: {fileID: 2996677898688433526}
+  - component: {fileID: 4740591866745148074}
+  - component: {fileID: 299513733136234295}
   m_Layer: 0
   m_Name: XROriginNetwork
   m_TagString: Untagged
@@ -477,3 +437,31 @@ MonoBehaviour:
   AlwaysReplicateAsRoot: 0
   DontDestroyWithOwner: 0
   AutoObjectParentSync: 1
+--- !u!114 &4740591866745148074
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8479419181835162552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1765aa6a578f6f4bbe430513d151872, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &299513733136234295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8479419181835162552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 521a8e083e76a9e4790aba9b6822b27c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  localXROriginRoot: {fileID: 0}
+  Head: {fileID: 4985263212260187869}
+  LeftHand: {fileID: 4544729992957439209}
+  RightHand: {fileID: 1849516265158999145}

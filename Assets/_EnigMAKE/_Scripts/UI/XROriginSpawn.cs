@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Netcode;
@@ -16,14 +17,33 @@ public class XROriginSpawn : NetworkBehaviour
     {
         if(IsOwner)
         {
+            int id = UnityEngine.Random.Range(1, 2000000);
+
             if(LocalPlayerPrefab)
             {
                 GameObject localPlayer = Instantiate(LocalPlayerPrefab);
 
+                localPlayer.GetComponent<XROriginRoot>().playerId = id;
+
                 localPlayer.transform.parent = transform;
+
+                localPlayer.transform.localPosition = Vector3.zero;
             }
 
-            //todo network spawn
+            SpawnNetworkPlayerServerRpc(id);
+        }
+    }
+
+    [ServerRpc]
+    void SpawnNetworkPlayerServerRpc(int id)
+    {
+        if (NetworkPlayerPrefab)
+        {
+            GameObject remotePlayer = Instantiate(NetworkPlayerPrefab);
+
+            remotePlayer.GetComponent<XROriginNetworkSync>().lookingId.Value = id;
+
+            remotePlayer.GetComponent<NetworkObject>().Spawn();
         }
     }
 }
