@@ -12,6 +12,8 @@ public class XROriginSpawn : NetworkBehaviour
     [SerializeField]
     GameObject NetworkPlayerPrefab;
 
+    GameObject NetworkPlayer;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,16 +36,26 @@ public class XROriginSpawn : NetworkBehaviour
         }
     }
 
+    public override void OnNetworkDespawn()
+    {
+        if(IsServer)
+        {
+            NetworkPlayer.GetComponent<NetworkObject>().Despawn();
+        }
+    }
+
     [ServerRpc]
     void SpawnNetworkPlayerServerRpc(int id)
     {
         if (NetworkPlayerPrefab)
         {
-            GameObject remotePlayer = Instantiate(NetworkPlayerPrefab);
+            NetworkPlayer = Instantiate(NetworkPlayerPrefab);
 
-            remotePlayer.GetComponent<XROriginNetworkSync>().lookingId.Value = id;
+            NetworkPlayer.GetComponent<XROriginNetworkSync>().lookingId.Value = id;
 
-            remotePlayer.GetComponent<NetworkObject>().Spawn();
+            NetworkPlayer.GetComponent<NetworkObject>().Spawn();
+
+            NetworkPlayer.transform.parent = transform;
         }
     }
 }

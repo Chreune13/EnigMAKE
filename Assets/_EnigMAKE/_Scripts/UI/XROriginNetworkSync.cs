@@ -31,44 +31,47 @@ public class XROriginNetworkSync : NetworkBehaviour
 
     private void Update()
     {
-        if(localXROriginRoot)
+        if(IsClient)
         {
-            if (localXROriginRoot.playerId == lookingId.Value)
+            if (localXROriginRoot)
             {
-                if (gameObject && localXROriginRoot.gameObject)
+                if (localXROriginRoot.playerId == lookingId.Value)
                 {
-                    SyncBodyTransformServerRpc(localXROriginRoot.gameObject.transform.localPosition, localXROriginRoot.gameObject.transform.localRotation, localXROriginRoot.gameObject.transform.localScale);
+                    if (gameObject && localXROriginRoot.gameObject)
+                    {
+                        SyncBodyTransformServerRpc(localXROriginRoot.gameObject.transform.localPosition, localXROriginRoot.gameObject.transform.localRotation, localXROriginRoot.gameObject.transform.localScale);
 
-                    transform.localPosition = localXROriginRoot.gameObject.transform.localPosition;
-                    transform.localRotation = localXROriginRoot.gameObject.transform.localRotation;
-                    transform.localScale = localXROriginRoot.gameObject.transform.localScale;
-                }
+                        transform.localPosition = localXROriginRoot.gameObject.transform.localPosition;
+                        transform.localRotation = localXROriginRoot.gameObject.transform.localRotation;
+                        transform.localScale = localXROriginRoot.gameObject.transform.localScale;
+                    }
 
-                if (Head && localXROriginRoot.HeadOrigin)
-                {
-                    SyncHeadTransformServerRpc(localXROriginRoot.HeadOrigin.transform.localPosition, localXROriginRoot.HeadOrigin.transform.localRotation, localXROriginRoot.HeadOrigin.transform.localScale);
+                    if (Head && localXROriginRoot.HeadOrigin)
+                    {
+                        SyncHeadTransformServerRpc(localXROriginRoot.HeadOrigin.transform.localPosition, localXROriginRoot.HeadOrigin.transform.localRotation, localXROriginRoot.HeadOrigin.transform.localScale);
 
-                    Head.transform.localPosition = localXROriginRoot.HeadOrigin.transform.localPosition;
-                    Head.transform.localRotation = localXROriginRoot.HeadOrigin.transform.localRotation;
-                    Head.transform.localScale = localXROriginRoot.HeadOrigin.transform.localScale;
-                }
+                        Head.transform.localPosition = localXROriginRoot.HeadOrigin.transform.localPosition;
+                        Head.transform.localRotation = localXROriginRoot.HeadOrigin.transform.localRotation;
+                        Head.transform.localScale = localXROriginRoot.HeadOrigin.transform.localScale;
+                    }
 
-                if (LeftHand && localXROriginRoot.LeftHandOrigin)
-                {
-                    SyncLeftHandTransformServerRpc(localXROriginRoot.LeftHandOrigin.transform.localPosition, localXROriginRoot.LeftHandOrigin.transform.localRotation, localXROriginRoot.LeftHandOrigin.transform.localScale);
+                    if (LeftHand && localXROriginRoot.LeftHandOrigin)
+                    {
+                        SyncLeftHandTransformServerRpc(localXROriginRoot.LeftHandOrigin.transform.localPosition, localXROriginRoot.LeftHandOrigin.transform.localRotation, localXROriginRoot.LeftHandOrigin.transform.localScale);
 
-                    LeftHand.transform.localPosition = localXROriginRoot.LeftHandOrigin.transform.localPosition;
-                    LeftHand.transform.localRotation = localXROriginRoot.LeftHandOrigin.transform.localRotation;
-                    LeftHand.transform.localScale = localXROriginRoot.LeftHandOrigin.transform.localScale;
-                }
+                        LeftHand.transform.localPosition = localXROriginRoot.LeftHandOrigin.transform.localPosition;
+                        LeftHand.transform.localRotation = localXROriginRoot.LeftHandOrigin.transform.localRotation;
+                        LeftHand.transform.localScale = localXROriginRoot.LeftHandOrigin.transform.localScale;
+                    }
 
-                if (RightHand && localXROriginRoot.RightHandOrigin)
-                {
-                    SyncRightHandTransformServerRpc(localXROriginRoot.RightHandOrigin.transform.localPosition, localXROriginRoot.RightHandOrigin.transform.localRotation, localXROriginRoot.RightHandOrigin.transform.localScale);
+                    if (RightHand && localXROriginRoot.RightHandOrigin)
+                    {
+                        SyncRightHandTransformServerRpc(localXROriginRoot.RightHandOrigin.transform.localPosition, localXROriginRoot.RightHandOrigin.transform.localRotation, localXROriginRoot.RightHandOrigin.transform.localScale);
 
-                    RightHand.transform.localPosition = localXROriginRoot.RightHandOrigin.transform.localPosition;
-                    RightHand.transform.localRotation = localXROriginRoot.RightHandOrigin.transform.localRotation;
-                    RightHand.transform.localScale = localXROriginRoot.RightHandOrigin.transform.localScale;
+                        RightHand.transform.localPosition = localXROriginRoot.RightHandOrigin.transform.localPosition;
+                        RightHand.transform.localRotation = localXROriginRoot.RightHandOrigin.transform.localRotation;
+                        RightHand.transform.localScale = localXROriginRoot.RightHandOrigin.transform.localScale;
+                    }
                 }
             }
         }
