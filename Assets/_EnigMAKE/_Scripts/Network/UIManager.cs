@@ -81,6 +81,16 @@ public class UIManager : MonoBehaviour
         if (GUILayout.Button("Client")) NetworkGameManager.Singleton.StartClient();
     }
 
+    public void GameMaster()
+    {
+        NetworkGameManager.Singleton.StartGameMaster();
+    }
+
+    public void Client()
+    {
+        NetworkGameManager.Singleton.StartClient();
+    }
+
     public void SelectWaitingServerLogginInterface()
     {
         CurrentDisplayed = DisplayedInterface.WAITING_SERVER_LOGGIN;
