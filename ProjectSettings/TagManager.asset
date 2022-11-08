@@ -13,6 +13,8 @@ TagManager:
   - Locke
   - Digicode
   - Door
+  - Enigmes
+  - Actions
   layers:
   - Default
   - TransparentFX

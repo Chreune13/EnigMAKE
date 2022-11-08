@@ -462,7 +462,7 @@ GameObject:
   - component: {fileID: 6374761160701356291}
   m_Layer: 0
   m_Name: Trigger jeton
-  m_TagString: Untagged
+  m_TagString: Actions
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -545,6 +545,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48882bfda9fbb244fb8f0c7cc7472d91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  trigger: 0
 --- !u!65 &6374761160701356291
 BoxCollider:
   m_ObjectHideFlags: 0
