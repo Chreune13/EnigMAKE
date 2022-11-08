@@ -21,5 +21,6 @@ public class HandController : MonoBehaviour
     {
         hand.SetTrigger(controller.activateAction.action.ReadValue<float>());
         hand.SetGrip(controller.activateAction.action.ReadValue<float>());
+        //hand.SetThumb(controller.activateAction.action.ReadValue<Vector2>());
     }
 }

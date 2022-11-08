@@ -8,6 +8,7 @@ TagManager:
   - Key
   - SceneManagment
   - UI
+  - Destruction
   layers:
   - Default
   - TransparentFX
