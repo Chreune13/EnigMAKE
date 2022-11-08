@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4591975773748618959}
   - component: {fileID: 4263799674830419699}
   - component: {fileID: 8400598339202060181}
+  - component: {fileID: 7158504390941893820}
   m_Layer: 0
   m_Name: XRPlayer
   m_TagString: Untagged
@@ -63,3 +64,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LocalPlayerPrefab: {fileID: 8964331077885362896, guid: e14afb89cf6c3e84e8c6c7548ab27c2a, type: 3}
   NetworkPlayerPrefab: {fileID: 8479419181835162552, guid: 72a1f43e535e4594d9648d70a247fb55, type: 3}
+--- !u!114 &7158504390941893820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2351808405169189121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb461beda6d6b14eabe295cf323a0ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

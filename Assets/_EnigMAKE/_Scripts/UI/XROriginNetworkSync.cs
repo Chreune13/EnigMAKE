@@ -3,30 +3,54 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEngine;
+using UnityEngine.InputSystem.XR;
 using UnityEngine.PlayerLoop;
+using UnityEngine.XR;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class XROriginNetworkSync : NetworkBehaviour
 {
-    [NonSerialized]
     public NetworkVariable<int> lookingId = new NetworkVariable<int> { Value = 0 };
 
     [SerializeField]
     XROriginRoot localXROriginRoot;
 
+    [Space]
+
     [SerializeField]
-    GameObject Head;
+    GameObject HeadOffset;
+
+    [Space]
+
     [SerializeField]
-    GameObject LeftHand;
+    GameObject LeftHandOffset;
+
+    ActionBasedController LeftHandActionBasedController;
+
     [SerializeField]
-    GameObject RightHand;
+    GameObject LeftHandAnimator;
+
+    Hand LeftHandAnimatorScript;
+
+    [Space]
+
+    [SerializeField]
+    GameObject RightHandOffset;
+
+    ActionBasedController RightHandActionBasedController;
+
+    [SerializeField]
+    GameObject RightHandAnimator;
+
+    Hand RightHandAnimatorScript;
 
     // Start is called before the first frame update
     void Start()
     {
         if (IsClient)
-        {
             StartCoroutine(SearchXROriginRootCoroutine());
-        }
+        else if (IsServer)
+            GetValidComponentsServerSide();
     }
 
     private void Update()
@@ -37,44 +61,27 @@ public class XROriginNetworkSync : NetworkBehaviour
             {
                 if (localXROriginRoot.playerId == lookingId.Value)
                 {
-                    if (gameObject && localXROriginRoot.gameObject)
-                    {
-                        SyncBodyTransformServerRpc(localXROriginRoot.gameObject.transform.localPosition, localXROriginRoot.gameObject.transform.localRotation, localXROriginRoot.gameObject.transform.localScale);
+                    SyncBofyTransform();
 
-                        transform.localPosition = localXROriginRoot.gameObject.transform.localPosition;
-                        transform.localRotation = localXROriginRoot.gameObject.transform.localRotation;
-                        transform.localScale = localXROriginRoot.gameObject.transform.localScale;
-                    }
+                    SyncHeadTransform();
 
-                    if (Head && localXROriginRoot.HeadOrigin)
-                    {
-                        SyncHeadTransformServerRpc(localXROriginRoot.HeadOrigin.transform.localPosition, localXROriginRoot.HeadOrigin.transform.localRotation, localXROriginRoot.HeadOrigin.transform.localScale);
+                    SyncLeftHandTransform();
+                    SyncLeftHandAnimator();
 
-                        Head.transform.localPosition = localXROriginRoot.HeadOrigin.transform.localPosition;
-                        Head.transform.localRotation = localXROriginRoot.HeadOrigin.transform.localRotation;
-                        Head.transform.localScale = localXROriginRoot.HeadOrigin.transform.localScale;
-                    }
-
-                    if (LeftHand && localXROriginRoot.LeftHandOrigin)
-                    {
-                        SyncLeftHandTransformServerRpc(localXROriginRoot.LeftHandOrigin.transform.localPosition, localXROriginRoot.LeftHandOrigin.transform.localRotation, localXROriginRoot.LeftHandOrigin.transform.localScale);
-
-                        LeftHand.transform.localPosition = localXROriginRoot.LeftHandOrigin.transform.localPosition;
-                        LeftHand.transform.localRotation = localXROriginRoot.LeftHandOrigin.transform.localRotation;
-                        LeftHand.transform.localScale = localXROriginRoot.LeftHandOrigin.transform.localScale;
-                    }
-
-                    if (RightHand && localXROriginRoot.RightHandOrigin)
-                    {
-                        SyncRightHandTransformServerRpc(localXROriginRoot.RightHandOrigin.transform.localPosition, localXROriginRoot.RightHandOrigin.transform.localRotation, localXROriginRoot.RightHandOrigin.transform.localScale);
-
-                        RightHand.transform.localPosition = localXROriginRoot.RightHandOrigin.transform.localPosition;
-                        RightHand.transform.localRotation = localXROriginRoot.RightHandOrigin.transform.localRotation;
-                        RightHand.transform.localScale = localXROriginRoot.RightHandOrigin.transform.localScale;
-                    }
+                    SyncRightHandTransform();
+                    SyncRightHandAnimator();
                 }
             }
         }
+    }
+
+    void SyncBofyTransform()
+    {
+        SyncBodyTransformServerRpc(localXROriginRoot.gameObject.transform.localPosition, localXROriginRoot.gameObject.transform.localRotation, localXROriginRoot.gameObject.transform.localScale);
+
+        transform.localPosition = localXROriginRoot.gameObject.transform.localPosition;
+        transform.localRotation = localXROriginRoot.gameObject.transform.localRotation;
+        transform.localScale = localXROriginRoot.gameObject.transform.localScale;
     }
 
     [ServerRpc(RequireOwnership = false)]
@@ -85,36 +92,120 @@ public class XROriginNetworkSync : NetworkBehaviour
         transform.localScale = scale;
     }
 
+    void SyncHeadTransform()
+    {
+        if (HeadOffset && localXROriginRoot.HeadOrigin)
+        {
+            SyncHeadTransformServerRpc(localXROriginRoot.HeadOrigin.transform.localPosition, localXROriginRoot.HeadOrigin.transform.localRotation, localXROriginRoot.HeadOrigin.transform.localScale);
+
+            HeadOffset.transform.localPosition = localXROriginRoot.HeadOrigin.transform.localPosition;
+            HeadOffset.transform.localRotation = localXROriginRoot.HeadOrigin.transform.localRotation;
+            HeadOffset.transform.localScale = localXROriginRoot.HeadOrigin.transform.localScale;
+        }
+    }
+
     [ServerRpc(RequireOwnership = false)]
     void SyncHeadTransformServerRpc(Vector3 position, Quaternion rotation, Vector3 scale)
     {
-        if(Head)
+        if(HeadOffset)
         {
-            Head.transform.localPosition = position;
-            Head.transform.localRotation = rotation;
-            Head.transform.localScale = scale;
+            HeadOffset.transform.localPosition = position;
+            HeadOffset.transform.localRotation = rotation;
+            HeadOffset.transform.localScale = scale;
+        }
+    }
+
+    void SyncLeftHandTransform()
+    {
+        if (LeftHandOffset && localXROriginRoot.LeftHandOrigin)
+        {
+            SyncLeftHandTransformServerRpc(localXROriginRoot.LeftHandOrigin.transform.localPosition, localXROriginRoot.LeftHandOrigin.transform.localRotation, localXROriginRoot.LeftHandOrigin.transform.localScale);
+
+            LeftHandOffset.transform.localPosition = localXROriginRoot.LeftHandOrigin.transform.localPosition;
+            LeftHandOffset.transform.localRotation = localXROriginRoot.LeftHandOrigin.transform.localRotation;
+            LeftHandOffset.transform.localScale = localXROriginRoot.LeftHandOrigin.transform.localScale;
         }
     }
 
     [ServerRpc(RequireOwnership = false)]
     void SyncLeftHandTransformServerRpc(Vector3 position, Quaternion rotation, Vector3 scale)
     {
-        if(LeftHand)
+        if(LeftHandOffset)
         {
-            LeftHand.transform.localPosition = position;
-            LeftHand.transform.localRotation = rotation;
-            LeftHand.transform.localScale = scale;
+            LeftHandOffset.transform.localPosition = position;
+            LeftHandOffset.transform.localRotation = rotation;
+            LeftHandOffset.transform.localScale = scale;
+        }
+    }
+
+    void SyncLeftHandAnimator()
+    {
+        if(LeftHandAnimatorScript && LeftHandActionBasedController)
+        {
+            float triggerTarget = LeftHandActionBasedController.activateAction.action.ReadValue<float>();
+            float gripTarget = LeftHandActionBasedController.activateAction.action.ReadValue<float>();
+
+            SyncLeftHandAnimatorServerRpc(triggerTarget, gripTarget);
+
+            LeftHandAnimatorScript.SetTrigger(triggerTarget);
+            LeftHandAnimatorScript.SetGrip(gripTarget);
+        }
+    }
+
+    [ServerRpc(RequireOwnership = false)]
+    void SyncLeftHandAnimatorServerRpc(float triggerTarget, float gripTarget)
+    {
+        if(LeftHandAnimatorScript)
+        {
+            LeftHandAnimatorScript.SetTrigger(triggerTarget);
+            LeftHandAnimatorScript.SetGrip(gripTarget);
+        }
+    }
+
+    void SyncRightHandTransform()
+    {
+        if (RightHandOffset && localXROriginRoot.RightHandOrigin)
+        {
+            SyncRightHandTransformServerRpc(localXROriginRoot.RightHandOrigin.transform.localPosition, localXROriginRoot.RightHandOrigin.transform.localRotation, localXROriginRoot.RightHandOrigin.transform.localScale);
+
+            RightHandOffset.transform.localPosition = localXROriginRoot.RightHandOrigin.transform.localPosition;
+            RightHandOffset.transform.localRotation = localXROriginRoot.RightHandOrigin.transform.localRotation;
+            RightHandOffset.transform.localScale = localXROriginRoot.RightHandOrigin.transform.localScale;
         }
     }
 
     [ServerRpc(RequireOwnership = false)]
     void SyncRightHandTransformServerRpc(Vector3 position, Quaternion rotation, Vector3 scale)
     {
-        if (RightHand)
+        if (RightHandOffset)
         {
-            RightHand.transform.localPosition = position;
-            RightHand.transform.localRotation = rotation;
-            RightHand.transform.localScale = scale;
+            RightHandOffset.transform.localPosition = position;
+            RightHandOffset.transform.localRotation = rotation;
+            RightHandOffset.transform.localScale = scale;
+        }
+    }
+
+    void SyncRightHandAnimator()
+    {
+        if (RightHandAnimatorScript && RightHandActionBasedController)
+        {
+            float triggerTarget = RightHandActionBasedController.activateAction.action.ReadValue<float>();
+            float gripTarget = RightHandActionBasedController.activateAction.action.ReadValue<float>();
+
+            SyncRightHandAnimatorServerRpc(triggerTarget, gripTarget);
+
+            RightHandAnimatorScript.SetTrigger(triggerTarget);
+            RightHandAnimatorScript.SetGrip(gripTarget);
+        }
+    }
+
+    [ServerRpc(RequireOwnership = false)]
+    void SyncRightHandAnimatorServerRpc(float triggerTarget, float gripTarget)
+    {
+        if (RightHandAnimatorScript)
+        {
+            RightHandAnimatorScript.SetTrigger(triggerTarget);
+            RightHandAnimatorScript.SetGrip(gripTarget);
         }
     }
 
@@ -132,15 +223,64 @@ public class XROriginNetworkSync : NetworkBehaviour
             {
                 localXROriginRoot = xROriginRoot;
 
-                GetComponent<TransformNetworkSync>().enabled = false;
-                if (Head) Head.GetComponent<TransformNetworkSync>().enabled = false;
-                if (LeftHand) LeftHand.GetComponent<TransformNetworkSync>().enabled = false;
-                if (RightHand) RightHand.GetComponent<TransformNetworkSync>().enabled = false;
+                GetValidComponentsClientSide();
 
                 break;
             }
         }
 
         yield return null;
+    }
+
+    void GetValidComponentsClientSide()
+    {
+        //////////////////////// BODY ////////////////////////
+        GetComponent<TransformNetworkSync>().enabled = false;
+
+        //////////////////////// HEAD ////////////////////////
+        if (HeadOffset) HeadOffset.GetComponent<TransformNetworkSync>().enabled = false;
+
+        //////////////////////// LEFT HAND ////////////////////////
+        if (LeftHandOffset)
+        {
+            LeftHandOffset.GetComponent<TransformNetworkSync>().enabled = false;
+        }
+
+        if (LeftHandAnimator)
+        {
+            LeftHandAnimator.GetComponent<HandNetworkController>().enabled = false;
+            LeftHandAnimatorScript = LeftHandAnimator.GetComponent<Hand>();
+        }
+
+        LeftHandActionBasedController = localXROriginRoot.LeftHandOrigin.GetComponent<ActionBasedController>();
+
+        //////////////////////// RIGHT HAND ////////////////////////
+        if (RightHandOffset)
+        {
+            RightHandOffset.GetComponent<TransformNetworkSync>().enabled = false;
+        }
+
+        if (RightHandAnimator)
+        {
+            RightHandAnimator.GetComponent<HandNetworkController>().enabled = false;
+            RightHandAnimatorScript = RightHandAnimator.GetComponent<Hand>();
+        }
+
+        RightHandActionBasedController = localXROriginRoot.RightHandOrigin.GetComponent<ActionBasedController>();
+    }
+
+    void GetValidComponentsServerSide()
+    {
+        //////////////////////// LEFT HAND ////////////////////////
+        if (LeftHandAnimator)
+        {
+            LeftHandAnimatorScript = LeftHandAnimator.GetComponent<Hand>();
+        }
+
+        //////////////////////// RIGHT HAND ////////////////////////
+        if (RightHandAnimator)
+        {
+            RightHandAnimatorScript = RightHandAnimator.GetComponent<Hand>();
+        }
     }
 }

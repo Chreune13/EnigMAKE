@@ -35,9 +35,19 @@ public class Hand : MonoBehaviour
         triggerTarget = v;
     }
 
+    public float GetTrigger()
+    {
+        return triggerTarget;
+    }
+
     internal void SetGrip(float v)
     {
         gripTarget = v;
+    }
+
+    public float GetGrip()
+    {
+        return gripTarget;
     }
 
     void AnimateHand()
