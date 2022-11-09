@@ -130,6 +130,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 146756259, guid: 3f4cfa1f51eba1f4bbcc98e78b2f1575, type: 3}
+      propertyPath: networkManagement.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1547022846, guid: 3f4cfa1f51eba1f4bbcc98e78b2f1575, type: 3}
       propertyPath: GlobalObjectIdHash
       value: 915308427
