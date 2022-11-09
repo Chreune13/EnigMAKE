@@ -31,7 +31,6 @@ public class RayToggler : MonoBehaviour
     private void ToggleRay(InputAction.CallbackContext context)
     {
         isEnabled = context.control.IsPressed();
-        Debug.Log("pressed");
     }
     private void LateUpdate()
     {
