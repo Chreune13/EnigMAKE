@@ -12,6 +12,7 @@ TagManager:
   - MainMenuUI
   - AboutMenuUI
   - PlayerState
+  - ClientOnly
   layers:
   - Default
   - TransparentFX

@@ -8,29 +8,20 @@ public class DontDestroy : MonoBehaviour
     {
 
         Debug.Log("DontDestroy script disabled");
-        //GameObject[] sceneManagment = GameObject.FindGameObjectsWithTag("SceneManagment");
-        //GameObject[] player = GameObject.FindGameObjectsWithTag("Player");
+        GameObject[] player = GameObject.FindGameObjectsWithTag("ClientOnly");
 
-        //if(this.gameObject.tag == "Player")
-        //{
-        //    if (player.Length > 1)
-        //    {
-        //        Destroy(this.gameObject);
-        //    }
+        if (this.gameObject.tag == "ClientOnly")
+        {
+            if (player.Length > 1)
+            {
+                Destroy(this.gameObject);
+            }
 
-        //    DontDestroyOnLoad(this.gameObject);
+            DontDestroyOnLoad(this.gameObject);
 
-        //} 
+        }
 
-        //if (this.gameObject.tag == "SceneManagment")
-        //{
-        //    if (sceneManagment.Length > 1)
-        //    {
-        //        Destroy(this.gameObject);
-        //    }
-
-        //    DontDestroyOnLoad(this.gameObject);
-        //}
-
+            DontDestroyOnLoad(this.gameObject);
     }
 }
+
