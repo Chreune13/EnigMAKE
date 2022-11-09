@@ -23,7 +23,6 @@ public class EnigmeManager : MonoBehaviour
     [SerializeField]
     private enigmlistelem[] enigmes;
 
-
     [SerializeField]
     private GameObject EnigmeJeton;
     [SerializeField]
@@ -78,7 +77,7 @@ public class EnigmeManager : MonoBehaviour
 
         enigmes[JetonID-1].reff_e = enigme;
 
-        Debug.Log(enigmes[JetonID-1].reff_e);
+        Debug.Log(enigmes[JetonID - 1].reff_e);
 
 
     }
@@ -86,9 +85,9 @@ public class EnigmeManager : MonoBehaviour
     {
         
         
-            enigmes[JetonID-1].a[id].reff_a = action;
-            Debug.Log(enigmes[JetonID-1].a[id].reff_a);
-            enigmes[JetonID-1].a[id].actionId = JetonID;
+            enigmes[JetonID - 1].a[id].reff_a = action;
+            Debug.Log(enigmes[JetonID - 1].a[id].reff_a);
+            enigmes[JetonID - 1].a[id].actionId = JetonID;
         
         
     }
