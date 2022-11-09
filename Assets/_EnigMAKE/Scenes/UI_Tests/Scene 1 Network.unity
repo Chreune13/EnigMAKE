@@ -132,7 +132,43 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 146756259, guid: 3f4cfa1f51eba1f4bbcc98e78b2f1575, type: 3}
       propertyPath: networkManagement.Array.size
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 146756259, guid: 3f4cfa1f51eba1f4bbcc98e78b2f1575, type: 3}
+      propertyPath: networkManagement.Array.data[0].toDestroy.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 146756259, guid: 3f4cfa1f51eba1f4bbcc98e78b2f1575, type: 3}
+      propertyPath: networkManagement.Array.data[0].toDestroy.Array.data[0]
+      value: 
+      objectReference: {fileID: 1382876064}
+    - target: {fileID: 146756259, guid: 3f4cfa1f51eba1f4bbcc98e78b2f1575, type: 3}
+      propertyPath: networkManagement.Array.data[0].invokeDefaultMethod.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 146756259, guid: 3f4cfa1f51eba1f4bbcc98e78b2f1575, type: 3}
+      propertyPath: networkManagement.Array.data[0].invokeDefaultMethod.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 146756259, guid: 3f4cfa1f51eba1f4bbcc98e78b2f1575, type: 3}
+      propertyPath: networkManagement.Array.data[0].invokeDefaultMethod.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1805649461}
+    - target: {fileID: 146756259, guid: 3f4cfa1f51eba1f4bbcc98e78b2f1575, type: 3}
+      propertyPath: networkManagement.Array.data[0].invokeDefaultMethod.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 146756259, guid: 3f4cfa1f51eba1f4bbcc98e78b2f1575, type: 3}
+      propertyPath: networkManagement.Array.data[0].invokeDefaultMethod.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 146756259, guid: 3f4cfa1f51eba1f4bbcc98e78b2f1575, type: 3}
+      propertyPath: networkManagement.Array.data[0].invokeDefaultMethod.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 146756259, guid: 3f4cfa1f51eba1f4bbcc98e78b2f1575, type: 3}
+      propertyPath: networkManagement.Array.data[0].invokeDefaultMethod.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 1547022846, guid: 3f4cfa1f51eba1f4bbcc98e78b2f1575, type: 3}
       propertyPath: GlobalObjectIdHash
@@ -709,6 +745,11 @@ MonoBehaviour:
 --- !u!4 &1382876063 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2447398981337201953, guid: 4b9f8615edc2cc048a375f3ed7f4e8f6, type: 3}
+  m_PrefabInstance: {fileID: 1382876061}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1382876064 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2447398981337201955, guid: 4b9f8615edc2cc048a375f3ed7f4e8f6, type: 3}
   m_PrefabInstance: {fileID: 1382876061}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1452900301
@@ -2250,6 +2291,10 @@ PrefabInstance:
     - target: {fileID: 5079860101011194874, guid: e689511df9cea8f44b64632bf1facbf5, type: 3}
       propertyPath: m_Name
       value: Menu Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 5079860101011194874, guid: e689511df9cea8f44b64632bf1facbf5, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8723100275871558020, guid: e689511df9cea8f44b64632bf1facbf5, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target

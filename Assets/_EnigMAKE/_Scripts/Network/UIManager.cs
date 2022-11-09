@@ -145,5 +145,15 @@ public class UIManager : MonoBehaviour
     void DisplayPlayerInterface()
     {
         GUILayout.Label("Player en attente du GameMaster");
+        Debug.Log("Player en attente du GameMaster");
+
+        foreach (networkManagement item in networkManagement)
+        {
+            foreach (var objDestroy in item.toDestroy)
+            {
+                Destroy(objDestroy);
+            }
+           
+        }
     }
 }
