@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.Events;
@@ -14,10 +15,21 @@ public enum DisplayedInterface
     PLAYER_INTERFACE
 }
 
+[System.Serializable]
+struct networkManagement
+{
+    public UnityEvent invokeDefaultMethod;
+    public GameObject[] toDestroy;
+}
+
+
 public class UIManager : MonoBehaviour
 {
     [NonSerialized]
     public static UIManager Singleton;
+
+    [SerializeField]
+    private networkManagement[] networkManagement;
 
     DisplayedInterface CurrentDisplayed = DisplayedInterface.NOTHING;
 
@@ -70,6 +82,10 @@ public class UIManager : MonoBehaviour
         NetworkGameManager.Singleton.SelectPlayerInterfaceCallback -= SelectPlayerInterface;
     }
 
+
+
+    //-------------------------- CLIENT TYPE -------------------------
+
     public void SelectClientTypeAskingInterface()
     {
         CurrentDisplayed = DisplayedInterface.CLIENT_TYPE_ASKING;
@@ -77,8 +93,8 @@ public class UIManager : MonoBehaviour
 
     void DisplayClientTypeAskingInterface()
     {
-        if (GUILayout.Button("GameMaster")) NetworkGameManager.Singleton.StartGameMaster();
-        if (GUILayout.Button("Client")) NetworkGameManager.Singleton.StartClient();
+        if (GUILayout.Button("GameMaster")) GameMaster();
+        if (GUILayout.Button("Client")) Client();
     }
 
     public void GameMaster()
@@ -91,6 +107,8 @@ public class UIManager : MonoBehaviour
         NetworkGameManager.Singleton.StartClient();
     }
 
+
+    //-------------------------- WAITING SERVER -------------------------
     public void SelectWaitingServerLogginInterface()
     {
         CurrentDisplayed = DisplayedInterface.WAITING_SERVER_LOGGIN;
@@ -101,6 +119,10 @@ public class UIManager : MonoBehaviour
         GUILayout.Label("En attente de connexion au serveur");
     }
 
+
+
+
+    //-------------------------- GAME MASTER CLIENT -------------------------
     public void SelectGameMasterInterface()
     {
         CurrentDisplayed = DisplayedInterface.GAME_MASTER_INTERFACE;
@@ -112,6 +134,9 @@ public class UIManager : MonoBehaviour
         GUILayout.Label("GameMaster Interface");
     }
 
+
+
+    //-------------------------- PLAYER CLIENT -------------------------
     public void SelectPlayerInterface()
     {
         CurrentDisplayed = DisplayedInterface.PLAYER_INTERFACE;
