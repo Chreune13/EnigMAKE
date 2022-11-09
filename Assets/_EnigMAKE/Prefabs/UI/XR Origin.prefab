@@ -8452,7 +8452,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f92fc059b5c5104e8e9b0710ec083d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerId: 0
+  BodyOrigin: {fileID: 584050505705097127}
   HeadOrigin: {fileID: 8964331077345731863}
   LeftHandOrigin: {fileID: 8059803058170893551}
   RightHandOrigin: {fileID: 885482000277329553}
