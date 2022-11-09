@@ -674,7 +674,7 @@ LineRenderer:
   - {x: 0, y: 0, z: 1}
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 0.005
+    widthMultiplier: 0.02
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -685,8 +685,17 @@ LineRenderer:
         outSlope: 0
         tangentMode: 0
         weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -1174,7 +1183,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scenelists:
-  - invokeMethod:
+  - sceneId: 0
+    invokeMethod:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 0}
@@ -1201,8 +1211,14 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-    sceneId: 0
-  - invokeMethod:
+    invokeGameMasterMethod:
+      m_PersistentCalls:
+        m_Calls: []
+    invokePlayerMethod:
+      m_PersistentCalls:
+        m_Calls: []
+  - sceneId: 1
+    invokeMethod:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 0}
@@ -1229,8 +1245,14 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 1
           m_CallState: 2
-    sceneId: 1
-  - invokeMethod:
+    invokeGameMasterMethod:
+      m_PersistentCalls:
+        m_Calls: []
+    invokePlayerMethod:
+      m_PersistentCalls:
+        m_Calls: []
+  - sceneId: 2
+    invokeMethod:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 0}
@@ -1257,8 +1279,14 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 1
           m_CallState: 2
-    sceneId: 2
-  - invokeMethod:
+    invokeGameMasterMethod:
+      m_PersistentCalls:
+        m_Calls: []
+    invokePlayerMethod:
+      m_PersistentCalls:
+        m_Calls: []
+  - sceneId: 3
+    invokeMethod:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 0}
@@ -1285,7 +1313,12 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 1
           m_CallState: 2
-    sceneId: 3
+    invokeGameMasterMethod:
+      m_PersistentCalls:
+        m_Calls: []
+    invokePlayerMethod:
+      m_PersistentCalls:
+        m_Calls: []
 --- !u!1 &1065900712647046105
 GameObject:
   m_ObjectHideFlags: 0
@@ -7442,7 +7475,7 @@ LineRenderer:
   - {x: 0, y: 0, z: 1}
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 0.005
+    widthMultiplier: 0.02
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -7453,8 +7486,17 @@ LineRenderer:
         outSlope: 0
         tangentMode: 0
         weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4

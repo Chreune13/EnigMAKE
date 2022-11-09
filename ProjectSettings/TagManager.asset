@@ -9,6 +9,9 @@ TagManager:
   - SceneManagment
   - UI
   - Destruction
+  - MainMenuUI
+  - AboutMenuUI
+  - PlayerState
   layers:
   - Default
   - TransparentFX

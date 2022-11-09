@@ -5,8 +5,12 @@ using UnityEngine.Events;
 [System.Serializable]
 struct scenelist
 {
-    public UnityEvent invokeMethod; //set in editor
     public int sceneId;
+
+    public UnityEvent invokeDefaultMethod;
+    public UnityEvent invokeGameMasterMethod;
+    public UnityEvent invokePlayerMethod;
+    public UnityEvent invokeEditionMethod;
 }
 
 
@@ -38,10 +42,22 @@ public class SceneManagment : MonoBehaviour
     [SerializeField]
     private scenelist[] scenelists;
 
+    private GameObject playerState;
+
+    public void GetAndSetPlayerStateObject(string ps)
+    {
+        playerState = GameObject.FindGameObjectWithTag("PlayerState");
+        playerState.GetComponent<PlayerState>().ChangePlayerState(ps);
+    }
+
     void OnEnable()
     {
         //Tell our 'OnLevelFinishedLoading' function to start listening for a scene change as soon as this script is enabled.
         SceneManager.sceneLoaded += OnLevelFinishedLoading;
+
+        playerState = GameObject.FindGameObjectWithTag("PlayerState");
+
+        Debug.Log(playerState.GetComponent<PlayerState>().GetPlayerState());
     }
 
     void OnDisable()
@@ -63,7 +79,24 @@ public class SceneManagment : MonoBehaviour
         {
             if (scenelists[i].sceneId == id)
             {
-                scenelists[i].invokeMethod.Invoke();
+
+                scenelists[i].invokeDefaultMethod.Invoke();
+
+                if (playerState.GetComponent<PlayerState>().GetPlayerState() == "GameMaster")
+                {
+                    scenelists[i].invokeGameMasterMethod.Invoke();
+                }
+                
+                if (playerState.GetComponent<PlayerState>().GetPlayerState() == "Player")
+                {
+                    scenelists[i].invokePlayerMethod.Invoke();
+                }
+
+                if (playerState.GetComponent<PlayerState>().GetPlayerState() == "Edit")
+                {
+                    scenelists[i].invokeEditionMethod.Invoke();
+                }
+
                 //Debug.Log("Current sceneId : " + id + " sceneId list : " + scenelists[i].sceneId);
             }
 
@@ -78,31 +111,6 @@ public class SceneManagment : MonoBehaviour
     {
         return SceneManager.GetActiveScene().buildIndex;
     }
-
-    //public void EnableOnSceneIndex(GameObject section, int sceneIndex)
-    //{
-    //    if (section == null)
-    //        return;
-
-    //    if (sceneIndex == CheckSceneIndex())
-    //    {
-    //        section.SetActive(true);
-    //    }
-    //}
-
-    //public void DisableOnSceneIndex(GameObject[] sections, int sceneIndex)
-    //{
-    //    if (sections == null)
-    //        return;
-
-    //    if (sceneIndex == CheckSceneIndex())
-    //    {
-    //        foreach (GameObject section in sections)
-    //        {
-    //            section.SetActive(false);
-    //        }
-    //    }
-    //}
 
     // --------------------------- InvokeOnSceneIndex ---------------------------
 }
