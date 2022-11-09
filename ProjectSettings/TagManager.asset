@@ -15,6 +15,7 @@ TagManager:
   - Door
   - Enigmes
   - Actions
+  - Chest
   layers:
   - Default
   - TransparentFX
