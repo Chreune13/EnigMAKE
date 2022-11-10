@@ -40,6 +40,7 @@ public class EnigmesClassement : MonoBehaviour
                     EnigmeManager.instance.SetActionElem(action,ID-1);
                 trigger =false;
             }
+            gameObject.GetComponent<MeshRenderer>().enabled = false;
             
         }
         Debug.Log(ID);
