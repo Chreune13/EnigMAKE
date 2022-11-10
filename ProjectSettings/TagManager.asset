@@ -16,6 +16,8 @@ TagManager:
   - Enigmes
   - Actions
   - Chest
+  - hammer
+  - Destruction
   layers:
   - Default
   - TransparentFX

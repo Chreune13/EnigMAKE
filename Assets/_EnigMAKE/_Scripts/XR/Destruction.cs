@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class Destruction : MonoBehaviour
+public class Destruction : Enigme
 {
     void DestructionObject(GameObject p_object)
     {
@@ -17,7 +17,11 @@ public class Destruction : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        DestructionObject(collision.gameObject);
+        if (collision.gameObject.tag=="Destruction")
+        {
+            DestructionObject(collision.gameObject);
+        }
+            
     }
 
 }
