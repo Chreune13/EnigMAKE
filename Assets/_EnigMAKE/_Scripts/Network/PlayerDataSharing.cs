@@ -218,25 +218,6 @@ public class PlayerDataSharing : NetworkBehaviour
         RemotePlayersToSyncronize.Add(p_remotePlayer.GetPlayerId(), p_remotePlayer);
     }
 
-    public void UnsyncronizeLocalPlayer()
-    {
-        if(LocalPlayer)
-        {
-            int i;
-            for(i = 0; i < PlayersDataList.Count; i++)
-            {
-                if (PlayersDataList[i].PlayerId == LocalPlayer.GetPlayerId())
-                    break;
-            }
-
-            if(i != PlayersDataList.Count)
-            {
-                Debug.Log(i + "  " + PlayersDataList.Count);
-                PlayersDataList.RemoveAt(i);
-            }
-        }
-    }
-
     public void UnsyncronizeRemotePlayer(XROriginNetworkSync p_remotePlayer)
     {
         RemotePlayersToSyncronize.Remove(p_remotePlayer.GetPlayerId());
