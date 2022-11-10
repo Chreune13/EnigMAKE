@@ -44,8 +44,8 @@ public struct PlayerDataToSync : INetworkSerializable, System.IEquatable<PlayerD
     public TransformSync LeftHand;
     public TransformSync RightHand;
 
-    public float TargetGripLeft;
-    public float TargetGripRight;
+    public float TargetTriggerLeft;
+    public float TargetTriggerRight;
 
     public void NetworkSerialize<T>(BufferSerializer<T> serializer) where T : IReaderWriter
     {
@@ -57,6 +57,8 @@ public struct PlayerDataToSync : INetworkSerializable, System.IEquatable<PlayerD
             reader.ReadValueSafe(out Head);
             reader.ReadValueSafe(out LeftHand);
             reader.ReadValueSafe(out RightHand);
+            reader.ReadValueSafe(out TargetTriggerLeft);
+            reader.ReadValueSafe(out TargetTriggerRight);
         }
         else
         {
@@ -66,6 +68,8 @@ public struct PlayerDataToSync : INetworkSerializable, System.IEquatable<PlayerD
             writer.WriteValueSafe(Head);
             writer.WriteValueSafe(LeftHand);
             writer.WriteValueSafe(RightHand);
+            writer.WriteValueSafe(TargetTriggerLeft);
+            writer.WriteValueSafe(TargetTriggerRight);
         }
     }
 
@@ -116,16 +120,16 @@ public class PlayerDataSharing : NetworkBehaviour
             localPlayerData.Head = new TransformSync();
             localPlayerData.LeftHand = new TransformSync();
             localPlayerData.RightHand = new TransformSync();
-            localPlayerData.TargetGripLeft = 0.0f;
-            localPlayerData.TargetGripRight = 0.0f;
+            localPlayerData.TargetTriggerLeft = 0.0f;
+            localPlayerData.TargetTriggerRight = 0.0f;
 
             WriteToTransformSync(ref localPlayerData.Body, LocalPlayer.gameObject);
             WriteToTransformSync(ref localPlayerData.Head, LocalPlayer.HeadOffset);
             WriteToTransformSync(ref localPlayerData.LeftHand, LocalPlayer.LeftHandOffset);
             WriteToTransformSync(ref localPlayerData.RightHand, LocalPlayer.RightHandOffset);
 
-            localPlayerData.TargetGripLeft = LocalPlayer.LeftHandAnimatorScript.GetGrip();
-            localPlayerData.TargetGripRight = LocalPlayer.RightHandAnimatorScript.GetGrip();
+            localPlayerData.TargetTriggerLeft = LocalPlayer.LeftHandAnimatorScript.GetTrigger();
+            localPlayerData.TargetTriggerRight = LocalPlayer.RightHandAnimatorScript.GetTrigger();
 
             UpdateLocalPlayerDataServerRpc(localPlayerData);
         }
@@ -169,8 +173,8 @@ public class PlayerDataSharing : NetworkBehaviour
                 WriteFromTransformSync(RemotePlayersToSyncronize[playerData.PlayerId].LeftHandOffset, playerData.LeftHand);
                 WriteFromTransformSync(RemotePlayersToSyncronize[playerData.PlayerId].RightHandOffset, playerData.RightHand);
 
-                RemotePlayersToSyncronize[playerData.PlayerId].LeftHandAnimatorScript.SetGrip(playerData.TargetGripLeft);
-                RemotePlayersToSyncronize[playerData.PlayerId].RightHandAnimatorScript.SetGrip(playerData.TargetGripRight);
+                RemotePlayersToSyncronize[playerData.PlayerId].LeftHandAnimatorScript.SetTrigger(playerData.TargetTriggerLeft);
+                RemotePlayersToSyncronize[playerData.PlayerId].RightHandAnimatorScript.SetTrigger(playerData.TargetTriggerRight);
             }
         }
     }
@@ -203,8 +207,8 @@ public class PlayerDataSharing : NetworkBehaviour
         localPlayerData.Head = new TransformSync();
         localPlayerData.LeftHand = new TransformSync();
         localPlayerData.RightHand = new TransformSync();
-        localPlayerData.TargetGripLeft = 0.0f;
-        localPlayerData.TargetGripRight = 0.0f;
+        localPlayerData.TargetTriggerLeft = 0.0f;
+        localPlayerData.TargetTriggerRight = 0.0f;
 
         PlayersDataList.Add(localPlayerData);
     }
