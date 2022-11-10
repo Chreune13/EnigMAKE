@@ -3,6 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEngine;
+using UnityEngine.Windows;
+
+#if UNITY_EDITOR
+using ParrelSync;
+#endif
 
 public struct PlayerNetworkData
 {
@@ -61,7 +66,19 @@ public class NetworkGameManager : NetworkBehaviour
 
     private void Start()
     {
-        if(StartAsAServer)
+#if UNITY_EDITOR
+        if(ClonesManager.IsClone())
+        {
+            string arg = ClonesManager.GetArgument();
+
+            if(arg == "server")
+            {
+                StartAsAServer = true;
+            }
+        }
+#endif
+
+        if (StartAsAServer)
         {
             StartServer();
         }
