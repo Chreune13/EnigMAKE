@@ -303,6 +303,10 @@ public class NetworkGameManager : NetworkBehaviour
     {
         PlayerWantSpawn = true;
 
+        UnityEngine.XR.Management.XRGeneralSettings.Instance.Manager.StopSubsystems();
+
+        UnityEngine.XR.Management.XRGeneralSettings.Instance.Manager.DeinitializeLoader();
+
         NetworkManager.Singleton.StartServer();
     }
 
