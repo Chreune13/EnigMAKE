@@ -99,7 +99,7 @@ public class UIManager : MonoBehaviour
 
     public void GameMaster()
     {
-        NetworkGameManager.Singleton.StartGameMaster();
+        //NetworkGameManager.Singleton.StartGameMaster();
     }
 
     public void Client()

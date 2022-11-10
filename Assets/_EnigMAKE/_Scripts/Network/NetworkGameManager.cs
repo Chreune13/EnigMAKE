@@ -33,7 +33,7 @@ public class NetworkGameManager : NetworkBehaviour
     [SerializeField]
     private bool StartAsAServer = false;
 
-    PlayerType localClientType;
+    //PlayerType localClientType;
 
     bool PlayerWantSpawn = false;
     bool PlayerIsSpawn = false;
@@ -84,12 +84,7 @@ public class NetworkGameManager : NetworkBehaviour
         }
         else
         {
-            if (CurrentDisplayed != DisplayedInterface.CLIENT_TYPE_ASKING)
-            {
-                CurrentDisplayed = DisplayedInterface.CLIENT_TYPE_ASKING;
-
-                SelectClientTypeAskingInterfaceCallback();
-            }
+            StartClient();
         }
     }
 
@@ -198,9 +193,9 @@ public class NetworkGameManager : NetworkBehaviour
         if (NetworkManager.Singleton.LocalClient == null)
             return;
 
-        PlayerType playerType = NetworkManager.Singleton.LocalClient.PlayerObject.GetComponent<PlayerNetworkController>().GetPlayerType();
+        //PlayerType playerType = NetworkManager.Singleton.LocalClient.PlayerObject.GetComponent<PlayerNetworkController>().GetPlayerType();
 
-        if (playerType == PlayerType.GAMEMASTER)
+        if (PlayerState.Singleton.playerState == PlayerType.GAMEMASTER)
         {
             if (CurrentDisplayed != DisplayedInterface.GAME_MASTER_INTERFACE)
             {
@@ -211,7 +206,7 @@ public class NetworkGameManager : NetworkBehaviour
             return;
         }
 
-        if (playerType == PlayerType.PLAYER)
+        if (PlayerState.Singleton.playerState == PlayerType.PLAYER)
         {
             if (CurrentDisplayed != DisplayedInterface.PLAYER_INTERFACE)
             {
@@ -223,9 +218,9 @@ public class NetworkGameManager : NetworkBehaviour
         }
     }
 
-    public void NewPlayerConnect(ulong playerId, PlayerType ClientType)
+    public void NewPlayerConnect(ulong playerId)
     {
-        NewPlayerConnectServerRpc(playerId, ClientType);
+        NewPlayerConnectServerRpc(playerId, PlayerState.Singleton.playerState);
     }
 
     private void DisconnectLastConnectedPlayer()
@@ -311,26 +306,10 @@ public class NetworkGameManager : NetworkBehaviour
         NetworkManager.Singleton.StartServer();
     }
 
-    public void StartGameMaster()
-    {
-        PlayerWantSpawn = true;
-
-        localClientType = PlayerType.GAMEMASTER;
-
-        NetworkManager.Singleton.StartClient();
-    }
-
     public void StartClient()
     {
         PlayerWantSpawn = true;
 
-        localClientType = PlayerType.PLAYER;
-
         NetworkManager.Singleton.StartClient();
-    }
-
-    public PlayerType GetSelectedClientType()
-    {
-        return localClientType;
     }
 }
