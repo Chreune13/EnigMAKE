@@ -45,12 +45,7 @@ public class XROriginNetworkSync : NetworkBehaviour
 
     public override void OnDestroy()
     {
-        if (IsOwner)
-        {
-            if (PlayerDataSharing.Singleton)
-                PlayerDataSharing.Singleton.UnsyncronizeLocalPlayer();
-        }
-        else
+        if (IsServer)
         {
             if (PlayerDataSharing.Singleton)
                 PlayerDataSharing.Singleton.UnsyncronizeRemotePlayer(this);
