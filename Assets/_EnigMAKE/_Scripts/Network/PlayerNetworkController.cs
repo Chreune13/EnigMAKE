@@ -6,8 +6,9 @@ using UnityEngine;
 
 public enum PlayerType
 {
-    GAMEMASTER,
-    PLAYER
+    GAMEMASTER = 0,
+    PLAYER = 1,
+    EDIT = 2
 }
 
 public class PlayerNetworkController : NetworkBehaviour

@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Events;
+using Unity.Netcode;
 
 [System.Serializable]
 struct scenelist
@@ -12,9 +13,6 @@ struct scenelist
     public UnityEvent invokePlayerMethod;
     public UnityEvent invokeEditionMethod;
 }
-
-
-
 
 
 public class SceneManagment : MonoBehaviour
@@ -42,22 +40,16 @@ public class SceneManagment : MonoBehaviour
     [SerializeField]
     private scenelist[] scenelists;
 
-    private GameObject playerState;
-
-    public void GetAndSetPlayerStateObject(string ps)
+    public void GetAndSetPlayerStateObject(int ps)
     {
-        playerState = GameObject.FindGameObjectWithTag("PlayerState");
-        playerState.GetComponent<PlayerState>().ChangePlayerState(ps);
+        PlayerType playerType = (PlayerType)ps; 
+        PlayerState.Singleton.playerState = playerType;
     }
 
     void OnEnable()
     {
         //Tell our 'OnLevelFinishedLoading' function to start listening for a scene change as soon as this script is enabled.
         SceneManager.sceneLoaded += OnLevelFinishedLoading;
-
-        playerState = GameObject.FindGameObjectWithTag("PlayerState");
-
-        Debug.Log(playerState.GetComponent<PlayerState>().GetPlayerState());
     }
 
     void OnDisable()
@@ -69,10 +61,9 @@ public class SceneManagment : MonoBehaviour
 
     private void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)
     {
-       
+        
         if (scenelists == null)
             return;
-
 
         int id = CheckSceneIndex();
         for (int i = 0; i < scenelists.Length; i++)
@@ -82,17 +73,17 @@ public class SceneManagment : MonoBehaviour
 
                 scenelists[i].invokeDefaultMethod.Invoke();
 
-                if (playerState.GetComponent<PlayerState>().GetPlayerState() == "GameMaster")
+                if (PlayerState.Singleton.playerState == PlayerType.GAMEMASTER)
                 {
                     scenelists[i].invokeGameMasterMethod.Invoke();
                 }
-                
-                if (playerState.GetComponent<PlayerState>().GetPlayerState() == "Player")
+
+                if (PlayerState.Singleton.playerState == PlayerType.PLAYER)
                 {
                     scenelists[i].invokePlayerMethod.Invoke();
                 }
 
-                if (playerState.GetComponent<PlayerState>().GetPlayerState() == "Edit")
+                if (PlayerState.Singleton.playerState == PlayerType.EDIT)
                 {
                     scenelists[i].invokeEditionMethod.Invoke();
                 }
@@ -102,8 +93,6 @@ public class SceneManagment : MonoBehaviour
 
             //Debug.Log("Current sceneId : " + id + " sceneId list : " + scenelists[i].sceneId);
         }
-
-
     }
 
 

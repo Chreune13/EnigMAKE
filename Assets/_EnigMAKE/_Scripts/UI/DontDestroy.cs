@@ -7,7 +7,7 @@ public class DontDestroy : MonoBehaviour
     void Awake()
     {
 
-        Debug.Log("DontDestroy script disabled");
+        //Debug.Log("DontDestroy script disabled");
         GameObject[] player = GameObject.FindGameObjectsWithTag("ClientOnly");
 
         if (this.gameObject.tag == "ClientOnly")
