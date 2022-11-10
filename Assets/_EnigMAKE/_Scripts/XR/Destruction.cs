@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class Destruction : MonoBehaviour
+public class Destruction : Enigme
 {
     void DestructionObject(GameObject p_object)
     {

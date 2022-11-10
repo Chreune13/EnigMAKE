@@ -13,6 +13,16 @@ TagManager:
   - AboutMenuUI
   - PlayerState
   - ClientOnly
+  - GoBackMenuUI
+  - Key
+  - Locke
+  - Digicode
+  - Door
+  - Enigmes
+  - Actions
+  - Chest
+  - hammer
+  - Destruction
   layers:
   - Default
   - TransparentFX
