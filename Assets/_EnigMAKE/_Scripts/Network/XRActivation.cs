@@ -18,7 +18,7 @@ public class XRActivation : MonoBehaviour
 
         Singleton = this;
 
-        DontDestroyOnLoad(this.gameObject);
+        //DontDestroyOnLoad(this.gameObject);
 
 #if UNITY_EDITOR
         if (ClonesManager.IsClone())

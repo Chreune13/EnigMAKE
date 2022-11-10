@@ -12,19 +12,10 @@ EditorBuildSettings:
     path: Assets/_EnigMAKE/Scenes/UI_Tests/Scene 1.unity
     guid: 029d1157408a7ae4c82af89ec45e781f
   - enabled: 1
-    path: Assets/_EnigMAKE/Scenes/UI_Tests/Scene 2.unity
-    guid: 268b006e084fa1c49a37dbb51eb8d491
-  - enabled: 1
-    path: Assets/_EnigMAKE/Scenes/UI_Tests/Scene 3.unity
-    guid: e862556fd42172c46806495b067082c4
-  - enabled: 1
     path: Assets/_EnigMAKE/Scenes/Network/Tony-Lobby.unity
     guid: f0cebdacd03090a47ab12f8e3dcac53e
   - enabled: 1
     path: Assets/_EnigMAKE/Scenes/UI_Tests/MainMenuNetwork.unity
-    guid: 41ad09c39cef2e640a88ce9643a1612d
-  - enabled: 1
-    path: Assets/_EnigMAKE/Scenes/UI_Tests/MainMenuNetwork 1.unity
     guid: e1bfe79ff4e847f4b82d0983cc948e8f
   - enabled: 1
     path: Assets/_EnigMAKE/Scenes/UI_Tests/Scene 1 Network.unity
