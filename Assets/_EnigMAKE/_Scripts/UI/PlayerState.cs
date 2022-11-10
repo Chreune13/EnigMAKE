@@ -11,16 +11,9 @@ public class PlayerState : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        /*GameObject[] objs = GameObject.FindGameObjectsWithTag("PlayerState");
-
-        if (objs.Length > 1)
-        {
-            Destroy(this.gameObject);
-        }*/
-
         if (Singleton != null)
         {
-            Debug.LogError("Multiple instance of PlayerStateSingleton");
+            Debug.LogWarning("Multiple instance of PlayerStateSingleton");
             gameObject.SetActive(false);
             return;
         }

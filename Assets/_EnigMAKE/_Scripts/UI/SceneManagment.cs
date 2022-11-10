@@ -17,6 +17,21 @@ struct scenelist
 
 public class SceneManagment : MonoBehaviour
 {
+    public static SceneManagment Singleton;
+
+    void Awake()
+    {
+        if (Singleton != null)
+        {
+            Debug.LogWarning("Multiple instance of SceneManagementSingleton");
+            gameObject.SetActive(false);
+            return;
+        }
+
+        Singleton = this;
+
+        DontDestroyOnLoad(this.gameObject);
+    }
 
     // --------------------------- Loading Methods ---------------------------
 
