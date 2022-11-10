@@ -11,14 +11,14 @@ public class XRActivation : MonoBehaviour
     {
         if (Singleton != null)
         {
-            Debug.LogWarning("Multiple instance of PlayerStateSingleton");
+            Debug.LogWarning("Multiple instance of PlayerStateSingleton!");
             gameObject.SetActive(false);
             return;
         }
 
         Singleton = this;
 
-        //DontDestroyOnLoad(this.gameObject);
+        DontDestroyOnLoad(this.gameObject);
 
 #if UNITY_EDITOR
         if (ClonesManager.IsClone())
