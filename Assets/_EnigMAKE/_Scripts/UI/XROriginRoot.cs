@@ -82,7 +82,7 @@ public class XROriginRoot : MonoBehaviour
 
     void SetAnimatorOfClone(Hand animatorScript, ActionBasedController controller)
     {
-        Debug.Log(controller.activateAction.action.ReadValue<float>());
+        //Debug.Log(controller.activateAction.action.ReadValue<float>());
         animatorScript.SetTrigger(controller.activateAction.action.ReadValue<float>());
         
         //animatorScript.SetGrip(controller.activateAction.action.ReadValue<float>());

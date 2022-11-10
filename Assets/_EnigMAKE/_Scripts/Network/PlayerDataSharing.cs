@@ -230,7 +230,10 @@ public class PlayerDataSharing : NetworkBehaviour
             }
 
             if(i != PlayersDataList.Count)
+            {
+                Debug.Log(i + "  " + PlayersDataList.Count);
                 PlayersDataList.RemoveAt(i);
+            }
         }
     }
 
