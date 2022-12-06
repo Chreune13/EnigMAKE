@@ -6,8 +6,7 @@ using Unity.Netcode;
 [System.Serializable]
 struct scenelist
 {
-    //public int sceneId;
-    public string sceneName;
+    public int sceneId;
 
     public UnityEvent invokeDefaultMethod;
     public UnityEvent invokeGameMasterMethod;
@@ -55,12 +54,7 @@ public class SceneManagment : MonoBehaviour
 
     [SerializeField]
     private scenelist[] scenelists;
-    
-    /// <summary>
-    /// GameMaster = 0
-    /// Player = 1
-    /// Edit mode = 2
-    /// </summary>
+
     public void GetAndSetPlayerStateObject(int ps)
     {
         PlayerType playerType = (PlayerType)ps; 
@@ -86,9 +80,10 @@ public class SceneManagment : MonoBehaviour
         if (scenelists == null)
             return;
 
+        int id = CheckSceneIndex();
         for (int i = 0; i < scenelists.Length; i++)
         {
-            if (GetSceneIndexFromName(scenelists[i].sceneName) == GetCurrentSceneIndex())
+            if (scenelists[i].sceneId == id)
             {
 
                 scenelists[i].invokeDefaultMethod.Invoke();
@@ -116,14 +111,9 @@ public class SceneManagment : MonoBehaviour
     }
 
 
-    private int GetCurrentSceneIndex()
+    private int CheckSceneIndex()
     {
         return SceneManager.GetActiveScene().buildIndex;
-    }
-
-    private int GetSceneIndexFromName(string sceneName)
-    {
-        return SceneManager.GetSceneByName(sceneName).buildIndex;
     }
 
     // --------------------------- InvokeOnSceneIndex ---------------------------

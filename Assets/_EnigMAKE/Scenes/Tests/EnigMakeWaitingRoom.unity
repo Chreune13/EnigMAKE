@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.17176537, g: 0.21489768, b: 0.28751662, a: 1}
+  m_IndirectSpecularColor: {r: 0.45137888, g: 0.5009243, b: 0.5726179, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3791,11 +3791,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7348359746636138096, guid: 4e52d76a44778ef428e707527c4c313d, type: 3}
   m_PrefabInstance: {fileID: 757902259}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &757902261 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7348359746636138097, guid: 4e52d76a44778ef428e707527c4c313d, type: 3}
-  m_PrefabInstance: {fileID: 757902259}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &784061791
 GameObject:
   m_ObjectHideFlags: 0
@@ -5523,7 +5518,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scenelists:
-  - sceneName: EnigMakeWaitingRoom
+  - sceneId: 0
     invokeDefaultMethod:
       m_PersistentCalls:
         m_Calls:
@@ -5596,7 +5591,7 @@ MonoBehaviour:
     invokeEditionMethod:
       m_PersistentCalls:
         m_Calls: []
-  - sceneName: demo_01 1
+  - sceneId: 1
     invokeDefaultMethod:
       m_PersistentCalls:
         m_Calls:
@@ -5741,19 +5736,7 @@ MonoBehaviour:
     invokeEditionMethod:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_MethodName: 
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: 
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 1
-          m_CallState: 2
-        - m_Target: {fileID: 757902261}
+        - m_Target: {fileID: 1545439961}
           m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_MethodName: SetActive
           m_Mode: 6
@@ -5763,7 +5746,43 @@ MonoBehaviour:
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
-            m_BoolArgument: 1
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 348142576}
+          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_MethodName: SetActive
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 412693122}
+          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_MethodName: SetActive
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1986563222}
+          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_MethodName: SetActive
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
           m_CallState: 2
 --- !u!224 &1237306714
 RectTransform:
@@ -9081,18 +9100,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1237306713}
-        m_TargetAssemblyTypeName: SceneManagment, Assembly-CSharp
-        m_MethodName: GetAndSetPlayerStateObject
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 2
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
       - m_Target: {fileID: 70138571}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
