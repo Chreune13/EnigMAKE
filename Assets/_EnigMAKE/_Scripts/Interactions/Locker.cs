@@ -10,7 +10,6 @@ public class Locker: Enigme
         if(other.tag =="Key")
         {
             StartCoroutine(Unlock(other));
-            SetSolved();
         }
     }
 
