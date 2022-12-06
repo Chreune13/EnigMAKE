@@ -13,6 +13,7 @@ public class Destruction : Enigme
         {
             rigib.isKinematic = false;
         }
+        SetSolved();
     }
 
     private void OnCollisionEnter(Collision collision)
