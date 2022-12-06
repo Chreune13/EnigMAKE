@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEngine;
 
-[RequireComponent(typeof(NetworkObject))]
 public class TransformNetworkSync : NetworkBehaviour
 {
     NetworkVariable<Vector3> NetworkPosition = new NetworkVariable<Vector3>();
@@ -13,9 +12,14 @@ public class TransformNetworkSync : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(IsOwner)
+        UpdateTransform();
+    }
+
+    void UpdateTransform()
+    {
+        if (IsOwner)
         {
-            if(IsServer)
+            if (IsServer)
             {
                 NetworkPosition.Value = transform.localPosition;
                 NetworkRotation.Value = transform.localRotation;

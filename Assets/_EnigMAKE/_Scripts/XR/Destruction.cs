@@ -17,11 +17,10 @@ public class Destruction : Enigme
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag=="Destruction")
+        if (collision.gameObject.tag == "Destruction")
         {
             DestructionObject(collision.gameObject);
         }
-            
-    }
 
+    }
 }

@@ -1,0 +1,34 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using Unity.Netcode;
+using UnityEngine;
+
+public class DisableComponentsOnOthers : NetworkBehaviour
+{
+
+    private void Start()
+    {
+        MonoBehaviour[] components = GetComponentsInChildren<MonoBehaviour>();
+
+        foreach (MonoBehaviour component in components)
+        {
+            if (!IsOwner)
+            {
+                if (component.GetType() == typeof(DisableComponentsOnOthers))
+                    continue;
+
+                if (component.GetType() == typeof(Unity.Netcode.NetworkObject))
+                    continue;
+
+                if (component.GetType() == typeof(TransformNetworkSync))
+                    continue;
+
+                if (component.GetType() == typeof(PlayerNetworkController))
+                    continue;
+
+                component.enabled = false;
+            }
+        }
+    }
+}

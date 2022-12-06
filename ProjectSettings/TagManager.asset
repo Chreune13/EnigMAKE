@@ -5,9 +5,14 @@ TagManager:
   serializedVersion: 2
   tags:
   - RoomLight
-  - UISection
+  - Key
+  - SceneManagment
+  - UI
+  - Destruction
   - MainMenuUI
   - AboutMenuUI
+  - PlayerState
+  - ClientOnly
   - GoBackMenuUI
   - Key
   - Locke
