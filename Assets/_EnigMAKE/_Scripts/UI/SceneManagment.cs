@@ -1,40 +1,9 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Events;
-using Unity.Netcode;
-
-[System.Serializable]
-struct scenelist
-{
-    public int sceneId;
-
-    public UnityEvent invokeDefaultMethod;
-    public UnityEvent invokeGameMasterMethod;
-    public UnityEvent invokePlayerMethod;
-    public UnityEvent invokeEditionMethod;
-}
-
 
 public class SceneManagment : MonoBehaviour
 {
-    public static SceneManagment Singleton;
-
-    void Awake()
-    {
-        if (Singleton != null)
-        {
-            Debug.LogWarning("Multiple instance of SceneManagementSingleton");
-            gameObject.SetActive(false);
-            return;
-        }
-
-        Singleton = this;
-
-        DontDestroyOnLoad(this.gameObject);
-    }
-
-    // --------------------------- Loading Methods ---------------------------
-
     public void SceneToLoad(string sceneName)
     {
         SceneManager.LoadScene(sceneName);
@@ -45,21 +14,11 @@ public class SceneManagment : MonoBehaviour
         SceneManager.LoadScene(scn.name);
     }
 
-    // --------------------------------------------------------------------------
 
 
 
     // --------------------------- InvokeOnSceneIndex ---------------------------
-
-
-    [SerializeField]
-    private scenelist[] scenelists;
-
-    public void GetAndSetPlayerStateObject(int ps)
-    {
-        PlayerType playerType = (PlayerType)ps; 
-        PlayerState.Singleton.playerState = playerType;
-    }
+    public UnityEvent invokeMethod;//set in editor
 
     void OnEnable()
     {
@@ -76,38 +35,7 @@ public class SceneManagment : MonoBehaviour
 
     private void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)
     {
-        
-        if (scenelists == null)
-            return;
-
-        int id = CheckSceneIndex();
-        for (int i = 0; i < scenelists.Length; i++)
-        {
-            if (scenelists[i].sceneId == id)
-            {
-
-                scenelists[i].invokeDefaultMethod.Invoke();
-
-                if (PlayerState.Singleton.playerState == PlayerType.GAMEMASTER)
-                {
-                    scenelists[i].invokeGameMasterMethod.Invoke();
-                }
-
-                if (PlayerState.Singleton.playerState == PlayerType.PLAYER)
-                {
-                    scenelists[i].invokePlayerMethod.Invoke();
-                }
-
-                if (PlayerState.Singleton.playerState == PlayerType.EDIT)
-                {
-                    scenelists[i].invokeEditionMethod.Invoke();
-                }
-
-                //Debug.Log("Current sceneId : " + id + " sceneId list : " + scenelists[i].sceneId);
-            }
-
-            //Debug.Log("Current sceneId : " + id + " sceneId list : " + scenelists[i].sceneId);
-        }
+        invokeMethod.Invoke();
     }
 
 
@@ -116,5 +44,29 @@ public class SceneManagment : MonoBehaviour
         return SceneManager.GetActiveScene().buildIndex;
     }
 
+    public void EnableOnSceneIndex(GameObject section, int sceneIndex)
+    {
+        if (section == null)
+            return;
+
+        if (sceneIndex == CheckSceneIndex())
+        {
+            section.SetActive(true);
+        }
+    }
+
+    public void DisableOnSceneIndex(GameObject[] sections, int sceneIndex)
+    {
+        if (sections == null)
+            return;
+
+        if (sceneIndex == CheckSceneIndex())
+        {
+            foreach (GameObject section in sections)
+            {
+                section.SetActive(false);
+            }
+        }
+    }
     // --------------------------- InvokeOnSceneIndex ---------------------------
 }

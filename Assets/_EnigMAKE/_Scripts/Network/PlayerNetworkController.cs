@@ -6,16 +6,15 @@ using UnityEngine;
 
 public enum PlayerType
 {
-    GAMEMASTER = 0,
-    PLAYER = 1,
-    EDIT = 2
+    GAMEMASTER,
+    PLAYER
 }
 
 public class PlayerNetworkController : NetworkBehaviour
 {
     NetworkVariable<ulong> playerId = new NetworkVariable<ulong>();
 
-    //PlayerType playerType;
+    PlayerType playerType;
 
     // Start is called before the first frame update
     void Start()
@@ -23,10 +22,10 @@ public class PlayerNetworkController : NetworkBehaviour
         if (IsOwner && IsClient)
         {
             SyncPlayerIdServerRpc(OwnerClientId);
-            //playerType = NetworkGameManager.Singleton.GetSelectedClientType();
+            playerType = LocalNetworkManager.Singleton.GetSelectedClientTypeType();
 
-            NetworkGameManager.Singleton.LocalPlayerIsSpawned();
-            NetworkGameManager.Singleton.NewPlayerConnect(OwnerClientId/*, playerType*/);
+            LocalNetworkManager.Singleton.LocalPlayerIsSpawned();
+            NetworkGameManager.Singleton.NewPlayerConnect(OwnerClientId, playerType);
         }
     }
 
@@ -34,7 +33,7 @@ public class PlayerNetworkController : NetworkBehaviour
     {
         if (IsServer)
         {
-            NetworkGameManager.Singleton.DisconnectConnectedPlayer(playerId.Value, false);
+            NetworkGameManager.Singleton.DisconnectPlayer(playerId.Value, true);
         }
         
         base.OnDestroy();
@@ -50,9 +49,9 @@ public class PlayerNetworkController : NetworkBehaviour
     {
         return playerId.Value;
     }
-    /*
+
     public PlayerType GetPlayerType()
     {
         return playerType;
-    }*/
+    }
 }

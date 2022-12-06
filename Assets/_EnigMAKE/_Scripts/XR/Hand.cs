@@ -9,23 +9,19 @@ public class Hand : MonoBehaviour
     Animator animator;
     private float triggerTarget;
     private float gripTarget;
-    //private float thumbTarget;
 
     private float triggerCurrent;
     private float gripCurrent;
-    //private float thumbCurrent;
 
     public float speed;
 
     private string animatorTriggerParam = "Trigger";
     private string animatorGripParam = "Grip";
-    //private string animatorThumbParam = "Thumb";
 
     // Start is called before the first frame update
     void Start()
     {
         animator = GetComponent<Animator>();
-
     }
 
     // Update is called once per frame
@@ -39,19 +35,9 @@ public class Hand : MonoBehaviour
         triggerTarget = v;
     }
 
-    public float GetTrigger()
-    {
-        return triggerTarget;
-    }
-
     internal void SetGrip(float v)
     {
         gripTarget = v;
-    }
-
-    public float GetGrip()
-    {
-        return gripTarget;
     }
 
     void AnimateHand()
@@ -67,11 +53,5 @@ public class Hand : MonoBehaviour
             gripCurrent = Mathf.MoveTowards(gripCurrent, gripTarget, Time.deltaTime * speed);
             animator.SetFloat(animatorGripParam, gripCurrent);
         }
-
-        //if (thumbCurrent != thumbTarget)
-        //{
-        //    thumbCurrent = Mathf.MoveTowards(thumbCurrent, thumbTarget, Time.deltaTime * speed);
-        //    animator.SetFloat(animatorThumbParam, thumbCurrent);
-        //}
     }
 }
