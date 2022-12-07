@@ -13,7 +13,7 @@ public class TransformNetworkSync : NetworkBehaviour
 
     XRGrabInteractable interactable;
 
-    ulong ownerId = 0;
+    NetworkVariable<ulong> ownerId = new NetworkVariable<ulong>(0);
 
     private void Awake()
     {
@@ -28,11 +28,19 @@ public class TransformNetworkSync : NetworkBehaviour
 
     void UpdateTransform()
     {
-        if (IsOwner)
+        if(ownerId.Value == 0 || ownerId.Value == NetworkManager.Singleton.LocalClientId)
         {
             string[] layerMaskNames = { "Grabbable" };
             interactable.interactionLayers = InteractionLayerMask.GetMask(layerMaskNames);
+        }
+        else
+        {
+            string[] layerMaskNames = { "NotGrabbable" };
+            interactable.interactionLayers = InteractionLayerMask.GetMask(layerMaskNames);
+        }
 
+        if (IsOwner)
+        {
             if (IsServer)
             {
                 NetworkPosition.Value = transform.localPosition;
@@ -48,9 +56,6 @@ public class TransformNetworkSync : NetworkBehaviour
         }
         else
         {
-            string[] layerMaskNames = { "NotGrabbable" };
-            interactable.interactionLayers = InteractionLayerMask.GetMask(layerMaskNames);
-
             transform.localPosition = NetworkPosition.Value;
             transform.localRotation = NetworkRotation.Value;
             transform.localScale = NetworkScale.Value;
@@ -83,9 +88,9 @@ public class TransformNetworkSync : NetworkBehaviour
     [ServerRpc(RequireOwnership=false)]
     private void ChangeOwnerServerRpc(ulong newOwnerId)
     {
-        if(ownerId == 0)
+        if(ownerId.Value == 0)
         {
-            ownerId = newOwnerId;
+            ownerId.Value = newOwnerId;
             GetComponent<NetworkObject>().ChangeOwnership(newOwnerId);
 
             Debug.Log("Grab by " + newOwnerId);
@@ -100,9 +105,9 @@ public class TransformNetworkSync : NetworkBehaviour
     [ServerRpc(RequireOwnership = false)]
     private void ResetOwnerServerRpc(ulong oldOwnerId)
     {
-        if(ownerId == oldOwnerId)
+        if(ownerId.Value == oldOwnerId)
         {
-            ownerId = 0;
+            ownerId.Value = 0;
             GetComponent<NetworkObject>().RemoveOwnership();
 
             Debug.Log("Not More Grab");
