@@ -30,8 +30,6 @@ public class ShareGrabable : MonoBehaviour
         if(netSync != null)
         {
             netSync.ChangeOwner(NetworkManager.Singleton.LocalClientId);
-
-            Debug.Log("Grab");
         }
     }
 
@@ -41,9 +39,7 @@ public class ShareGrabable : MonoBehaviour
 
         if (netSync != null)
         {
-            netSync.ResetOwner();
-
-            Debug.Log("Not Grab");
+            netSync.ResetOwner(NetworkManager.Singleton.LocalClientId);
         }
     }
 }

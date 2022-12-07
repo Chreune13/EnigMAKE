@@ -85,21 +85,25 @@ public class TransformNetworkSync : NetworkBehaviour
         {
             ownerId = newOwnerId;
             GetComponent<NetworkObject>().ChangeOwnership(newOwnerId);
+
+            Debug.Log("Grab by " + newOwnerId);
         }
     }
 
-    public void ResetOwner()
+    public void ResetOwner(ulong oldOwnerId)
     {
-        ResetOwnerServerRpc();
+        ResetOwnerServerRpc(oldOwnerId);
     }
 
     [ServerRpc(RequireOwnership = false)]
-    private void ResetOwnerServerRpc()
+    private void ResetOwnerServerRpc(ulong oldOwnerId)
     {
-        if(ownerId != 0)
+        if(ownerId == oldOwnerId)
         {
             ownerId = 0;
             GetComponent<NetworkObject>().RemoveOwnership();
+
+            Debug.Log("Not More Grab");
         }
     }
 }
