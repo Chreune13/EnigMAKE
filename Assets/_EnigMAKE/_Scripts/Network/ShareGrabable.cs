@@ -29,19 +29,21 @@ public class ShareGrabable : MonoBehaviour
 
         if(netSync != null)
         {
-            Debug.Log(NetworkManager.Singleton.LocalClientId);
-
             netSync.ChangeOwner(NetworkManager.Singleton.LocalClientId);
+
+            Debug.Log("Grab");
         }
     }
 
     void ObjectIsNotGrabbed(SelectExitEventArgs args)
     {
-        TransformNetworkSync netSync = args.interactorObject.transform.GetComponent<TransformNetworkSync>();
+        TransformNetworkSync netSync = GetComponent<TransformNetworkSync>();
 
         if (netSync != null)
         {
             netSync.ResetOwner();
+
+            Debug.Log("Not Grab");
         }
     }
 }
