@@ -30,7 +30,8 @@ public class TransformNetworkSync : NetworkBehaviour
     {
         if (IsOwner)
         {
-            interactable.interactionLayers = LayerMask.NameToLayer("Grabbable");
+            string[] layerMaskNames = { "Grabbable" };
+            interactable.interactionLayers = InteractionLayerMask.GetMask(layerMaskNames);
 
             if (IsServer)
             {
@@ -47,7 +48,8 @@ public class TransformNetworkSync : NetworkBehaviour
         }
         else
         {
-            interactable.interactionLayers = LayerMask.NameToLayer("NotGrabbable");
+            string[] layerMaskNames = { "NotGrabbable" };
+            interactable.interactionLayers = InteractionLayerMask.GetMask(layerMaskNames);
 
             transform.localPosition = NetworkPosition.Value;
             transform.localRotation = NetworkRotation.Value;
