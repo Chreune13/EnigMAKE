@@ -13,6 +13,8 @@ public class TransformNetworkSync : NetworkBehaviour
 
     XRGrabInteractable interactable;
 
+    ulong ownerId = 0;
+
     private void Awake()
     {
         interactable = GetComponent<XRGrabInteractable>();
@@ -79,7 +81,11 @@ public class TransformNetworkSync : NetworkBehaviour
     [ServerRpc(RequireOwnership=false)]
     private void ChangeOwnerServerRpc(ulong newOwnerId)
     {
-        GetComponent<NetworkObject>().ChangeOwnership(newOwnerId);
+        if(ownerId == 0)
+        {
+            ownerId = newOwnerId;
+            GetComponent<NetworkObject>().ChangeOwnership(newOwnerId);
+        }
     }
 
     public void ResetOwner()
@@ -90,6 +96,10 @@ public class TransformNetworkSync : NetworkBehaviour
     [ServerRpc(RequireOwnership = false)]
     private void ResetOwnerServerRpc()
     {
-        GetComponent<NetworkObject>().RemoveOwnership();
+        if(ownerId != 0)
+        {
+            ownerId = 0;
+            GetComponent<NetworkObject>().RemoveOwnership();
+        }
     }
 }
