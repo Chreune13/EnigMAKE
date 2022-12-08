@@ -7,7 +7,8 @@ using UnityEngine.XR.Interaction.Toolkit;
 [RequireComponent(typeof(XRGrabInteractable))]
 public class ObjectScale : MonoBehaviour
 {
-    private Vector3 scaleFactor = new Vector3(0.5f,0.5f,0.5f);
+    private Vector3 doorScaleFactor = new Vector3(0.8f,0.8f,0.8f);
+    private Vector3 keyScaleFactor = new Vector3(0.5f, 0.5f, 0.5f);
 
     XRGrabInteractable grabInteractable;
 
@@ -39,7 +40,10 @@ public class ObjectScale : MonoBehaviour
 
         if (PlayerState.Singleton.playerState == PlayerType.EDIT)
         {
-            transform.localScale -= scaleFactor;
+            if(gameObject.tag == "Door")
+                transform.localScale -= doorScaleFactor;
+            if(gameObject.tag == "Key")
+                transform.localScale += keyScaleFactor;
         }
     }
 
@@ -57,7 +61,10 @@ public class ObjectScale : MonoBehaviour
 
         if (PlayerState.Singleton.playerState == PlayerType.EDIT)
         {
-            transform.localScale += scaleFactor;
+            if (gameObject.tag == "Door")
+                transform.localScale += doorScaleFactor;
+            if (gameObject.tag == "Key")
+                transform.localScale -= keyScaleFactor;
         }
     }
 }

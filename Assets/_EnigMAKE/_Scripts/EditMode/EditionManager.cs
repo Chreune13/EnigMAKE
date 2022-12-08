@@ -21,11 +21,13 @@ public class EditionManager : MonoBehaviour
 
     public void SpawnPrefabOnPlayer(GameObject gameObject)
     {
-        Instantiate(gameObject, new Vector3(objectSpawnPoint.position.x, ground.position.y, objectSpawnPoint.position.z), objectSpawnPoint.rotation);
-    }
-
-    public void ScalePrefab(GameObject gameObject)
-    {
-
+        if(ground != null)
+        {
+            Instantiate(gameObject, new Vector3(objectSpawnPoint.position.x, ground.position.y, objectSpawnPoint.position.z), objectSpawnPoint.rotation);
+        } else
+        {
+            Instantiate(gameObject, new Vector3(objectSpawnPoint.position.x, objectSpawnPoint.position.y, objectSpawnPoint.position.z), objectSpawnPoint.rotation);
+        }
+        
     }
 }
