@@ -161,21 +161,57 @@ public class PlayerDataSharing : NetworkBehaviour
 
     void SyncronizeRemotePlayersData()
     {
+        if (!IsServer)
+        {
+            foreach (var netSync in RemotePlayersToSyncronize)
+                netSync.Value.StillUpdated = false;
+        }
+
         foreach (PlayerDataToSync playerData in PlayersDataList)
         {
             if (LocalPlayer && playerData.PlayerId == LocalPlayer.GetPlayerId())
                 continue;
 
+            Debug.Log(RemotePlayersToSyncronize.Count);
+
             if(RemotePlayersToSyncronize.ContainsKey(playerData.PlayerId))
             {
-                WriteFromTransformSync(RemotePlayersToSyncronize[playerData.PlayerId].gameObject, playerData.Body);
-                WriteFromTransformSync(RemotePlayersToSyncronize[playerData.PlayerId].HeadOffset, playerData.Head);
-                WriteFromTransformSync(RemotePlayersToSyncronize[playerData.PlayerId].LeftHandOffset, playerData.LeftHand);
-                WriteFromTransformSync(RemotePlayersToSyncronize[playerData.PlayerId].RightHandOffset, playerData.RightHand);
+                RemotePlayersToSyncronize[playerData.PlayerId].StillUpdated = true;
 
-                RemotePlayersToSyncronize[playerData.PlayerId].LeftHandAnimatorScript.SetTrigger(playerData.TargetTriggerLeft);
-                RemotePlayersToSyncronize[playerData.PlayerId].RightHandAnimatorScript.SetTrigger(playerData.TargetTriggerRight);
+                if (RemotePlayersToSyncronize[playerData.PlayerId] && RemotePlayersToSyncronize[playerData.PlayerId].gameObject)
+                    WriteFromTransformSync(RemotePlayersToSyncronize[playerData.PlayerId].gameObject, playerData.Body);
+
+                if (RemotePlayersToSyncronize[playerData.PlayerId] && RemotePlayersToSyncronize[playerData.PlayerId].HeadOffset)
+                    WriteFromTransformSync(RemotePlayersToSyncronize[playerData.PlayerId].HeadOffset, playerData.Head);
+
+                if (RemotePlayersToSyncronize[playerData.PlayerId] && RemotePlayersToSyncronize[playerData.PlayerId].LeftHandOffset)
+                    WriteFromTransformSync(RemotePlayersToSyncronize[playerData.PlayerId].LeftHandOffset, playerData.LeftHand);
+
+                if (RemotePlayersToSyncronize[playerData.PlayerId] && RemotePlayersToSyncronize[playerData.PlayerId].RightHandOffset)
+                    WriteFromTransformSync(RemotePlayersToSyncronize[playerData.PlayerId].RightHandOffset, playerData.RightHand);
+
+                if (RemotePlayersToSyncronize[playerData.PlayerId] && RemotePlayersToSyncronize[playerData.PlayerId].LeftHandAnimatorScript)
+                    RemotePlayersToSyncronize[playerData.PlayerId].LeftHandAnimatorScript.SetTrigger(playerData.TargetTriggerLeft);
+
+                if (RemotePlayersToSyncronize[playerData.PlayerId] && RemotePlayersToSyncronize[playerData.PlayerId].RightHandAnimatorScript)
+                    RemotePlayersToSyncronize[playerData.PlayerId].RightHandAnimatorScript.SetTrigger(playerData.TargetTriggerRight);
             }
+        }
+
+        if (!IsServer)
+        {
+            List<int> keyToDestroy = new List<int>();
+
+            foreach (var netSync in RemotePlayersToSyncronize)
+            {
+                if (netSync.Value.StillUpdated == false)
+                {
+                    keyToDestroy.Add(netSync.Key);
+                }
+            }
+
+            foreach (int key in keyToDestroy)
+                RemotePlayersToSyncronize.Remove(key);
         }
     }
 
@@ -220,6 +256,8 @@ public class PlayerDataSharing : NetworkBehaviour
 
     public void UnsyncronizeRemotePlayer(XROriginNetworkSync p_remotePlayer)
     {
+        Debug.Log("Unsinchronize player with id " + p_remotePlayer.GetPlayerId());
+
         RemotePlayersToSyncronize.Remove(p_remotePlayer.GetPlayerId());
     }
 }

@@ -62,19 +62,19 @@ public class TransformNetworkSync : NetworkBehaviour
         }
     }
 
-    [ServerRpc]
+    [ServerRpc(RequireOwnership=false)]
     private void PositionSyncServerRpc(Vector3 position)
     {
         NetworkPosition.Value = position;
     }
 
-    [ServerRpc]
+    [ServerRpc(RequireOwnership = false)]
     private void RotationSyncServerRpc(Quaternion rotation)
     {
         NetworkRotation.Value = rotation;
     }
 
-    /*[ServerRpc]
+    /*[ServerRpc(RequireOwnership=false)]
     private void ScaleSyncServerRpc(Vector3 scale)
     {
         NetworkScale.Value = scale;
