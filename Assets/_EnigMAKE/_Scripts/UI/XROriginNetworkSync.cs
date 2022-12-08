@@ -29,8 +29,6 @@ public class XROriginNetworkSync : NetworkBehaviour
     [SerializeField]
     public Hand RightHandAnimatorScript;
 
-    public float TimeFromLastUpdate = 0.0f;
-
     private void Start()
     {
         if(IsClient)
@@ -47,11 +45,11 @@ public class XROriginNetworkSync : NetworkBehaviour
 
     public override void OnDestroy()
     {
-        if (IsServer)
-        {
+        //if (IsServer)
+        //{
             if (PlayerDataSharing.Singleton)
                 PlayerDataSharing.Singleton.UnsyncronizeRemotePlayer(this);
-        }
+        //}
 
         base.OnDestroy();
     }

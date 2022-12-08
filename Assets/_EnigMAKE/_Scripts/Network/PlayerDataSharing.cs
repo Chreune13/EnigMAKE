@@ -109,6 +109,12 @@ public class PlayerDataSharing : NetworkBehaviour
         SyncroniseLocalPlayerData();
 
         SyncronizeRemotePlayersData();
+
+        /*if(IsServer)
+        {
+            foreach (var netSync in RemotePlayersToSyncronize)
+                netSync.Value.TimeFromLastUpdate += Time.deltaTime;
+        }*/
     }
 
     void SyncroniseLocalPlayerData()
@@ -148,6 +154,9 @@ public class PlayerDataSharing : NetworkBehaviour
     [ServerRpc(RequireOwnership = false)]
     void UpdateLocalPlayerDataServerRpc(PlayerDataToSync playerDataToSync)
     {
+        if (!RemotePlayersToSyncronize.ContainsKey(playerDataToSync.PlayerId))
+            return;
+
         int i;
         for (i = 0; i < PlayersDataList.Count; i++)
         {
@@ -156,7 +165,12 @@ public class PlayerDataSharing : NetworkBehaviour
                  break;
             }
         }
-        
+
+        if (i == PlayersDataList.Count)
+            return;
+
+        //RemotePlayersToSyncronize[playerDataToSync.PlayerId].TimeFromLastUpdate = 0.0f;
+
         PlayersDataList.RemoveAt(i);
 
         PlayersDataList.Add(playerDataToSync);
@@ -164,23 +178,16 @@ public class PlayerDataSharing : NetworkBehaviour
 
     void SyncronizeRemotePlayersData()
     {
-        if (!IsServer)
-        {
-            foreach (var netSync in RemotePlayersToSyncronize)
-                netSync.Value.TimeFromLastUpdate += Time.deltaTime;
-        }
+        Debug.Log(PlayersDataList.Count);
+        //Debug.Log(RemotePlayersToSyncronize.Count);
 
         foreach (PlayerDataToSync playerData in PlayersDataList)
         {
             if (LocalPlayer && playerData.PlayerId == LocalPlayer.GetPlayerId())
                 continue;
 
-            Debug.Log(RemotePlayersToSyncronize.Count);
-
-            if(RemotePlayersToSyncronize.ContainsKey(playerData.PlayerId))
+            if (RemotePlayersToSyncronize.ContainsKey(playerData.PlayerId))
             {
-                RemotePlayersToSyncronize[playerData.PlayerId].TimeFromLastUpdate = 0.0f;
-
                 if (RemotePlayersToSyncronize[playerData.PlayerId] && RemotePlayersToSyncronize[playerData.PlayerId].gameObject)
                     WriteFromTransformSync(RemotePlayersToSyncronize[playerData.PlayerId].gameObject, playerData.Body);
 
@@ -199,22 +206,6 @@ public class PlayerDataSharing : NetworkBehaviour
                 if (RemotePlayersToSyncronize[playerData.PlayerId] && RemotePlayersToSyncronize[playerData.PlayerId].RightHandAnimatorScript)
                     RemotePlayersToSyncronize[playerData.PlayerId].RightHandAnimatorScript.SetTrigger(playerData.TargetTriggerRight);
             }
-        }
-
-        if (!IsServer)
-        {
-            List<int> keyToDestroy = new List<int>();
-
-            foreach (var netSync in RemotePlayersToSyncronize)
-            {
-                if (netSync.Value.TimeFromLastUpdate >= TimeBeforeRemoveUnsichronized)
-                {
-                    keyToDestroy.Add(netSync.Key);
-                }
-            }
-
-            foreach (int key in keyToDestroy)
-                RemotePlayersToSyncronize.Remove(key);
         }
     }
 
@@ -262,5 +253,17 @@ public class PlayerDataSharing : NetworkBehaviour
         Debug.Log("Unsinchronize player with id " + p_remotePlayer.GetPlayerId());
 
         RemotePlayersToSyncronize.Remove(p_remotePlayer.GetPlayerId());
+
+        if(IsServer)
+        {
+            foreach (var playerDataSync in PlayersDataList)
+            {
+                if (playerDataSync.PlayerId == p_remotePlayer.GetPlayerId())
+                {
+                    PlayersDataList.Remove(playerDataSync);
+                    break;
+                }
+            }
+        }
     }
 }
