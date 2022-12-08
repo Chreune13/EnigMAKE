@@ -9,7 +9,7 @@ public struct TransformSync : INetworkSerializable, System.IEquatable<TransformS
 {
     public Vector3 Position;
     public Quaternion Rotation;
-    public Vector3 Scale;
+    //public Vector3 Scale;
 
     public void NetworkSerialize<T>(BufferSerializer<T> serializer) where T : IReaderWriter
     {
@@ -18,20 +18,20 @@ public struct TransformSync : INetworkSerializable, System.IEquatable<TransformS
             var reader = serializer.GetFastBufferReader();
             reader.ReadValueSafe(out Position);
             reader.ReadValueSafe(out Rotation);
-            reader.ReadValueSafe(out Scale);
+            //reader.ReadValueSafe(out Scale);
         }
         else
         {
             var writer = serializer.GetFastBufferWriter();
             writer.WriteValueSafe(Position);
             writer.WriteValueSafe(Rotation);
-            writer.WriteValueSafe(Scale);
+            //writer.WriteValueSafe(Scale);
         }
     }
 
     public bool Equals(TransformSync other)
     {
-        return Position == other.Position && Rotation == other.Rotation && Scale == other.Scale;
+        return Position == other.Position && Rotation == other.Rotation/* && Scale == other.Scale*/;
     }
 }
 
@@ -139,7 +139,7 @@ public class PlayerDataSharing : NetworkBehaviour
     {
         destination.Position = source.transform.localPosition;
         destination.Rotation = source.transform.localRotation;
-        destination.Scale = source.transform.localScale;
+        //destination.Scale = source.transform.localScale;
     }
 
     [ServerRpc(RequireOwnership = false)]
@@ -186,7 +186,7 @@ public class PlayerDataSharing : NetworkBehaviour
 
         destination.transform.localPosition = source.Position;
         destination.transform.localRotation = source.Rotation;
-        destination.transform.localScale = source.Scale;
+        //destination.transform.localScale = source.Scale;
     }
 
     public void SetLocalPlayer(XROriginNetworkSync p_LocalPlayer)

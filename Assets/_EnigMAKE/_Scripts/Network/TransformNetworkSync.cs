@@ -9,7 +9,7 @@ public class TransformNetworkSync : NetworkBehaviour
 {
     NetworkVariable<Vector3> NetworkPosition = new NetworkVariable<Vector3>();
     NetworkVariable<Quaternion> NetworkRotation = new NetworkVariable<Quaternion>();
-    NetworkVariable<Vector3> NetworkScale = new NetworkVariable<Vector3>();
+    //NetworkVariable<Vector3> NetworkScale = new NetworkVariable<Vector3>();
 
     XRGrabInteractable interactable;
 
@@ -45,20 +45,20 @@ public class TransformNetworkSync : NetworkBehaviour
             {
                 NetworkPosition.Value = transform.localPosition;
                 NetworkRotation.Value = transform.localRotation;
-                NetworkScale.Value = transform.localScale;
+                //NetworkScale.Value = transform.localScale;
             }
             else
             {
                 PositionSyncServerRpc(transform.localPosition);
                 RotationSyncServerRpc(transform.localRotation);
-                ScaleSyncServerRpc(transform.localScale);
+                //ScaleSyncServerRpc(transform.localScale);
             }
         }
         else
         {
             transform.localPosition = NetworkPosition.Value;
             transform.localRotation = NetworkRotation.Value;
-            transform.localScale = NetworkScale.Value;
+            //transform.localScale = NetworkScale.Value;
         }
     }
 
@@ -74,11 +74,11 @@ public class TransformNetworkSync : NetworkBehaviour
         NetworkRotation.Value = rotation;
     }
 
-    [ServerRpc]
+    /*[ServerRpc]
     private void ScaleSyncServerRpc(Vector3 scale)
     {
         NetworkScale.Value = scale;
-    }
+    }*/
 
     public void ChangeOwner(ulong newOwnerId)
     {
@@ -108,7 +108,7 @@ public class TransformNetworkSync : NetworkBehaviour
         if(ownerId.Value == oldOwnerId)
         {
             ownerId.Value = 0;
-            GetComponent<NetworkObject>().RemoveOwnership();
+            //GetComponent<NetworkObject>().RemoveOwnership();
 
             Debug.Log("Not More Grab");
         }
