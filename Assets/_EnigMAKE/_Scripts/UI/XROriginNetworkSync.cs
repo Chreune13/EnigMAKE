@@ -29,7 +29,7 @@ public class XROriginNetworkSync : NetworkBehaviour
     [SerializeField]
     public Hand RightHandAnimatorScript;
 
-    public bool StillUpdated = false;
+    public float TimeFromLastUpdate = 0.0f;
 
     private void Start()
     {

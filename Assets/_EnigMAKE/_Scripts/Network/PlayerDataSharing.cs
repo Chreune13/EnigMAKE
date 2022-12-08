@@ -90,6 +90,9 @@ public class PlayerDataSharing : NetworkBehaviour
 
     Dictionary<int, XROriginNetworkSync> RemotePlayersToSyncronize = new Dictionary<int, XROriginNetworkSync>();
 
+    [SerializeField]
+    float TimeBeforeRemoveUnsichronized = 2.0f;
+
     private void Awake()
     {
         if (Singleton == null)
@@ -164,7 +167,7 @@ public class PlayerDataSharing : NetworkBehaviour
         if (!IsServer)
         {
             foreach (var netSync in RemotePlayersToSyncronize)
-                netSync.Value.StillUpdated = false;
+                netSync.Value.TimeFromLastUpdate += Time.deltaTime;
         }
 
         foreach (PlayerDataToSync playerData in PlayersDataList)
@@ -176,7 +179,7 @@ public class PlayerDataSharing : NetworkBehaviour
 
             if(RemotePlayersToSyncronize.ContainsKey(playerData.PlayerId))
             {
-                RemotePlayersToSyncronize[playerData.PlayerId].StillUpdated = true;
+                RemotePlayersToSyncronize[playerData.PlayerId].TimeFromLastUpdate = 0.0f;
 
                 if (RemotePlayersToSyncronize[playerData.PlayerId] && RemotePlayersToSyncronize[playerData.PlayerId].gameObject)
                     WriteFromTransformSync(RemotePlayersToSyncronize[playerData.PlayerId].gameObject, playerData.Body);
@@ -204,7 +207,7 @@ public class PlayerDataSharing : NetworkBehaviour
 
             foreach (var netSync in RemotePlayersToSyncronize)
             {
-                if (netSync.Value.StillUpdated == false)
+                if (netSync.Value.TimeFromLastUpdate >= TimeBeforeRemoveUnsichronized)
                 {
                     keyToDestroy.Add(netSync.Key);
                 }
