@@ -13,11 +13,15 @@ public class TransformNetworkSync : NetworkBehaviour
 
     XRGrabInteractable interactable;
 
+    InteractionLayerMask defaultInteractionLayer;
+
     NetworkVariable<ulong> ownerId = new NetworkVariable<ulong>(0);
 
     private void Awake()
     {
         interactable = GetComponent<XRGrabInteractable>();
+
+        defaultInteractionLayer = interactable.interactionLayers;
     }
 
     // Update is called once per frame
@@ -30,8 +34,7 @@ public class TransformNetworkSync : NetworkBehaviour
     {
         if(ownerId.Value == 0 || ownerId.Value == NetworkManager.Singleton.LocalClientId)
         {
-            string[] layerMaskNames = { "Grabbable" };
-            interactable.interactionLayers = InteractionLayerMask.GetMask(layerMaskNames);
+            interactable.interactionLayers = defaultInteractionLayer;
         }
         else
         {
@@ -92,8 +95,6 @@ public class TransformNetworkSync : NetworkBehaviour
         {
             ownerId.Value = newOwnerId;
             GetComponent<NetworkObject>().ChangeOwnership(newOwnerId);
-
-            Debug.Log("Grab by " + newOwnerId);
         }
     }
 
@@ -108,9 +109,6 @@ public class TransformNetworkSync : NetworkBehaviour
         if(ownerId.Value == oldOwnerId)
         {
             ownerId.Value = 0;
-            //GetComponent<NetworkObject>().RemoveOwnership();
-
-            Debug.Log("Not More Grab");
         }
     }
 }

@@ -109,12 +109,6 @@ public class PlayerDataSharing : NetworkBehaviour
         SyncroniseLocalPlayerData();
 
         SyncronizeRemotePlayersData();
-
-        /*if(IsServer)
-        {
-            foreach (var netSync in RemotePlayersToSyncronize)
-                netSync.Value.TimeFromLastUpdate += Time.deltaTime;
-        }*/
     }
 
     void SyncroniseLocalPlayerData()
@@ -169,8 +163,6 @@ public class PlayerDataSharing : NetworkBehaviour
         if (i == PlayersDataList.Count)
             return;
 
-        //RemotePlayersToSyncronize[playerDataToSync.PlayerId].TimeFromLastUpdate = 0.0f;
-
         PlayersDataList.RemoveAt(i);
 
         PlayersDataList.Add(playerDataToSync);
@@ -178,7 +170,7 @@ public class PlayerDataSharing : NetworkBehaviour
 
     void SyncronizeRemotePlayersData()
     {
-        Debug.Log(PlayersDataList.Count);
+        //Debug.Log(PlayersDataList.Count);
         //Debug.Log(RemotePlayersToSyncronize.Count);
 
         foreach (PlayerDataToSync playerData in PlayersDataList)
@@ -250,7 +242,7 @@ public class PlayerDataSharing : NetworkBehaviour
 
     public void UnsyncronizeRemotePlayer(XROriginNetworkSync p_remotePlayer)
     {
-        Debug.Log("Unsinchronize player with id " + p_remotePlayer.GetPlayerId());
+        //Debug.Log("Unsinchronize player with id " + p_remotePlayer.GetPlayerId());
 
         RemotePlayersToSyncronize.Remove(p_remotePlayer.GetPlayerId());
 

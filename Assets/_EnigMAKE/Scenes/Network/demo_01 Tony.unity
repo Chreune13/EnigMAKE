@@ -5442,6 +5442,10 @@ PrefabInstance:
       propertyPath: GlobalObjectIdHash
       value: 3038044505
       objectReference: {fileID: 0}
+    - target: {fileID: 5856480713800065995, guid: f6f85049ddf97f148b7ba48303604029, type: 3}
+      propertyPath: m_InteractionLayers.m_Bits
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f6f85049ddf97f148b7ba48303604029, type: 3}
 --- !u!1 &860047884 stripped
@@ -11353,6 +11357,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e55c25728dd593d4b9c746df57a9c313, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TimeBeforeRemoveUnsichronized: 2
 --- !u!114 &1607654323
 MonoBehaviour:
   m_ObjectHideFlags: 0
