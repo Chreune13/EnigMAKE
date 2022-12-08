@@ -248,14 +248,17 @@ public class PlayerDataSharing : NetworkBehaviour
 
         if(IsServer)
         {
-            foreach (var playerDataSync in PlayersDataList)
+            int i = 0;
+            for(i = 0; i < PlayersDataList.Count; i++)
             {
-                if (playerDataSync.PlayerId == p_remotePlayer.GetPlayerId())
-                {
-                    PlayersDataList.Remove(playerDataSync);
+                if (PlayersDataList[i].PlayerId == p_remotePlayer.GetPlayerId())
                     break;
-                }
             }
+
+            if (i == PlayersDataList.Count)
+                return;
+
+            PlayersDataList.RemoveAt(i);
         }
     }
 }
