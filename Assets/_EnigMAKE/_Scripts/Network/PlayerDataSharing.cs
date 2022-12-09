@@ -5,13 +5,13 @@ using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public struct TransformSync : INetworkSerializable, System.IEquatable<TransformSync>
+public struct TransformSync/* : INetworkSerializable, System.IEquatable<TransformSync>*/
 {
     public Vector3 Position;
     public Quaternion Rotation;
     //public Vector3 Scale;
 
-    public void NetworkSerialize<T>(BufferSerializer<T> serializer) where T : IReaderWriter
+    /*public void NetworkSerialize<T>(BufferSerializer<T> serializer) where T : IReaderWriter
     {
         if (serializer.IsReader)
         {
@@ -31,23 +31,28 @@ public struct TransformSync : INetworkSerializable, System.IEquatable<TransformS
 
     public bool Equals(TransformSync other)
     {
-        return Position == other.Position && Rotation == other.Rotation/* && Scale == other.Scale*/;
-    }
+        return Position == other.Position && Rotation == other.Rotation;// && Scale == other.Scale;
+    }*/
 }
 
-public struct PlayerDataToSync : INetworkSerializable, System.IEquatable<PlayerDataToSync>
+public struct PlayerDataToSync/* : INetworkSerializable, System.IEquatable<PlayerDataToSync>*/
 {
     public int PlayerId;
 
-    public TransformSync Body;
+    /*public TransformSync Body;
     public TransformSync Head;
     public TransformSync LeftHand;
-    public TransformSync RightHand;
+    public TransformSync RightHand;*/
+
+    public Transform Body;
+    public Transform Head;
+    public Transform LeftHand;
+    public Transform RightHand;
 
     public float TargetTriggerLeft;
     public float TargetTriggerRight;
 
-    public void NetworkSerialize<T>(BufferSerializer<T> serializer) where T : IReaderWriter
+    /*public void NetworkSerialize<T>(BufferSerializer<T> serializer) where T : IReaderWriter
     {
         if (serializer.IsReader)
         {
@@ -76,19 +81,19 @@ public struct PlayerDataToSync : INetworkSerializable, System.IEquatable<PlayerD
     public bool Equals(PlayerDataToSync other)
     {
         return PlayerId == other.PlayerId;
-    }
+    }*/
 }
 
 public class PlayerDataSharing : NetworkBehaviour
 {
     public static PlayerDataSharing Singleton;
 
-    XROriginNetworkSync LocalPlayer;
+    XROriginNetworkSync LocalPlayerModel;
 
-    [SerializeField]
-    NetworkList<PlayerDataToSync> PlayersDataList;
+    /*[SerializeField]
+    NetworkList<PlayerDataToSync> NetworkPlayersData;*/
 
-    Dictionary<int, XROriginNetworkSync> RemotePlayersToSyncronize = new Dictionary<int, XROriginNetworkSync>();
+    Dictionary<int, XROriginNetworkSync> NetworkPlayersModel = new Dictionary<int, XROriginNetworkSync>();
 
     [SerializeField]
     float TimeBeforeRemoveUnsichronized = 2.0f;
@@ -100,108 +105,111 @@ public class PlayerDataSharing : NetworkBehaviour
         else
             Debug.LogError("Multiple instances of PlayerDataSharing Singleton!");
 
-        PlayersDataList = new NetworkList<PlayerDataToSync>();
+        //NetworkPlayersData = new NetworkList<PlayerDataToSync>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        SyncroniseLocalPlayerData();
+        if (LocalPlayerModel)
+            SyncroniseLocalPlayerData();
 
-        SyncronizeRemotePlayersData();
+        //SyncronizeRemotePlayersData();
     }
 
     void SyncroniseLocalPlayerData()
     {
-        if (LocalPlayer)
-        {
-            PlayerDataToSync localPlayerData;
+        PlayerDataToSync localPlayerData;
 
-            localPlayerData.PlayerId = LocalPlayer.GetPlayerId();
+        localPlayerData.PlayerId = LocalPlayerModel.GetPlayerId();
 
-            localPlayerData.Body = new TransformSync();
-            localPlayerData.Head = new TransformSync();
-            localPlayerData.LeftHand = new TransformSync();
-            localPlayerData.RightHand = new TransformSync();
-            localPlayerData.TargetTriggerLeft = 0.0f;
-            localPlayerData.TargetTriggerRight = 0.0f;
+        /*localPlayerData.Body = new TransformSync();
+        localPlayerData.Head = new TransformSync();
+        localPlayerData.LeftHand = new TransformSync();
+        localPlayerData.RightHand = new TransformSync();
+        localPlayerData.TargetTriggerLeft = 0.0f;
+        localPlayerData.TargetTriggerRight = 0.0f;*/
 
-            WriteToTransformSync(ref localPlayerData.Body, LocalPlayer.gameObject);
-            WriteToTransformSync(ref localPlayerData.Head, LocalPlayer.HeadOffset);
-            WriteToTransformSync(ref localPlayerData.LeftHand, LocalPlayer.LeftHandOffset);
-            WriteToTransformSync(ref localPlayerData.RightHand, LocalPlayer.RightHandOffset);
+        localPlayerData.Body = LocalPlayerModel.gameObject.transform;
+        localPlayerData.Head = LocalPlayerModel.HeadOffset.transform;
+        localPlayerData.LeftHand = LocalPlayerModel.LeftHandOffset.transform;
+        localPlayerData.RightHand = LocalPlayerModel.RightHandOffset.transform;
 
-            localPlayerData.TargetTriggerLeft = LocalPlayer.LeftHandAnimatorScript.GetTrigger();
-            localPlayerData.TargetTriggerRight = LocalPlayer.RightHandAnimatorScript.GetTrigger();
+        /*WriteToTransformSync(ref localPlayerData.Body, LocalPlayer.gameObject);
+        WriteToTransformSync(ref localPlayerData.Head, LocalPlayer.HeadOffset);
+        WriteToTransformSync(ref localPlayerData.LeftHand, LocalPlayer.LeftHandOffset);
+        WriteToTransformSync(ref localPlayerData.RightHand, LocalPlayer.RightHandOffset);*/
 
-            UpdateLocalPlayerDataServerRpc(localPlayerData);
-        }
+        localPlayerData.TargetTriggerLeft = LocalPlayerModel.LeftHandAnimatorScript.GetTrigger();
+        localPlayerData.TargetTriggerRight = LocalPlayerModel.RightHandAnimatorScript.GetTrigger();
+
+        UpdateLocalPlayerDataServerRpc(localPlayerData);
     }
 
-    void WriteToTransformSync(ref TransformSync destination, GameObject source)
+    /*void WriteToTransformSync(ref TransformSync destination, GameObject source)
     {
         destination.Position = source.transform.localPosition;
         destination.Rotation = source.transform.localRotation;
         //destination.Scale = source.transform.localScale;
-    }
+    }*/
 
     [ServerRpc(RequireOwnership = false)]
     void UpdateLocalPlayerDataServerRpc(PlayerDataToSync playerDataToSync)
     {
-        if (!RemotePlayersToSyncronize.ContainsKey(playerDataToSync.PlayerId))
+        /*if (!NetworkPlayersModel.ContainsKey(playerDataToSync.PlayerId))
             return;
 
         int i;
-        for (i = 0; i < PlayersDataList.Count; i++)
+        for (i = 0; i < NetworkPlayersData.Count; i++)
         {
-            if (PlayersDataList[i].PlayerId == playerDataToSync.PlayerId)
+            if (NetworkPlayersData[i].PlayerId == playerDataToSync.PlayerId)
             {
-                 break;
+                break;
             }
         }
 
-        if (i == PlayersDataList.Count)
+        if (i == NetworkPlayersData.Count)
             return;
 
-        PlayersDataList.RemoveAt(i);
+        NetworkPlayersData.RemoveAt(i);
 
-        PlayersDataList.Add(playerDataToSync);
+        NetworkPlayersData.Add(playerDataToSync);*/
     }
 
-    void SyncronizeRemotePlayersData()
+    /*void SyncronizeRemotePlayersData()
     {
         //Debug.Log(PlayersDataList.Count);
         //Debug.Log(RemotePlayersToSyncronize.Count);
 
-        foreach (PlayerDataToSync playerData in PlayersDataList)
+        foreach (PlayerDataToSync playerData in NetworkPlayersData)
         {
             if (LocalPlayer && playerData.PlayerId == LocalPlayer.GetPlayerId())
                 continue;
 
-            if (RemotePlayersToSyncronize.ContainsKey(playerData.PlayerId))
+            if (NetworkPlayersModel.ContainsKey(playerData.PlayerId))
             {
-                if (RemotePlayersToSyncronize[playerData.PlayerId] && RemotePlayersToSyncronize[playerData.PlayerId].gameObject)
-                    WriteFromTransformSync(RemotePlayersToSyncronize[playerData.PlayerId].gameObject, playerData.Body);
+                if (NetworkPlayersModel[playerData.PlayerId] && NetworkPlayersModel[playerData.PlayerId].gameObject)
+                    WriteFromTransformSync(NetworkPlayersModel[playerData.PlayerId].gameObject, playerData.Body);
 
-                if (RemotePlayersToSyncronize[playerData.PlayerId] && RemotePlayersToSyncronize[playerData.PlayerId].HeadOffset)
-                    WriteFromTransformSync(RemotePlayersToSyncronize[playerData.PlayerId].HeadOffset, playerData.Head);
+                if (NetworkPlayersModel[playerData.PlayerId] && NetworkPlayersModel[playerData.PlayerId].HeadOffset)
+                    WriteFromTransformSync(NetworkPlayersModel[playerData.PlayerId].HeadOffset, playerData.Head);
 
-                if (RemotePlayersToSyncronize[playerData.PlayerId] && RemotePlayersToSyncronize[playerData.PlayerId].LeftHandOffset)
-                    WriteFromTransformSync(RemotePlayersToSyncronize[playerData.PlayerId].LeftHandOffset, playerData.LeftHand);
+                if (NetworkPlayersModel[playerData.PlayerId] && NetworkPlayersModel[playerData.PlayerId].LeftHandOffset)
+                    WriteFromTransformSync(NetworkPlayersModel[playerData.PlayerId].LeftHandOffset, playerData.LeftHand);
 
-                if (RemotePlayersToSyncronize[playerData.PlayerId] && RemotePlayersToSyncronize[playerData.PlayerId].RightHandOffset)
-                    WriteFromTransformSync(RemotePlayersToSyncronize[playerData.PlayerId].RightHandOffset, playerData.RightHand);
+                if (NetworkPlayersModel[playerData.PlayerId] && NetworkPlayersModel[playerData.PlayerId].RightHandOffset)
+                    WriteFromTransformSync(NetworkPlayersModel[playerData.PlayerId].RightHandOffset, playerData.RightHand);
 
-                if (RemotePlayersToSyncronize[playerData.PlayerId] && RemotePlayersToSyncronize[playerData.PlayerId].LeftHandAnimatorScript)
-                    RemotePlayersToSyncronize[playerData.PlayerId].LeftHandAnimatorScript.SetTrigger(playerData.TargetTriggerLeft);
+                if (NetworkPlayersModel[playerData.PlayerId] && NetworkPlayersModel[playerData.PlayerId].LeftHandAnimatorScript)
+                    NetworkPlayersModel[playerData.PlayerId].LeftHandAnimatorScript.SetTrigger(playerData.TargetTriggerLeft);
 
-                if (RemotePlayersToSyncronize[playerData.PlayerId] && RemotePlayersToSyncronize[playerData.PlayerId].RightHandAnimatorScript)
-                    RemotePlayersToSyncronize[playerData.PlayerId].RightHandAnimatorScript.SetTrigger(playerData.TargetTriggerRight);
+                if (NetworkPlayersModel[playerData.PlayerId] && NetworkPlayersModel[playerData.PlayerId].RightHandAnimatorScript)
+                    NetworkPlayersModel[playerData.PlayerId].RightHandAnimatorScript.SetTrigger(playerData.TargetTriggerRight);
             }
         }
-    }
+    }*/
 
-    void WriteFromTransformSync(GameObject destination, TransformSync source)
+    /*void WriteFromTransformSync(GameObject destination, TransformSync source)
     {
         if (destination == null)
             return;
@@ -209,16 +217,16 @@ public class PlayerDataSharing : NetworkBehaviour
         destination.transform.localPosition = source.Position;
         destination.transform.localRotation = source.Rotation;
         //destination.transform.localScale = source.Scale;
-    }
+    }*/
 
-    public void SetLocalPlayer(XROriginNetworkSync p_LocalPlayer)
+    public void SetLocalPlayerModel(XROriginNetworkSync p_LocalPlayer)
     {
-        LocalPlayer = p_LocalPlayer;
+        LocalPlayerModel = p_LocalPlayer;
 
-        NewSyncronizedPlayerDataServerRpc(LocalPlayer.GetPlayerId());
+        //NewSyncronizedPlayerDataServerRpc(LocalPlayer.GetPlayerId());
     }
 
-    [ServerRpc(RequireOwnership = false)]
+    /*[ServerRpc(RequireOwnership = false)]
     void NewSyncronizedPlayerDataServerRpc(int p_playerId)
     {
         PlayerDataToSync localPlayerData;
@@ -232,33 +240,33 @@ public class PlayerDataSharing : NetworkBehaviour
         localPlayerData.TargetTriggerLeft = 0.0f;
         localPlayerData.TargetTriggerRight = 0.0f;
 
-        PlayersDataList.Add(localPlayerData);
+        NetworkPlayersData.Add(localPlayerData);
+    }*/
+
+    public void AddNetworkPlayerModel(XROriginNetworkSync p_remotePlayer)
+    {
+        NetworkPlayersModel.Add(p_remotePlayer.GetPlayerId(), p_remotePlayer);
     }
 
-    public void SyncronizeRemotePlayer(XROriginNetworkSync p_remotePlayer)
+    public void RemoveNetworkPlayerModel(XROriginNetworkSync p_remotePlayer)
     {
-        RemotePlayersToSyncronize.Add(p_remotePlayer.GetPlayerId(), p_remotePlayer);
-    }
+        NetworkPlayersModel.Remove(p_remotePlayer.GetPlayerId());
 
-    public void UnsyncronizeRemotePlayer(XROriginNetworkSync p_remotePlayer)
-    {
         //Debug.Log("Unsinchronize player with id " + p_remotePlayer.GetPlayerId());
 
-        RemotePlayersToSyncronize.Remove(p_remotePlayer.GetPlayerId());
-
-        if(IsServer)
+        /*if(IsServer)
         {
             int i = 0;
-            for(i = 0; i < PlayersDataList.Count; i++)
+            for(i = 0; i < NetworkPlayersData.Count; i++)
             {
-                if (PlayersDataList[i].PlayerId == p_remotePlayer.GetPlayerId())
+                if (NetworkPlayersData[i].PlayerId == p_remotePlayer.GetPlayerId())
                     break;
             }
 
-            if (i == PlayersDataList.Count)
+            if (i == NetworkPlayersData.Count)
                 return;
 
-            PlayersDataList.RemoveAt(i);
-        }
+            NetworkPlayersData.RemoveAt(i);
+        }*/
     }
 }
