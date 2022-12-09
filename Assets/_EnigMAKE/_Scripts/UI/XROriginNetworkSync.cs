@@ -45,11 +45,11 @@ public class XROriginNetworkSync : NetworkBehaviour
 
     public override void OnDestroy()
     {
-        if (IsServer)
-        {
+        //if (IsServer)
+        //{
             if (PlayerDataSharing.Singleton)
                 PlayerDataSharing.Singleton.UnsyncronizeRemotePlayer(this);
-        }
+        //}
 
         base.OnDestroy();
     }
