@@ -152,6 +152,9 @@ public class PlayerDataSharing : NetworkBehaviour
     [ClientRpc]
     void UpdateLocalToRemotePlayerDataClientRpc(PlayerDataToSync playerDataToSync)
     {
+        if (!LocalPlayerModel)
+            return;
+
         if (playerDataToSync.PlayerId == LocalPlayerModel.GetPlayerId())
             return;
 
