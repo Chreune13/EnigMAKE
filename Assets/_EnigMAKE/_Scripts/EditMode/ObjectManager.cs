@@ -10,20 +10,28 @@ public class ObjectManager : MonoBehaviour
 
 
     private void FixedUpdate()
+    {   
+        if (!isGrabbed)
+        {
+            stickToSurface();
+        }
+    }
+
+    private void stickToSurface()
     {
         Ray ray = new Ray(transform.position, -transform.up);
         RaycastHit hit;
 
-        if (!isGrabbed)
+        if (Physics.Raycast(transform.position - new Vector3(0, transform.localScale.y / 2, 0), Vector3.down, out hit, 0.3f))
         {
-            if (Physics.Raycast(transform.position, Vector3.down, out hit, 100.0f))
-            {
-                //print("Found an object - distance: " + hit.distance);
-                //print("Found an object - normal: " + hit.normal);
-                Debug.DrawRay(ray.origin, ray.direction, Color.blue);
+            //print("Found an object - distance: " + hit.distance);
+            //print("Found an object - normal: " + hit.normal);
+            Debug.DrawRay(ray.origin, ray.direction, Color.blue);
 
-                transform.localRotation = hit.transform.localRotation;
-            }
+            transform.up = hit.transform.up;
+
+            int YPos = (int)hit.transform.position.y;
+            transform.position = new Vector3(transform.position.x, YPos + transform.localScale.y / 2, transform.position.z);
         }
     }
 
@@ -69,7 +77,7 @@ public class ObjectManager : MonoBehaviour
         {
             if(gameObject.tag == "Door")
                 transform.localScale -= doorScaleFactor;
-            if(gameObject.tag == "Key")
+            if(gameObject.tag == "Key" || gameObject.tag == "Locke")
                 transform.localScale += keyScaleFactor;
         }
     }
@@ -92,7 +100,7 @@ public class ObjectManager : MonoBehaviour
         {
             if (gameObject.tag == "Door")
                 transform.localScale += doorScaleFactor;
-            if (gameObject.tag == "Key")
+            if (gameObject.tag == "Key" || gameObject.tag == "Locke")
                 transform.localScale -= keyScaleFactor;
         }
     }
