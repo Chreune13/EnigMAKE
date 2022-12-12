@@ -6,6 +6,14 @@ using UnityEngine.XR.Interaction.Toolkit;
 [RequireComponent(typeof(XRGrabInteractable))]
 public class ObjectManager : MonoBehaviour
 {
+
+
+
+
+
+
+
+
     //------------------------ Object raycast ----------------------
 
 
@@ -31,11 +39,18 @@ public class ObjectManager : MonoBehaviour
             transform.up = hit.transform.up;
 
             int YPos = (int)hit.transform.position.y;
-            transform.position = new Vector3(transform.position.x, YPos + transform.localScale.y / 2, transform.position.z);
+            transform.position = new Vector3(transform.position.x, YPos + transform.localScale.y / 2 + hit.collider.bounds.size.y, transform.position.z);
         }
     }
 
     //--------------------------------------------------------------
+
+
+
+
+
+
+
 
     //-------------------- Object Scale on Grab --------------------
 
