@@ -38,8 +38,8 @@ public class ObjectManager : MonoBehaviour
 
             transform.up = hit.transform.up;
 
-            int YPos = (int)hit.transform.position.y;
-            transform.position = new Vector3(transform.position.x, YPos + transform.localScale.y / 2 + hit.collider.bounds.size.y, transform.position.z);
+            float YPos = hit.transform.position.y + transform.localScale.y / 2 + hit.collider.bounds.size.y;
+            transform.position = new Vector3(transform.position.x, YPos, transform.position.z);
         }
     }
 
