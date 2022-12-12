@@ -29,6 +29,8 @@ public class XROriginNetworkSync : NetworkBehaviour
     [SerializeField]
     public Hand RightHandAnimatorScript;
 
+    public float LastUpdate = 0.0f;
+
     private void Start()
     {
         if(IsClient)
