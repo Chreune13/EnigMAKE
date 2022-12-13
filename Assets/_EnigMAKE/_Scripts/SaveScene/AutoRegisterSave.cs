@@ -9,6 +9,6 @@ public abstract class AutoRegisterSave : MonoBehaviour
         SaveAndLoadScene.Singleton.autoRegisterSaves.Add(this);
     }
 
-    abstract public DataSaved GenerateSaved();
-    abstract public void GenerateLoaded(DataSaved saved);
+    abstract public T GenerateSaved<T>() where T : DataSaved;
+    abstract public void GenerateLoaded<T>(T saved) where T : DataSaved;
 }

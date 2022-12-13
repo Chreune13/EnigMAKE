@@ -5,6 +5,11 @@ using UnityEngine;
 
 public class SaveAndLoadScene : MonoBehaviour
 {
+    [SerializeField]
+    GameObject[] Prefab;
+
+    Dictionary<string, GameObject> PrefabToSave = new Dictionary<string, GameObject>();
+
     public static SaveAndLoadScene Singleton;
         
     public List<AutoRegisterSave> autoRegisterSaves = new List<AutoRegisterSave>();
@@ -15,6 +20,17 @@ public class SaveAndLoadScene : MonoBehaviour
         else
         {
             Debug.LogWarning("Multiple instance of type SaveAndLoadScene");
+        }
+
+       
+        if(Prefab.Length > 0)
+        {
+            for(int i = 0; i < Prefab.Length; i++)
+            {
+                string name = NormalizeName(Prefab[i].name);
+                    
+                PrefabToSave.Add(name,Prefab[i]);
+            }
         }
     }
     public void Save()
@@ -27,12 +43,31 @@ public class SaveAndLoadScene : MonoBehaviour
 
         List<string> saved = new List<string>();
 
-        foreach(AutoRegisterSave save in autoRegisterSaves)
+        foreach (AutoRegisterSave save in autoRegisterSaves)
         {
-           saved.Add(JsonUtility.ToJson(save.GenerateSaved(), true));
+            if (save.gameObject.name == "Jeton_actions(Clone)" || save.gameObject.name == "Jeton_enigmes(Clone)")
+            {
+                AutoRegisterSaveJetons saveJeton = save as AutoRegisterSaveJetons;
+                saved.Add(JsonUtility.ToJson(saveJeton.GenerateSaved<DataSavedJetons>(), true));
+            }
+            else
+            {
+                saved.Add(JsonUtility.ToJson(save.GenerateSaved<DataSaved>(), true));
+            }
         }
 
-        string savedList = "";
+            /*if(save.gameObject.name== "Jeton_actions" || save.gameObject.name== "Jeton_enigmes")
+            {
+                foreach (AutoRegisterSaveJetons save in autoRegisterSaves)
+                    saved.Add(JsonUtility.ToJson(save.GenerateSaved<DataSavedJetons>(), true));
+            }
+            else
+            {
+                foreach (AutoRegisterSave save in autoRegisterSaves)
+                    saved.Add(JsonUtility.ToJson(save.GenerateSaved<DataSaved>(), true));
+            }*/
+
+            string savedList = "";
 
         for(int i = 0; i < saved.Count; i++)
         {
@@ -45,10 +80,23 @@ public class SaveAndLoadScene : MonoBehaviour
         File.WriteAllText(dir + "/save1.txt", savedList);
     }
 
+    public static string NormalizeName(string originalName)
+    {
+        string name = originalName;
+
+        if (name.Contains("(Clone)"))
+        {
+            string[] tmp = name.Split("(Clone)");
+            name = tmp[0];
+        }
+
+        return name;
+    }
+
     public void Load()
     {
         string saveFilePath = Application.persistentDataPath + "/Saves/save1.txt";
-        //DataSaved[] data;
+        
         if (File.Exists(saveFilePath))
         {
             
@@ -56,19 +104,42 @@ public class SaveAndLoadScene : MonoBehaviour
             string json= File.ReadAllText(saveFilePath);
             string[] jsonArray = json.Split(';');
             int index = 0;
-            if(autoRegisterSaves.Count == jsonArray.Length)
+            
+           
+                //foreach (AutoRegisterSave save in autoRegisterSaves)
+                //{
+                //    DataSaved data = JsonUtility.FromJson<DataSaved>(jsonArray[index]);
+                //    save.GenerateLoaded(data);
+
+                //    index++;
+                //}
+
+            foreach(string str in jsonArray)
             {
-                foreach (AutoRegisterSave save in autoRegisterSaves)
+                if(jsonArray[index].Contains("Jeton_actions") || jsonArray[index].Contains("Jeton_enigmes"))
+                {
+                    DataSavedJetons data = JsonUtility.FromJson<DataSavedJetons>(jsonArray[index]);
+                    if (PrefabToSave.ContainsKey(data.PrefabName))
+                    {
+                        GameObject AutoRegisterObject = Instantiate(PrefabToSave[data.PrefabName]);
+
+                        AutoRegisterObject.GetComponent<AutoRegisterSave>().GenerateLoaded<DataSavedJetons>(data);
+                    }
+                }
+                else
                 {
                     DataSaved data = JsonUtility.FromJson<DataSaved>(jsonArray[index]);
-                    save.GenerateLoaded(data);
+                    if (PrefabToSave.ContainsKey(data.PrefabName))
+                    {
+                        GameObject AutoRegisterObject = Instantiate(PrefabToSave[data.PrefabName]);
 
-                    index++;
+                        AutoRegisterObject.GetComponent<AutoRegisterSave>().GenerateLoaded<DataSaved>(data);
+                    }
                 }
-            }
-            else
-            {
-                Debug.LogError("Not the same length");
+                
+
+                index++;
+
             }
                 
         }

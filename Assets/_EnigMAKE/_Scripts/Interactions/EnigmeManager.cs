@@ -31,6 +31,7 @@ public class EnigmeManager : MonoBehaviour
     [SerializeField]
     private GameObject Spawner;
 
+    [SerializeField]
     private int JetonID=0;
 
     private EnigmesClassement enigmesClassement;
@@ -114,6 +115,15 @@ public class EnigmeManager : MonoBehaviour
         
         
        
+    }
+
+    public void SetJetonID(int id)
+    {
+        JetonID = id+1;
+    }
+    public int GetJetonID()
+    {
+        return JetonID+1;
     }
 
 }

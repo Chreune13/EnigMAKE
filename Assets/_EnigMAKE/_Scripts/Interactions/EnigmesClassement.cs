@@ -2,9 +2,11 @@ using UnityEngine;
 using TMPro;
 public class EnigmesClassement : MonoBehaviour
 {
+    [SerializeField]
     private int ID = 0;
     private Enigme enigme=new Enigme();
     private Enigme action = new Enigme();
+
     [SerializeField]
     private bool trigger = false;
     public void SetID(int id)

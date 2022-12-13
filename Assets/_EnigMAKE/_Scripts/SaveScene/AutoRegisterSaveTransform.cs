@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class AutoRegisterSaveTransform : AutoRegisterSave
 {
-    public override void GenerateLoaded(DataSaved saved)
+    public override void GenerateLoaded<T>(T saved)
     {
+        //name = saved.prefab;
         transform.position = new Vector3(saved.posX,saved.posY,saved.posZ);
         transform.rotation = new Quaternion(saved.rotaX, saved.rotaY, saved.rotaZ, saved.rotaW);
         transform.localScale=new Vector3(saved.scaleX,saved.scaleY,saved.scaleZ);
     }
 
-    public override DataSaved GenerateSaved()
+    public override T GenerateSaved<T>()
     {
         DataSaved saved = new DataSaved();
 
@@ -26,7 +27,8 @@ public class AutoRegisterSaveTransform : AutoRegisterSave
         saved.scaleY = transform.localScale.y;
         saved.scaleZ = transform.localScale.z;
 
+        saved.PrefabName = SaveAndLoadScene.NormalizeName(name);
 
-        return saved;
+        return saved as T;
     }
 }
