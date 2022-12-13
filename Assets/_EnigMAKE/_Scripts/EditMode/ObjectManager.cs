@@ -6,12 +6,14 @@ using UnityEngine.XR.Interaction.Toolkit;
 [RequireComponent(typeof(XRGrabInteractable))]
 public class ObjectManager : MonoBehaviour
 {
+    new Collider collider;
+    new Renderer renderer;
 
-
-
-
-
-
+    public void Start()
+    {
+        collider = GetComponent<Collider>();
+        renderer = GetComponent<Renderer>();
+    }
 
 
     //------------------------ Object raycast ----------------------
@@ -19,35 +21,135 @@ public class ObjectManager : MonoBehaviour
 
     private void FixedUpdate()
     {   
-        if (!isGrabbed)
+        if ((int)PlayerState.Singleton.playerState == 2)
         {
-            stickToSurface();
+            if(!isGrabbed) stickToSurface();
         }
     }
 
     private void stickToSurface()
     {
-        Ray ray = new Ray(transform.position, -transform.up);
+        //Ray ray = new Ray(transform.position, -transform.up);
         RaycastHit hit;
 
-        if (Physics.Raycast(transform.position - new Vector3(0, transform.localScale.y / 2, 0), Vector3.down, out hit, 0.3f))
+        if(renderer == null && collider == null)
         {
-            //print("Found an object - distance: " + hit.distance);
-            //print("Found an object - normal: " + hit.normal);
-            Debug.DrawRay(ray.origin, ray.direction, Color.blue);
+            Transform parentTransform = GetComponentInParent<Transform>();
 
-            transform.up = hit.transform.up;
+            if (Physics.Raycast(parentTransform.position /*- new Vector3(0, collider.bounds.size.y / 2, 0)*/, Vector3.down, out hit, 0.3f))
+            {
+                //print("Found an object - distance: " + hit.distance);
+                //print("Found an object - normal: " + hit.normal);
+                //Debug.DrawRay(ray.origin, ray.direction, Color.blue);
 
-            float YPos = hit.transform.position.y + transform.localScale.y / 2 + hit.collider.bounds.size.y;
-            transform.position = new Vector3(transform.position.x, YPos, transform.position.z);
+                // Change orientation of the objet
+                parentTransform.up = hit.transform.up;
+
+                //Change the position of the object so it "sticks" to a surface 
+                float YPos = hit.transform.position.y /*+ collider.bounds.size.y / 2*/ + hit.collider.bounds.size.y;
+                parentTransform.position = new Vector3(parentTransform.position.x, YPos, parentTransform.position.z);
+            }
+        }
+
+        if(renderer != null && collider == null)
+        {
+            if (Physics.Raycast(transform.position - new Vector3(0, renderer.bounds.size.y / 2, 0), Vector3.down, out hit, 0.3f))
+            {
+                //print("Found an object - distance: " + hit.distance);
+                //print("Found an object - normal: " + hit.normal);
+                //Debug.DrawRay(ray.origin, ray.direction, Color.blue);
+
+                // Change orientation of the objet
+                transform.up = hit.transform.up;
+
+                //Change the position of the object so it "sticks" to a surface 
+                float YPos = hit.transform.position.y + renderer.bounds.size.y / 2 + hit.collider.bounds.size.y;
+                transform.position = new Vector3(transform.position.x, YPos, transform.position.z);
+            }
+        }
+
+        if(renderer == null && collider != null)
+        {
+            if (Physics.Raycast(transform.position - new Vector3(0, collider.bounds.size.y / 2, 0), Vector3.down, out hit, 0.3f))
+            {
+                //print("Found an object - distance: " + hit.distance);
+                //print("Found an object - normal: " + hit.normal);
+                //Debug.DrawRay(ray.origin, ray.direction, Color.blue);
+
+                // Change orientation of the objet
+                transform.up = hit.transform.up;
+
+                //Change the position of the object so it "sticks" to a surface 
+                float YPos = hit.transform.position.y + collider.bounds.size.y / 2 + hit.collider.bounds.size.y;
+                transform.position = new Vector3(transform.position.x, YPos, transform.position.z);
+            }
+        }
+
+        if(renderer != null && collider != null)
+        {
+            if (Physics.Raycast(transform.position /*- new Vector3(0, collider.bounds.size.y / 2, 0)*/, Vector3.down, out hit, 0.3f))
+            {
+                //print("Found an object - distance: " + hit.distance);
+                //print("Found an object - normal: " + hit.normal);
+                //Debug.DrawRay(ray.origin, ray.direction, Color.blue);
+
+                // Change orientation of the objet
+                transform.up = hit.transform.up;
+
+                //Change the position of the object so it "sticks" to a surface 
+                float YPos = hit.transform.position.y /*+ collider.bounds.size.y / 2*/ + hit.collider.bounds.size.y;
+                transform.position = new Vector3(transform.position.x, YPos, transform.position.z);
+            }
         }
     }
 
+    /*private Vector3 checkTransformRotation()
+    {
+        if(transform.localRotation.eulerAngles.x <= 50 ||
+            transform.localRotation.eulerAngles.x >= -50 &
+
+            transform.localRotation.eulerAngles.z <= 50 ||
+            transform.localRotation.eulerAngles.z >= -50)
+        {
+            Debug.Log("Down");
+            return Vector3.down;
+        }
+
+        if (transform.localRotation.eulerAngles.x <= -50 ||
+            transform.localRotation.eulerAngles.x >= -100 &
+
+            transform.localRotation.eulerAngles.z <= -50 ||
+            transform.localRotation.eulerAngles.z >= -100)
+        {
+            Debug.Log("Left");
+            return Vector3.left;
+        }
+
+        if (transform.localRotation.eulerAngles.x <= 50 ||
+            transform.localRotation.eulerAngles.x >= 100 &
+
+            transform.localRotation.eulerAngles.z <= 50 ||
+            transform.localRotation.eulerAngles.z >= 100)
+        {
+            Debug.Log("Right");
+            return Vector3.right;
+        }
+
+        if (transform.localRotation.eulerAngles.x <= -100 ||
+            transform.localRotation.eulerAngles.x >= 100 &
+
+            transform.localRotation.eulerAngles.z <= -100 ||
+            transform.localRotation.eulerAngles.z >= 100)
+        {
+            Debug.Log("Up");
+            return Vector3.up;
+        }
+
+        Debug.Log("Default");
+        return Vector3.down;
+    }*/
+
     //--------------------------------------------------------------
-
-
-
-
 
 
 
