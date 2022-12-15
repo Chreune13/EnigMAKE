@@ -10094,10 +10094,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enigmes: []
-  EnigmeJeton: {fileID: 4731396475506530896, guid: 440e7a86561c0d143a170ee15b0a7f16, type: 3}
-  ActionJeton: {fileID: 4731396475506530896, guid: a70ec99fc53f2ef4f9b2e3912e2772e5, type: 3}
+  EnigmeJetonPrefab: {fileID: 4731396475506530896, guid: 440e7a86561c0d143a170ee15b0a7f16, type: 3}
+  ActionJetonPrefab: {fileID: 4731396475506530896, guid: a70ec99fc53f2ef4f9b2e3912e2772e5, type: 3}
   Spawner: {fileID: 315863498541975784}
-  JetonID: 0
+  nextJetonID: 0
 --- !u!1 &3770029945379486484
 GameObject:
   m_ObjectHideFlags: 0

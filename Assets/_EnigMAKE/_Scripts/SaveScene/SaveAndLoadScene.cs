@@ -116,15 +116,39 @@ public class SaveAndLoadScene : MonoBehaviour
 
             foreach(string str in jsonArray)
             {
-                if(jsonArray[index].Contains("Jeton_actions") || jsonArray[index].Contains("Jeton_enigmes"))
+                if(jsonArray[index].Contains("Jeton_enigmes"))
                 {
                     DataSavedJetons data = JsonUtility.FromJson<DataSavedJetons>(jsonArray[index]);
-                    if (PrefabToSave.ContainsKey(data.PrefabName))
-                    {
-                        GameObject AutoRegisterObject = Instantiate(PrefabToSave[data.PrefabName]);
 
-                        AutoRegisterObject.GetComponent<AutoRegisterSave>().GenerateLoaded<DataSavedJetons>(data);
-                    }
+                    int jetonId = data.JetonID;
+
+                    Vector3 jetonPosition = new Vector3(data.posX, data.posY, data.posZ);
+                    Quaternion jetonRotation = new Quaternion(data.rotaX, data.rotaY, data.rotaZ, data.rotaW);
+                    Vector3 jetonScale = new Vector3(data.scaleX, data.scaleY, data.scaleZ);
+
+                    GameObject tr = new GameObject();
+                    tr.transform.localPosition = jetonPosition;
+                    tr.transform.localRotation = jetonRotation;
+                    tr.transform.localScale = jetonScale;
+
+                    EnigmeManager.instance.InstantiateEnigmeJetonFromExternal(jetonId, tr.transform);
+                }
+                else if (jsonArray[index].Contains("Jeton_actions"))
+                {
+                    DataSavedJetons data = JsonUtility.FromJson<DataSavedJetons>(jsonArray[index]);
+
+                    int jetonId = data.JetonID;
+
+                    Vector3 jetonPosition = new Vector3(data.posX, data.posY, data.posZ);
+                    Quaternion jetonRotation = new Quaternion(data.rotaX, data.rotaY, data.rotaZ, data.rotaW);
+                    Vector3 jetonScale = new Vector3(data.scaleX, data.scaleY, data.scaleZ);
+
+                    GameObject tr = new GameObject();
+                    tr.transform.localPosition = jetonPosition;
+                    tr.transform.localRotation = jetonRotation;
+                    tr.transform.localScale = jetonScale;
+
+                    EnigmeManager.instance.InstantiateActionJetonFromExternal(jetonId, tr.transform);
                 }
                 else
                 {
