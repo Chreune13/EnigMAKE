@@ -56,7 +56,7 @@ public class EnigmesClassement : MonoBehaviour
                 }
                 if (gameObject.tag == "Actions" && (other.gameObject.tag != "Enigmes" || other.gameObject.tag != "Actions"))
                 {
-                    EnigmeManager.instance.SetActionElem(action, ID - 1);
+                    EnigmeManager.instance.SetActionElem(action, ID - 1); //enigme.getID()
                     gameObject.GetComponent<MeshRenderer>().enabled = false;
                     for (int i = 0; i < transform.childCount; i++)
                     {

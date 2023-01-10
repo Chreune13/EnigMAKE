@@ -188,7 +188,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7168621557567471791}
-  - component: {fileID: 2993217859872071611}
+  - component: {fileID: 6058562256637320120}
   m_Layer: 0
   m_Name: Jeton_actions
   m_TagString: Untagged
@@ -212,7 +212,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2993217859872071611
+--- !u!114 &6058562256637320120
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -221,10 +221,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 4731396475506530896}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34b0fd7f2a1327e40966cd003c48db05, type: 3}
+  m_Script: {fileID: 11500000, guid: 1bbb8310d19e4534590b65241c29ea02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enigmeManager: {fileID: 9074422808557230093, guid: c2bb34c317d27ad458c877ce45b3784c, type: 3}
 --- !u!1 &5845386689061290366
 GameObject:
   m_ObjectHideFlags: 0
