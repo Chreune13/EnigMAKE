@@ -410,30 +410,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1237306715}
-    - target: {fileID: 2399973495664361987, guid: 4e52d76a44778ef428e707527c4c313d, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Load
-      objectReference: {fileID: 0}
-    - target: {fileID: 2399973495664361987, guid: 4e52d76a44778ef428e707527c4c313d, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: SaveAndLoadScene, Assembly-CSharp
-      objectReference: {fileID: 0}
     - target: {fileID: 3226056192363400514, guid: 4e52d76a44778ef428e707527c4c313d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1237306715}
-    - target: {fileID: 3226056192363400514, guid: 4e52d76a44778ef428e707527c4c313d, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Save
-      objectReference: {fileID: 0}
-    - target: {fileID: 3226056192363400514, guid: 4e52d76a44778ef428e707527c4c313d, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: SaveAndLoadScene, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 5107068540166530756, guid: 4e52d76a44778ef428e707527c4c313d, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
-      value: 
-      objectReference: {fileID: 5782104122182524170, guid: 52a4349719a12b64e9d5948eaa9feaf5, type: 3}
     - target: {fileID: 7348359746636138096, guid: 4e52d76a44778ef428e707527c4c313d, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -486,14 +466,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1237306713}
-    - target: {fileID: 7360080378949913201, guid: 4e52d76a44778ef428e707527c4c313d, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
-      value: 
-      objectReference: {fileID: 7505156167445918442, guid: 63d9d0850f814f54aa9bfb4c3fcbabcb, type: 3}
-    - target: {fileID: 8051028221771961495, guid: 4e52d76a44778ef428e707527c4c313d, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
-      value: 
-      objectReference: {fileID: 4010155248726735640, guid: 25c1c8572271e50408aea46e1541e8e1, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e52d76a44778ef428e707527c4c313d, type: 3}
 --- !u!4 &68695684 stripped

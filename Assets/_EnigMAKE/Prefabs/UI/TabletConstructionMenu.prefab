@@ -929,6 +929,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: EditionManager, Assembly-CSharp
       objectReference: {fileID: 0}
+    - target: {fileID: 1188060018683993569, guid: d6ffe1eba2dade748a19b771ceec8db8, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 6cb58571dcb29cf46b7fd88aba25ef05, type: 3}
+    - target: {fileID: 1188060018683993569, guid: d6ffe1eba2dade748a19b771ceec8db8, type: 3}
+      propertyPath: m_PreserveAspect
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1230427685685983516, guid: d6ffe1eba2dade748a19b771ceec8db8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -948,6 +956,70 @@ PrefabInstance:
     - target: {fileID: 1337570559264505920, guid: d6ffe1eba2dade748a19b771ceec8db8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: EditionManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1635774095363837502, guid: d6ffe1eba2dade748a19b771ceec8db8, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 5b7f594710131c6449531dc776bc3d6c, type: 3}
+    - target: {fileID: 1635774095363837502, guid: d6ffe1eba2dade748a19b771ceec8db8, type: 3}
+      propertyPath: m_PreserveAspect
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1754980633451226251, guid: d6ffe1eba2dade748a19b771ceec8db8, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 88c03feae5088d546a45aec16384e127, type: 3}
+    - target: {fileID: 1754980633451226251, guid: d6ffe1eba2dade748a19b771ceec8db8, type: 3}
+      propertyPath: m_PreserveAspect
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1831092785219669316, guid: d6ffe1eba2dade748a19b771ceec8db8, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9efb11e4f4271a448a0e4ada91c514db, type: 3}
+    - target: {fileID: 1831092785219669316, guid: d6ffe1eba2dade748a19b771ceec8db8, type: 3}
+      propertyPath: m_PreserveAspect
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2006097039378611540, guid: d6ffe1eba2dade748a19b771ceec8db8, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2006097039378611540, guid: d6ffe1eba2dade748a19b771ceec8db8, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 7f42d3f29274d584fbb3b833c0c3ed7c, type: 3}
+    - target: {fileID: 2006097039378611540, guid: d6ffe1eba2dade748a19b771ceec8db8, type: 3}
+      propertyPath: m_PreserveAspect
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2117060901078909575, guid: d6ffe1eba2dade748a19b771ceec8db8, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2117060901078909575, guid: d6ffe1eba2dade748a19b771ceec8db8, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 3cf57f87aac67714abd312204bf833ce, type: 3}
+    - target: {fileID: 2117060901078909575, guid: d6ffe1eba2dade748a19b771ceec8db8, type: 3}
+      propertyPath: m_PreserveAspect
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2693615210972136720, guid: d6ffe1eba2dade748a19b771ceec8db8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Save
+      objectReference: {fileID: 0}
+    - target: {fileID: 2693615210972136720, guid: d6ffe1eba2dade748a19b771ceec8db8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SaveAndLoadScene, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2948326056097811025, guid: d6ffe1eba2dade748a19b771ceec8db8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Load
+      objectReference: {fileID: 0}
+    - target: {fileID: 2948326056097811025, guid: d6ffe1eba2dade748a19b771ceec8db8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SaveAndLoadScene, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 3147713534082105446, guid: d6ffe1eba2dade748a19b771ceec8db8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -993,6 +1065,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: EditionManager, Assembly-CSharp
       objectReference: {fileID: 0}
+    - target: {fileID: 5727195572815965846, guid: d6ffe1eba2dade748a19b771ceec8db8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 5782104122182524170, guid: 52a4349719a12b64e9d5948eaa9feaf5, type: 3}
     - target: {fileID: 7267695418245402869, guid: d6ffe1eba2dade748a19b771ceec8db8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -1004,6 +1080,14 @@ PrefabInstance:
     - target: {fileID: 7267695418245402869, guid: d6ffe1eba2dade748a19b771ceec8db8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: EditionManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7345482939613676832, guid: d6ffe1eba2dade748a19b771ceec8db8, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: bfc2f21b1ca256c4aabfce803187ead6, type: 3}
+    - target: {fileID: 7345482939613676832, guid: d6ffe1eba2dade748a19b771ceec8db8, type: 3}
+      propertyPath: m_PreserveAspect
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7358347712402332869, guid: d6ffe1eba2dade748a19b771ceec8db8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -1017,6 +1101,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: EditionManager, Assembly-CSharp
       objectReference: {fileID: 0}
+    - target: {fileID: 7358347712402332869, guid: d6ffe1eba2dade748a19b771ceec8db8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 4010155248726735640, guid: 25c1c8572271e50408aea46e1541e8e1, type: 3}
     - target: {fileID: 7449453644948700791, guid: d6ffe1eba2dade748a19b771ceec8db8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -1028,6 +1116,18 @@ PrefabInstance:
     - target: {fileID: 7449453644948700791, guid: d6ffe1eba2dade748a19b771ceec8db8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: EditionManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7552169509461823564, guid: d6ffe1eba2dade748a19b771ceec8db8, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7552169509461823564, guid: d6ffe1eba2dade748a19b771ceec8db8, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 0e710297c740247459788519707a57cc, type: 3}
+    - target: {fileID: 7552169509461823564, guid: d6ffe1eba2dade748a19b771ceec8db8, type: 3}
+      propertyPath: m_PreserveAspect
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7808814598233789086, guid: d6ffe1eba2dade748a19b771ceec8db8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -1136,6 +1236,18 @@ PrefabInstance:
     - target: {fileID: 8034606294561292835, guid: d6ffe1eba2dade748a19b771ceec8db8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: EditionManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8034606294561292835, guid: d6ffe1eba2dade748a19b771ceec8db8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 7505156167445918442, guid: 63d9d0850f814f54aa9bfb4c3fcbabcb, type: 3}
+    - target: {fileID: 8425319749638864106, guid: d6ffe1eba2dade748a19b771ceec8db8, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: ca7d5da7f7d76284ab54f945b732f889, type: 3}
+    - target: {fileID: 8425319749638864106, guid: d6ffe1eba2dade748a19b771ceec8db8, type: 3}
+      propertyPath: m_PreserveAspect
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8508562879773130072, guid: d6ffe1eba2dade748a19b771ceec8db8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
