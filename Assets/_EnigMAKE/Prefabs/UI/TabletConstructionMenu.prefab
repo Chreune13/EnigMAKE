@@ -121,9 +121,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enigmes: []
-  EnigmeJeton: {fileID: 4731396475506530896, guid: 440e7a86561c0d143a170ee15b0a7f16, type: 3}
-  ActionJeton: {fileID: 4731396475506530896, guid: a70ec99fc53f2ef4f9b2e3912e2772e5, type: 3}
+  EnigmeJetonPrefab: {fileID: 0}
+  ActionJetonPrefab: {fileID: 0}
   Spawner: {fileID: 109684118989310597}
+  nextJetonID: 0
 --- !u!1 &5557160405116498323
 GameObject:
   m_ObjectHideFlags: 0
@@ -1031,10 +1032,10 @@ PrefabInstance:
     - target: {fileID: 7808814598233789086, guid: d6ffe1eba2dade748a19b771ceec8db8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 6332131195586233731}
+      objectReference: {fileID: 0}
     - target: {fileID: 7808814598233789086, guid: d6ffe1eba2dade748a19b771ceec8db8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: 
+      value: ReloadCurrentScene
       objectReference: {fileID: 0}
     - target: {fileID: 7808814599314479396, guid: d6ffe1eba2dade748a19b771ceec8db8, type: 3}
       propertyPath: m_Pivot.x

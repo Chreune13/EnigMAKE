@@ -322,6 +322,7 @@ GameObject:
   - component: {fileID: 4184038682600819735}
   - component: {fileID: 3556543735260649131}
   - component: {fileID: 3556543735260649130}
+  - component: {fileID: -6409156363391128675}
   m_Layer: 0
   m_Name: CoffreScienceFiction
   m_TagString: Untagged
@@ -477,3 +478,15 @@ MonoBehaviour:
   m_ForceGravityOnDetach: 0
   m_RetainTransformParent: 1
   m_AttachPointCompatibilityMode: 0
+--- !u!114 &-6409156363391128675
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3556543735260649133}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bbb8310d19e4534590b65241c29ea02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

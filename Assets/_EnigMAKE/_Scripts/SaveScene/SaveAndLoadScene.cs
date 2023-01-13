@@ -43,12 +43,16 @@ public class SaveAndLoadScene : MonoBehaviour
 
         List<string> saved = new List<string>();
 
-        
+        //if (autoRegisterSaves != null)
+        //{
+        //    autoRegisterSaves.Clear();
+        //}
+
         foreach (AutoRegisterSave save in autoRegisterSaves)
         {
-            
+           
            saved.Add(JsonUtility.ToJson(save.GenerateSaved<DataSaved>(), true));
-            
+           
         }
 
         string savedList = "";
@@ -98,6 +102,10 @@ public class SaveAndLoadScene : MonoBehaviour
 
                 if (PrefabToSave.ContainsKey(data.PrefabName))
                 {
+                    if(autoRegisterSaves != null)
+                    {
+                        autoRegisterSaves.Clear();
+                    }
                     GameObject AutoRegisterObject = Instantiate(PrefabToSave[data.PrefabName]);
 
                     AutoRegisterObject.GetComponent<AutoRegisterSave>().GenerateLoaded<DataSaved>(data);
