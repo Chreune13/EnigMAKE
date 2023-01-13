@@ -12,6 +12,15 @@ EditorBuildSettings:
     path: Assets/_EnigMAKE/Scenes/Tests/demo_01 1.unity
     guid: a2cf64772cb6d3540b05b6498947f331
   - enabled: 1
+    path: Assets/_EnigMAKE/Scenes/Tests/ScienceFiction 1.unity
+    guid: 1b265f9d44b5db64399da96c552be915
+  - enabled: 1
+    path: Assets/_EnigMAKE/Scenes/Tests/ChambreEnfant 1.unity
+    guid: dd532613e23b7254ab2e66b2d455b7da
+  - enabled: 1
+    path: Assets/_EnigMAKE/Scenes/Network/demo_01 Tony.unity
+    guid: 36478655bb2e9a840b254c8a1c367b82
+  - enabled: 1
     path: Assets/_EnigMAKE/Scenes/Network/Tony-Main.unity
     guid: 101af2761ea6bf6428fbba3192484c5b
   - enabled: 1
@@ -20,9 +29,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_EnigMAKE/Scenes/Network/EnigMakeWaitingRoom Tony.unity
     guid: 143a2fe5ade8e7d4dafd4c8f3314bcb9
-  - enabled: 1
-    path: Assets/_EnigMAKE/Scenes/Network/demo_01 Tony.unity
-    guid: 36478655bb2e9a840b254c8a1c367b82
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 5142216a48e2be444a669f584d65600d, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 911ef7c24711d794eb15fcb6b0012cb8, type: 2}
