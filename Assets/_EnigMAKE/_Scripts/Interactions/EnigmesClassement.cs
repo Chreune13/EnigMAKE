@@ -2,9 +2,11 @@ using UnityEngine;
 using TMPro;
 public class EnigmesClassement : MonoBehaviour
 {
+    [SerializeField]
     private int ID = 0;
     private Enigme enigme=new Enigme();
     private Enigme action = new Enigme();
+
     [SerializeField]
     private bool trigger = false;
     public void SetID(int id)
@@ -54,7 +56,7 @@ public class EnigmesClassement : MonoBehaviour
                 }
                 if (gameObject.tag == "Actions" && (other.gameObject.tag != "Enigmes" || other.gameObject.tag != "Actions"))
                 {
-                    EnigmeManager.instance.SetActionElem(action, ID - 1);
+                    EnigmeManager.instance.SetActionElem(action, ID - 1); //enigme.getID()
                     gameObject.GetComponent<MeshRenderer>().enabled = false;
                     for (int i = 0; i < transform.childCount; i++)
                     {

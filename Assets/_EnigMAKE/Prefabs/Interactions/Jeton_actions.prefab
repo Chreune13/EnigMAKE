@@ -188,6 +188,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7168621557567471791}
+  - component: {fileID: 6058562256637320120}
   m_Layer: 0
   m_Name: Jeton_actions
   m_TagString: Untagged
@@ -211,6 +212,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6058562256637320120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4731396475506530896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bbb8310d19e4534590b65241c29ea02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5845386689061290366
 GameObject:
   m_ObjectHideFlags: 0
@@ -545,6 +558,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48882bfda9fbb244fb8f0c7cc7472d91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ID: 0
   trigger: 0
 --- !u!65 &6374761160701356291
 BoxCollider:

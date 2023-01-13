@@ -88,7 +88,7 @@ public class XROriginRoot : MonoBehaviour
         //animatorScript.SetGrip(controller.activateAction.action.ReadValue<float>());
     }
 
-    public void SetNetworkClone(XROriginNetworkSync p_networkClone)
+    public void SetNetworkPlayerModel(XROriginNetworkSync p_networkClone)
     {
         networkClone = p_networkClone;
     }
