@@ -32,23 +32,26 @@ public class ObjectManager : MonoBehaviour
         //Ray ray = new Ray(transform.position, -transform.up);
         RaycastHit hit;
 
+        Transform tf=transform;
+        Debug.Log("a"+tf.rotation);
+
         if(renderer == null && collider == null)
         {
             Transform parentTransform = GetComponentInParent<Transform>();
 
-            if (Physics.Raycast(parentTransform.position /*- new Vector3(0, collider.bounds.size.y / 2, 0)*/, Vector3.down, out hit, 0.3f))
-            {
-                //print("Found an object - distance: " + hit.distance);
-                //print("Found an object - normal: " + hit.normal);
-                //Debug.DrawRay(ray.origin, ray.direction, Color.blue);
+            //if (Physics.Raycast(parentTransform.position /*- new Vector3(0, collider.bounds.size.y / 2, 0)*/, Vector3.down, out hit, 0.3f))
+            //{
+            //    //print("Found an object - distance: " + hit.distance);
+            //    //print("Found an object - normal: " + hit.normal);
+            //    //Debug.DrawRay(ray.origin, ray.direction, Color.blue);
 
-                // Change orientation of the objet
-                parentTransform.up = hit.transform.up;
+            //    // Change orientation of the objet
+            //    parentTransform.up = hit.transform.up;
 
-                //Change the position of the object so it "sticks" to a surface 
-                float YPos = hit.transform.position.y /*+ collider.bounds.size.y / 2*/ + hit.collider.bounds.size.y;
-                parentTransform.position = new Vector3(parentTransform.position.x, YPos, parentTransform.position.z);
-            }
+            //    //Change the position of the object so it "sticks" to a surface 
+            //    float YPos = hit.transform.position.y /*+ collider.bounds.size.y / 2*/ + hit.collider.bounds.size.y;
+            //    parentTransform.position = new Vector3(parentTransform.position.x, YPos, parentTransform.position.z);
+            //}
         }
 
         if(renderer != null && collider == null)
@@ -65,6 +68,8 @@ public class ObjectManager : MonoBehaviour
                 //Change the position of the object so it "sticks" to a surface 
                 float YPos = hit.transform.position.y + renderer.bounds.size.y / 2 + hit.collider.bounds.size.y;
                 transform.position = new Vector3(transform.position.x, YPos, transform.position.z);
+                transform.rotation = tf.rotation;
+
             }
         }
 
@@ -82,6 +87,8 @@ public class ObjectManager : MonoBehaviour
                 //Change the position of the object so it "sticks" to a surface 
                 float YPos = hit.transform.position.y + collider.bounds.size.y / 2 + hit.collider.bounds.size.y;
                 transform.position = new Vector3(transform.position.x, YPos, transform.position.z);
+                transform.rotation = tf.rotation;
+
             }
         }
 
@@ -99,8 +106,11 @@ public class ObjectManager : MonoBehaviour
                 //Change the position of the object so it "sticks" to a surface 
                 float YPos = hit.transform.position.y /*+ collider.bounds.size.y / 2*/ + hit.collider.bounds.size.y;
                 transform.position = new Vector3(transform.position.x, YPos, transform.position.z);
+                transform.rotation = tf.rotation;
+
             }
         }
+        Debug.Log("b" + transform.rotation);
     }
 
     /*private Vector3 checkTransformRotation()
