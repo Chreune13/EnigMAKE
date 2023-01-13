@@ -29,8 +29,6 @@ public class XROriginNetworkSync : NetworkBehaviour
     [SerializeField]
     public Hand RightHandAnimatorScript;
 
-    public float LastUpdate = 0.0f;
-
     private void Start()
     {
         if(IsClient)
@@ -41,14 +39,17 @@ public class XROriginNetworkSync : NetworkBehaviour
             clientId.Value = nextClientId++;
 
             if (PlayerDataSharing.Singleton)
-                PlayerDataSharing.Singleton.AddNetworkPlayerModel(this);
+                PlayerDataSharing.Singleton.SyncronizeRemotePlayer(this);
         }
     }
 
     public override void OnDestroy()
     {
-        if (PlayerDataSharing.Singleton)
-            PlayerDataSharing.Singleton.RemoveNetworkPlayerModel(this);
+        //if (IsServer)
+        //{
+            if (PlayerDataSharing.Singleton)
+                PlayerDataSharing.Singleton.UnsyncronizeRemotePlayer(this);
+        //}
 
         base.OnDestroy();
     }
@@ -66,15 +67,15 @@ public class XROriginNetworkSync : NetworkBehaviour
         if (IsOwner)
         {
             if (XROriginRoot.Singleton)
-                XROriginRoot.Singleton.SetNetworkPlayerModel(this);
+                XROriginRoot.Singleton.SetNetworkClone(this);
 
             if (PlayerDataSharing.Singleton)
-                PlayerDataSharing.Singleton.SetLocalPlayerModel(this);
+                PlayerDataSharing.Singleton.SetLocalPlayer(this);
         }
         else
         {
             if (PlayerDataSharing.Singleton)
-                PlayerDataSharing.Singleton.AddNetworkPlayerModel(this);
+                PlayerDataSharing.Singleton.SyncronizeRemotePlayer(this);
         }
 
         yield return null;

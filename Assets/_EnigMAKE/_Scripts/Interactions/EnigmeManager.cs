@@ -24,54 +24,39 @@ public class EnigmeManager : MonoBehaviour
     private enigmlistelem[] enigmes;
 
     [SerializeField]
-    private GameObject EnigmeJetonPrefab;
+    private GameObject EnigmeJeton;
     [SerializeField]
-    private GameObject ActionJetonPrefab;
+    private GameObject ActionJeton;
 
     [SerializeField]
     private GameObject Spawner;
 
-    [SerializeField]
-    private int nextJetonID=0;
+    private int JetonID=0;
 
+    private EnigmesClassement enigmesClassement;
+    private EnigmesClassement actionsClassement;
     public void OnClick()
     {
-        InstantiateEnigmeJetonFromExternal(nextJetonID, Spawner.transform);
-        InstantiateActionJetonFromExternal(nextJetonID, Spawner.transform);
+        enigmesClassement = EnigmeJeton.GetComponentInChildren<EnigmesClassement>();
+        TMPro.TextMeshProUGUI enigme_textMeshProUGUI = EnigmeJeton.GetComponentInChildren<TMPro.TextMeshProUGUI>();
 
-        nextJetonID++;
-    }
+        actionsClassement = ActionJeton.GetComponentInChildren<EnigmesClassement>();
+        TMPro.TextMeshProUGUI action_textMeshProUGUI = ActionJeton.GetComponentInChildren<TMPro.TextMeshProUGUI>();
 
-    public void InstantiateEnigmeJetonFromExternal(int jetonId, Transform JetonEnigmePosition)
-    {
-        EnigmesClassement enigmesClassement = EnigmeJetonPrefab.GetComponentInChildren<EnigmesClassement>();
-        TMPro.TextMeshProUGUI enigme_textMeshProUGUI = EnigmeJetonPrefab.GetComponentInChildren<TMPro.TextMeshProUGUI>();
-
-        enigmesClassement.SetID(jetonId);
+        enigmesClassement.SetID(JetonID);
+        actionsClassement.SetID(JetonID);
 
         enigme_textMeshProUGUI.text = "E" + enigmesClassement.GetID().ToString();
-
-        Instantiate(EnigmeJetonPrefab, JetonEnigmePosition);
-
-        if(jetonId > nextJetonID)
-            nextJetonID = jetonId;
-    }
-
-    public void InstantiateActionJetonFromExternal(int jetonId, Transform JetonActionPosition)
-    {
-        EnigmesClassement actionsClassement = ActionJetonPrefab.GetComponentInChildren<EnigmesClassement>();
-        TMPro.TextMeshProUGUI action_textMeshProUGUI = ActionJetonPrefab.GetComponentInChildren<TMPro.TextMeshProUGUI>();
-
-        actionsClassement.SetID(jetonId);
-
         action_textMeshProUGUI.text = "A" + actionsClassement.GetID().ToString();
 
-        Instantiate(ActionJetonPrefab, JetonActionPosition);
+        Instantiate(EnigmeJeton, Spawner.transform);
+        Instantiate(ActionJeton, Spawner.transform);
 
-        if (jetonId > nextJetonID)
-            nextJetonID = jetonId;
-    }
-
+        JetonID++;
+        
+       
+    } 
+    
     private void Awake()
     {
         
@@ -90,9 +75,9 @@ public class EnigmeManager : MonoBehaviour
     public void SetEnigmElem(Enigme enigme)
     {
 
-        enigmes[nextJetonID - 1].reff_e = enigme;
+        enigmes[JetonID-1].reff_e = enigme;
 
-        Debug.Log(enigmes[nextJetonID - 1].reff_e);
+        Debug.Log(enigmes[JetonID - 1].reff_e);
 
 
     }
@@ -100,37 +85,35 @@ public class EnigmeManager : MonoBehaviour
     {
         
         
-        enigmes[nextJetonID - 1].a[id].reff_a = action;
-        Debug.Log(enigmes[nextJetonID - 1].a[id].reff_a);
-        enigmes[nextJetonID - 1].a[id].actionId = nextJetonID;
+            enigmes[JetonID - 1].a[id].reff_a = action;
+            Debug.Log(enigmes[JetonID - 1].a[id].reff_a);
+            enigmes[JetonID - 1].a[id].actionId = JetonID;
         
         
     }
 
     public void goToNext(int id)
     {
-        for (int i = 0; i < enigmes.Length; i++)
-        {
-            if (enigmes[i].reff_e.getID() == id)
+        
+        
+      
+            for (int i = 0; i < enigmes.Length; i++)
             {
-
-                for (int j = 0; j < enigmes[i].a.Length; j++)
+                if (enigmes[i].reff_e.getID() == id)
                 {
-                    enigmes[i].a[j].reff_a.ExecuteAction(enigmes[i].a[j].actionId);
+
+                    for (int j = 0; j < enigmes[i].a.Length; j++)
+                    {
+                        enigmes[i].a[j].reff_a.ExecuteAction(enigmes[i].a[j].actionId);
+                    }
+
+                    break;
                 }
-
-                break;
             }
-        }
-    }
-
-    public void SetJetonID(int id)
-    {
-        nextJetonID = id;
-    }
-    public int GetJetonID()
-    {
-        return nextJetonID;
+      
+        
+        
+       
     }
 
 }

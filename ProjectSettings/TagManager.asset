@@ -23,7 +23,6 @@ TagManager:
   - Chest
   - hammer
   - Destruction
-  - Tutorial2Grab
   layers:
   - Default
   - TransparentFX
