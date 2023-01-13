@@ -43,10 +43,10 @@ public class SaveAndLoadScene : MonoBehaviour
 
         List<string> saved = new List<string>();
 
-        //if (autoRegisterSaves != null)
-        //{
-        //    autoRegisterSaves.Clear();
-        //}
+        if (autoRegisterSaves == null)
+        {
+            autoRegisterSaves.Clear();
+        }
 
         foreach (AutoRegisterSave save in autoRegisterSaves)
         {
@@ -83,6 +83,7 @@ public class SaveAndLoadScene : MonoBehaviour
 
     public void Load()
     {
+        
         string saveFilePath = Application.persistentDataPath + "/Saves/save1.txt";
         
         if (File.Exists(saveFilePath))
@@ -96,16 +97,22 @@ public class SaveAndLoadScene : MonoBehaviour
             int IDmax=-1;
             foreach (string str in jsonArray)
             {
-                
+                int jetonId = 0;
                 DataSaved data = JsonUtility.FromJson<DataSaved>(jsonArray[index]);
-                int jetonId = data.enigmeID;
+                if (data != null)
+                 jetonId = data.enigmeID; 
 
                 if (PrefabToSave.ContainsKey(data.PrefabName))
                 {
                     if(autoRegisterSaves != null)
                     {
+                        foreach (AutoRegisterSave reg in autoRegisterSaves)
+                        {
+                            Destroy(reg.gameObject);
+                        }
                         autoRegisterSaves.Clear();
                     }
+                    
                     GameObject AutoRegisterObject = Instantiate(PrefabToSave[data.PrefabName]);
 
                     AutoRegisterObject.GetComponent<AutoRegisterSave>().GenerateLoaded<DataSaved>(data);
