@@ -5132,70 +5132,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 72864166}
     m_Modifications:
-    - target: {fileID: 213004588802930868, guid: 02594688435a42945b950a6cc077c464, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 175.62
-      objectReference: {fileID: 0}
-    - target: {fileID: 213004588802930868, guid: 02594688435a42945b950a6cc077c464, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 175.62
-      objectReference: {fileID: 0}
-    - target: {fileID: 213004588802930868, guid: 02594688435a42945b950a6cc077c464, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 175.62
-      objectReference: {fileID: 0}
-    - target: {fileID: 213004588802930868, guid: 02594688435a42945b950a6cc077c464, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.6651
-      objectReference: {fileID: 0}
-    - target: {fileID: 213004588802930868, guid: 02594688435a42945b950a6cc077c464, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -1.5279
-      objectReference: {fileID: 0}
-    - target: {fileID: 213004588802930868, guid: 02594688435a42945b950a6cc077c464, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -5.3325
-      objectReference: {fileID: 0}
-    - target: {fileID: 213004588802930868, guid: 02594688435a42945b950a6cc077c464, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 967947745465733365, guid: 02594688435a42945b950a6cc077c464, type: 3}
-      propertyPath: m_Name
-      value: Frame_TUTO
-      objectReference: {fileID: 0}
-    - target: {fileID: 967947745465733365, guid: 02594688435a42945b950a6cc077c464, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1851925176549350524, guid: 02594688435a42945b950a6cc077c464, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1981013587866988182, guid: 02594688435a42945b950a6cc077c464, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2147268040798877703, guid: 02594688435a42945b950a6cc077c464, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5264484029769480603, guid: 02594688435a42945b950a6cc077c464, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6635045787562411999, guid: 02594688435a42945b950a6cc077c464, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7492931390699411091, guid: 02594688435a42945b950a6cc077c464, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8361282038713065923, guid: 02594688435a42945b950a6cc077c464, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8644327208094694695, guid: 02594688435a42945b950a6cc077c464, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -5243,10 +5179,6 @@ PrefabInstance:
     - target: {fileID: 8988341974436816797, guid: 02594688435a42945b950a6cc077c464, type: 3}
       propertyPath: m_Name
       value: WaitingRoomWithColliders
-      objectReference: {fileID: 0}
-    - target: {fileID: 9107702099321246257, guid: 02594688435a42945b950a6cc077c464, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 02594688435a42945b950a6cc077c464, type: 3}
