@@ -1,10 +1,12 @@
 using UnityEngine;
-
+using TMPro;
 public class EnigmesClassement : MonoBehaviour
 {
+    [SerializeField]
     private int ID = 0;
     private Enigme enigme=new Enigme();
     private Enigme action = new Enigme();
+
     [SerializeField]
     private bool trigger = false;
     public void SetID(int id)
@@ -25,22 +27,45 @@ public class EnigmesClassement : MonoBehaviour
         if (other.tag != "Untagged")
         {
             print("Untagged");
-            if(gameObject.tag=="Enigmes")
+            if (gameObject.tag == "Enigmes" && other.gameObject.tag != "Enigmes" && other.gameObject.tag != "Actions")
+            {
+                
                 enigme = other.GetComponent<Enigme>();
-            if(gameObject.tag=="Actions")
+                transform.parent.parent.SetParent(other.transform);
+                trigger = true;
+            }
+            if (gameObject.tag == "Actions" && other.gameObject.tag != "Enigmes" && other.gameObject.tag != "Actions")
+            {
                 action = other.GetComponent<Enigme>();
+                transform.parent.parent.SetParent(other.transform);
+                trigger = true;
+            }
 
-            transform.parent.parent.SetParent(other.transform);
-            trigger=true;
+            
+            
             if(trigger)
             {
-                if (gameObject.tag == "Enigmes")
+                if (gameObject.tag == "Enigmes" && (other.gameObject.tag != "Enigmes" || other.gameObject.tag != "Actions"))
+                {
                     EnigmeManager.instance.SetEnigmElem(enigme);
-                if (gameObject.tag == "Actions")
-                    EnigmeManager.instance.SetActionElem(action,ID-1);
+                    gameObject.GetComponent<MeshRenderer>().enabled = false;
+                    for(int i = 0;i<transform.childCount;i++)
+                    {
+                        transform.GetChild(i).gameObject.SetActive(false);
+                    }
+                }
+                if (gameObject.tag == "Actions" && (other.gameObject.tag != "Enigmes" || other.gameObject.tag != "Actions"))
+                {
+                    EnigmeManager.instance.SetActionElem(action, ID - 1); //enigme.getID()
+                    gameObject.GetComponent<MeshRenderer>().enabled = false;
+                    for (int i = 0; i < transform.childCount; i++)
+                    {
+                        transform.GetChild(i).gameObject.SetActive(false);
+                    }
+                }
                 trigger =false;
             }
-            gameObject.GetComponent<MeshRenderer>().enabled = false;
+            
             
         }
         Debug.Log(ID);

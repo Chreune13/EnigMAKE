@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 6598117165136157174}
   - component: {fileID: 6598117165136157173}
   - component: {fileID: 6598117165136157172}
+  - component: {fileID: -4263712687887534587}
   m_Layer: 0
   m_Name: CleEnfant
   m_TagString: Key
@@ -251,3 +252,15 @@ MonoBehaviour:
   m_ForceGravityOnDetach: 0
   m_RetainTransformParent: 1
   m_AttachPointCompatibilityMode: 0
+--- !u!114 &-4263712687887534587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7454921536221629676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8ca6aedeea967c40add60046a89e907, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
