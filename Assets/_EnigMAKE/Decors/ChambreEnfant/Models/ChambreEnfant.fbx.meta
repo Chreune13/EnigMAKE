@@ -1,0 +1,351 @@
+fileFormatVersion: 2
+guid: 6a4d28c90da862543a99f4b5c1920e4e
+ModelImporter:
+  serializedVersion: 21300
+  internalIDToNameTable: []
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Armoire_Material
+    second: {fileID: 2100000, guid: 5c7669edee8e4824a9e9358d62321fc6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: AvionBleu_Material
+    second: {fileID: 2100000, guid: 6145a327bb512a74bb4946f77a007155, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: AvionJaune_Material
+    second: {fileID: 2100000, guid: c745e90c745bb0946a0a026b150ee1ee, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: AvionRouge_Material
+    second: {fileID: 2100000, guid: 1d631a683de3fe84aa6d64647576de08, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: AvionVitre_Material
+    second: {fileID: 2100000, guid: 38e444ceaf59ec94e81ad9d7da5d142e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BallonBasketNoir_Material
+    second: {fileID: 2100000, guid: aac62cc4cdcb4fb40ab07c1f36c849f4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BallonBasketOrange_Material
+    second: {fileID: 2100000, guid: ad81d2afa55162e43ac8cd435b51d9c1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Chevalet_Material
+    second: {fileID: 2100000, guid: ce9314ddaeacbfb43bc6d4e2c0af0782, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Chien_Material
+    second: {fileID: 2100000, guid: 0ef3879091b234d49ad2a5929a9ea78c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ClignotantsVoiture_Material
+    second: {fileID: 2100000, guid: ac6cab12fb5c3ff4e93b0c1073dacc21, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: FeuStopVoiture_Material
+    second: {fileID: 2100000, guid: 5cb473e66a38f064a8c69718a1569ab4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: FeuVoiture_Material
+    second: {fileID: 2100000, guid: 14838414da8e98d4bb3507a2a153e071, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: FeuxArriereVoiture_Material
+    second: {fileID: 2100000, guid: fc24f9e3f5d3e8c488fedc5497361e99, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: JanteVoiture_Material
+    second: {fileID: 2100000, guid: 7883bc2ad2279da408213dcc75c4ebc2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LampeChevet_Material
+    second: {fileID: 2100000, guid: 427c25ce144972d41aafc978c52cab5a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Lit_Material
+    second: {fileID: 2100000, guid: 0ab1f207afa8feb4fa0523613962b67f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.010
+    second: {fileID: 2100000, guid: f591876d550d12342952a0d1818439c6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mouton_Material
+    second: {fileID: 2100000, guid: 2e405d30e3a4bef488cf92cb895b366c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Murs_Material
+    second: {fileID: 2100000, guid: d5f9e322c76b98747b267c2990f2ac66, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: PanierBasketBlanc_Material
+    second: {fileID: 2100000, guid: ed09319bf770681499bc1dc18dd5f82c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: PanierBasketMarron_Material
+    second: {fileID: 2100000, guid: f5c601064e4431e4086444b8cab71ba5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: PanierBasketRouge_Material
+    second: {fileID: 2100000, guid: 27dceb7d378a5984fb7a6914c713cf7a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ParchocVoiture_Material
+    second: {fileID: 2100000, guid: c10fd8565d172ad42825088c7b046e74, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: PelucheCochon_Material
+    second: {fileID: 2100000, guid: 59539c909b756444484c636b8c6bf275, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: PelucheLapin_Material
+    second: {fileID: 2100000, guid: eb45099705d5de545945d0eb8cdfe558, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: PelucheMouton_Material
+    second: {fileID: 2100000, guid: e8161f28bdedc2b40b190417efe4ff36, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: PelucheOurs_Material
+    second: {fileID: 2100000, guid: d43edcb6b8282e34db880d5f7c94ace7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: PeluchePingouin_Material
+    second: {fileID: 2100000, guid: 1f70fa5ee2f8723418344ae982d2f601, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: PelucheSinge_Material
+    second: {fileID: 2100000, guid: c0b703519ff746741b0482dc65dd47e2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: PiedsLit_Material
+    second: {fileID: 2100000, guid: 58c321ae0a8a3324a9f0399553617952, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: PlaqueVoiture_Material
+    second: {fileID: 2100000, guid: b8d5dfcdca4e7fc44bd38fdffd0875d8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: PneuVoiture_Material
+    second: {fileID: 2100000, guid: ecd49c7c7d9c3814da4c2d7d753f1930, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: PoireBouche_Material
+    second: {fileID: 2100000, guid: 4ae1f9c0557a9184fa888e0f444a09ea, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: PoireDents_Material
+    second: {fileID: 2100000, guid: 47bada95cd1cf53419129820aea65685, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: PoireLangue_Material
+    second: {fileID: 2100000, guid: ee2213e5ad0506a4aab6310a0abdf94d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: PoireLunettes_Material
+    second: {fileID: 2100000, guid: 555ba52239413b24f93010d8f116c21b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: PoireLunettes_Material1
+    second: {fileID: 2100000, guid: cd943db79f81ef44f809f6d2c46554dc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: PoirePupilles_Material
+    second: {fileID: 2100000, guid: b9f68ea460682ad41acffecd9a57d0f8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: PoireYeux_Material
+    second: {fileID: 2100000, guid: 4ec51a5d8f158144caab95b88a13f070, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Poire_Material
+    second: {fileID: 2100000, guid: 06592c44be43c064c9664c20b19ed29e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Sol_Material
+    second: {fileID: 2100000, guid: badb51277a9884041acbe91743f60037, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: TableChaise_Material
+    second: {fileID: 2100000, guid: eed287b21ede91d4283098518f7f5e02, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Tableau_Material
+    second: {fileID: 2100000, guid: 1923a15657c89ee4996d60664c83db6a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: TapisBlanc_Material
+    second: {fileID: 2100000, guid: 41207da05c3e3ce42b56b1425d530c7b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: TapisVert_Material
+    second: {fileID: 2100000, guid: 2b5c304bddebf20468c0d6663465c624, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Tiroir_Material
+    second: {fileID: 2100000, guid: 6018fc47101151546beeec19f8964824, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Train_Material
+    second: {fileID: 2100000, guid: e5853b10af6fcb54c86b57729a0631a0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: VitreVoiture_Material
+    second: {fileID: 2100000, guid: 34e53e4ca0478924385c7273c32635e8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Voiture_Material
+    second: {fileID: 2100000, guid: 78c680dbc49ad394db3b5ea3e1ab7c6e, type: 2}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    removeConstantScaleCurves: 1
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    nodeNameCollisionStrategy: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  remapMaterialsIfMaterialImportModeIsNone: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

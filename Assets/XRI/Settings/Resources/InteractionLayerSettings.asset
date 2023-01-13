@@ -16,7 +16,7 @@ MonoBehaviour:
   - Default
   - Socket
   - Grabbable
-  - 
+  - NotGrabbable
   - 
   - 
   - 
