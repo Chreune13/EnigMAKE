@@ -148,7 +148,7 @@ GameObject:
   - component: {fileID: -5725169854701184862}
   m_Layer: 0
   m_Name: PorteScienceFiction
-  m_TagString: Untagged
+  m_TagString: Door
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

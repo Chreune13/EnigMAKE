@@ -145,7 +145,7 @@ GameObject:
   - component: {fileID: -1511734590592870544}
   m_Layer: 0
   m_Name: CoffreMedieval
-  m_TagString: Untagged
+  m_TagString: Chest
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

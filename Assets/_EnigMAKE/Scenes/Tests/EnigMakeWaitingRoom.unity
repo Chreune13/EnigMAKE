@@ -414,6 +414,18 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1237306715}
+    - target: {fileID: 4081649825748806279, guid: 4e52d76a44778ef428e707527c4c313d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5694403551004348521, guid: 4e52d76a44778ef428e707527c4c313d, type: 3}
+      propertyPath: ActionJetonPrefab
+      value: 
+      objectReference: {fileID: 4731396475506530896, guid: a70ec99fc53f2ef4f9b2e3912e2772e5, type: 3}
+    - target: {fileID: 5694403551004348521, guid: 4e52d76a44778ef428e707527c4c313d, type: 3}
+      propertyPath: EnigmeJetonPrefab
+      value: 
+      objectReference: {fileID: 4731396475506530896, guid: 440e7a86561c0d143a170ee15b0a7f16, type: 3}
     - target: {fileID: 7348359746636138096, guid: 4e52d76a44778ef428e707527c4c313d, type: 3}
       propertyPath: m_RootOrder
       value: 1
