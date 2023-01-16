@@ -42,7 +42,10 @@ public class SceneManagment : MonoBehaviour
     }
     public void ReloadCurrentScene()
     {
+        GetComponent<SaveAndLoadScene>().autoRegisterSaves.Clear();
         Scene scn = SceneManager.GetActiveScene();
+      
+      //  foreach( GameObject gameObject in scn.GetRootGameObjects())
         SceneManager.LoadScene(scn.name);
     }
 

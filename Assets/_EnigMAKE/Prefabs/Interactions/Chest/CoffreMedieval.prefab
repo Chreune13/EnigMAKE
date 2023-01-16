@@ -142,9 +142,10 @@ GameObject:
   - component: {fileID: 7972549967387322100}
   - component: {fileID: 7345370274488663120}
   - component: {fileID: 7345370274488663119}
+  - component: {fileID: -1511734590592870544}
   m_Layer: 0
   m_Name: CoffreMedieval
-  m_TagString: Untagged
+  m_TagString: Chest
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -297,6 +298,18 @@ MonoBehaviour:
   m_ForceGravityOnDetach: 0
   m_RetainTransformParent: 1
   m_AttachPointCompatibilityMode: 0
+--- !u!114 &-1511734590592870544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7345370274488663118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bbb8310d19e4534590b65241c29ea02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8179236946069723600
 GameObject:
   m_ObjectHideFlags: 0
