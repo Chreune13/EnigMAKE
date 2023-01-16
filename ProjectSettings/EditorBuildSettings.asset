@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/_EnigMAKE/Scenes/Tests/EnigMakeWaitingRoom.unity
+    path: Assets/_EnigMAKE/Scenes/Tests/EnigMakeWaitingRoomV1.unity
     guid: fce020485d127f049af89628026986c2
   - enabled: 1
     path: Assets/_EnigMAKE/Scenes/Tests/demo_01 1.unity
