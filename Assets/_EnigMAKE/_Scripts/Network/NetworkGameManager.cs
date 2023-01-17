@@ -9,6 +9,15 @@ using UnityEngine.Windows;
 using ParrelSync;
 #endif
 
+public enum DisplayedInterface
+{
+    NOTHING,
+    CLIENT_TYPE_ASKING,
+    WAITING_SERVER_LOGGIN,
+    GAME_MASTER_INTERFACE,
+    PLAYER_INTERFACE
+}
+
 public struct PlayerNetworkData
 {
     public bool PlayerNetworkDataIsSet;
@@ -40,11 +49,11 @@ public class NetworkGameManager : NetworkBehaviour
 
     DisplayedInterface CurrentDisplayed = DisplayedInterface.NOTHING;
 
-    public Action SelectNothingCallback;
+    /*public Action SelectNothingCallback;
     public Action SelectClientTypeAskingInterfaceCallback;
     public Action SelectWaitingServerLogginInterfaceCallback;
     public Action SelectGameMasterInterfaceCallback;
-    public Action SelectPlayerInterfaceCallback;
+    public Action SelectPlayerInterfaceCallback;*/
 
     private void Awake()
     {
@@ -174,7 +183,7 @@ public class NetworkGameManager : NetworkBehaviour
                 {
                     CurrentDisplayed = DisplayedInterface.WAITING_SERVER_LOGGIN;
 
-                    SelectWaitingServerLogginInterfaceCallback();
+                    //SelectWaitingServerLogginInterfaceCallback();
                 }
             }
             else
@@ -183,7 +192,7 @@ public class NetworkGameManager : NetworkBehaviour
                 {
                     CurrentDisplayed = DisplayedInterface.CLIENT_TYPE_ASKING;
 
-                    SelectClientTypeAskingInterfaceCallback();
+                    //SelectClientTypeAskingInterfaceCallback();
                 }
             }
 
@@ -201,7 +210,7 @@ public class NetworkGameManager : NetworkBehaviour
             {
                 CurrentDisplayed = DisplayedInterface.GAME_MASTER_INTERFACE;
 
-                SelectGameMasterInterfaceCallback();
+                //SelectGameMasterInterfaceCallback();
             }
             return;
         }
@@ -212,7 +221,7 @@ public class NetworkGameManager : NetworkBehaviour
             {
                 CurrentDisplayed = DisplayedInterface.PLAYER_INTERFACE;
 
-                SelectPlayerInterfaceCallback();
+                //SelectPlayerInterfaceCallback();
             }
             return;
         }

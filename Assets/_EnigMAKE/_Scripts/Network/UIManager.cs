@@ -6,14 +6,14 @@ using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.Events;
 
-public enum DisplayedInterface
+/*public enum DisplayedInterface
 {
     NOTHING,
     CLIENT_TYPE_ASKING,
     WAITING_SERVER_LOGGIN,
     GAME_MASTER_INTERFACE,
     PLAYER_INTERFACE
-}
+}*/
 
 [System.Serializable]
 struct networkManagement
@@ -68,18 +68,18 @@ public class UIManager : MonoBehaviour
             Debug.LogError("Multiple instances of Singleton UIManager !");
         }
 
-        NetworkGameManager.Singleton.SelectClientTypeAskingInterfaceCallback += SelectClientTypeAskingInterface;
+        /*NetworkGameManager.Singleton.SelectClientTypeAskingInterfaceCallback += SelectClientTypeAskingInterface;
         NetworkGameManager.Singleton.SelectWaitingServerLogginInterfaceCallback += SelectWaitingServerLogginInterface;
         NetworkGameManager.Singleton.SelectGameMasterInterfaceCallback += SelectGameMasterInterface;
-        NetworkGameManager.Singleton.SelectPlayerInterfaceCallback += SelectPlayerInterface;
+        NetworkGameManager.Singleton.SelectPlayerInterfaceCallback += SelectPlayerInterface;*/
     }
 
     private void OnDestroy()
     {
-        NetworkGameManager.Singleton.SelectClientTypeAskingInterfaceCallback -= SelectClientTypeAskingInterface;
+        /*NetworkGameManager.Singleton.SelectClientTypeAskingInterfaceCallback -= SelectClientTypeAskingInterface;
         NetworkGameManager.Singleton.SelectWaitingServerLogginInterfaceCallback -= SelectWaitingServerLogginInterface;
         NetworkGameManager.Singleton.SelectGameMasterInterfaceCallback -= SelectGameMasterInterface;
-        NetworkGameManager.Singleton.SelectPlayerInterfaceCallback -= SelectPlayerInterface;
+        NetworkGameManager.Singleton.SelectPlayerInterfaceCallback -= SelectPlayerInterface;*/
     }
 
 

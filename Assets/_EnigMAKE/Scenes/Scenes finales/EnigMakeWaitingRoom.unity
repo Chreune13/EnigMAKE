@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.38585782, g: 0.53675014, b: 0.63388, a: 1}
+  m_IndirectSpecularColor: {r: 0.38585785, g: 0.5367502, b: 0.63388014, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4080,17 +4080,29 @@ PrefabInstance:
       value: Medieval
       objectReference: {fileID: 0}
     - target: {fileID: 4581370755255437670, guid: 62ae1f705f1f71245abeb0015617dfef, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4581370755255437670, guid: 62ae1f705f1f71245abeb0015617dfef, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 979973258}
     - target: {fileID: 4581370755255437670, guid: 62ae1f705f1f71245abeb0015617dfef, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 979973257}
+      objectReference: {fileID: 979973256}
     - target: {fileID: 4581370755255437670, guid: 62ae1f705f1f71245abeb0015617dfef, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
       objectReference: {fileID: 979973258}
+    - target: {fileID: 4581370755255437670, guid: 62ae1f705f1f71245abeb0015617dfef, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4581370755255437670, guid: 62ae1f705f1f71245abeb0015617dfef, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_StringArgument
+      value: Medieval
+      objectReference: {fileID: 0}
     - target: {fileID: 4581370755425778256, guid: 62ae1f705f1f71245abeb0015617dfef, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 3
@@ -4136,17 +4148,45 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 979973258}
     - target: {fileID: 4581370756260076522, guid: 62ae1f705f1f71245abeb0015617dfef, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4581370756260076522, guid: 62ae1f705f1f71245abeb0015617dfef, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4581370756260076522, guid: 62ae1f705f1f71245abeb0015617dfef, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 979973258}
     - target: {fileID: 4581370756260076522, guid: 62ae1f705f1f71245abeb0015617dfef, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 979973257}
+      objectReference: {fileID: 979973256}
     - target: {fileID: 4581370756260076522, guid: 62ae1f705f1f71245abeb0015617dfef, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
       objectReference: {fileID: 979973258}
+    - target: {fileID: 4581370756260076522, guid: 62ae1f705f1f71245abeb0015617dfef, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: GetAndSetPlayerStateObject
+      objectReference: {fileID: 0}
+    - target: {fileID: 4581370756260076522, guid: 62ae1f705f1f71245abeb0015617dfef, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4581370756260076522, guid: 62ae1f705f1f71245abeb0015617dfef, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SceneManagment, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4581370756260076522, guid: 62ae1f705f1f71245abeb0015617dfef, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4581370756260076522, guid: 62ae1f705f1f71245abeb0015617dfef, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_StringArgument
+      value: Medieval
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 62ae1f705f1f71245abeb0015617dfef, type: 3}
 --- !u!1 &979251723 stripped
