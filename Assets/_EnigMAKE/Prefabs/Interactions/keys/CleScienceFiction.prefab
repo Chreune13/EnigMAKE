@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 7168491390668820355}
   - component: {fileID: 7168491390668820352}
   - component: {fileID: 7168491390668820353}
-  - component: {fileID: 1121538444745939744}
   m_Layer: 0
   m_Name: CleScienceFiction
   m_TagString: Key
@@ -252,15 +251,3 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &1121538444745939744
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8051012409530249941}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1bbb8310d19e4534590b65241c29ea02, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

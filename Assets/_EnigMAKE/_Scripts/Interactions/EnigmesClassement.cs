@@ -3,7 +3,7 @@ using TMPro;
 public class EnigmesClassement : MonoBehaviour
 {
     private int ID = 0;
-    private Enigme enigme = new Enigme();
+    private Enigme enigme=new Enigme();
     private Enigme action = new Enigme();
     [SerializeField]
     private bool trigger = false;
@@ -25,14 +25,14 @@ public class EnigmesClassement : MonoBehaviour
         if (other.tag != "Untagged")
         {
             print("Untagged");
-            if (gameObject.tag == "Enigmes" && other.gameObject.tag != "Enigmes" && other.gameObject.tag != "Actions" && other.gameObject.tag != "Key")
+            if (gameObject.tag == "Enigmes" && other.gameObject.tag != "Enigmes" && other.gameObject.tag != "Actions")
             {
                 
                 enigme = other.GetComponent<Enigme>();
                 transform.parent.parent.SetParent(other.transform);
                 trigger = true;
             }
-            if (gameObject.tag == "Actions" && other.gameObject.tag != "Enigmes" && other.gameObject.tag != "Actions" && other.gameObject.tag != "Key")
+            if (gameObject.tag == "Actions" && other.gameObject.tag != "Enigmes" && other.gameObject.tag != "Actions")
             {
                 action = other.GetComponent<Enigme>();
                 transform.parent.parent.SetParent(other.transform);

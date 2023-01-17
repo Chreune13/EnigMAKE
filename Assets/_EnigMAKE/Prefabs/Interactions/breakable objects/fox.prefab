@@ -923,7 +923,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7243723584904299513}
   - component: {fileID: 3225615909059529970}
-  - component: {fileID: -9008238111359893406}
   m_Layer: 0
   m_Name: fox
   m_TagString: Destruction
@@ -969,18 +968,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &-9008238111359893406
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8056148721251342659}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1bbb8310d19e4534590b65241c29ea02, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &8573465406611944560
 GameObject:
   m_ObjectHideFlags: 0

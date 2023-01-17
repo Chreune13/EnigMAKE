@@ -6,16 +6,16 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/_EnigMAKE/Scenes/Poubelle/V1EnigMakeWaitingRoom.unity
+    path: Assets/_EnigMAKE/Scenes/Tests/EnigMakeWaitingRoom.unity
     guid: fce020485d127f049af89628026986c2
   - enabled: 1
-    path: Assets/_EnigMAKE/Scenes/Scenes finales/Medieval.unity
+    path: Assets/_EnigMAKE/Scenes/Tests/demo_01 1.unity
     guid: a2cf64772cb6d3540b05b6498947f331
   - enabled: 1
-    path: Assets/_EnigMAKE/Scenes/Scenes finales/ScienceFiction.unity
+    path: Assets/_EnigMAKE/Scenes/Tests/ScienceFiction 1.unity
     guid: 1b265f9d44b5db64399da96c552be915
   - enabled: 1
-    path: Assets/_EnigMAKE/Scenes/Scenes finales/ChambreEnfant.unity
+    path: Assets/_EnigMAKE/Scenes/Tests/ChambreEnfant 1.unity
     guid: dd532613e23b7254ab2e66b2d455b7da
   - enabled: 1
     path: Assets/_EnigMAKE/Scenes/Network/demo_01 Tony.unity

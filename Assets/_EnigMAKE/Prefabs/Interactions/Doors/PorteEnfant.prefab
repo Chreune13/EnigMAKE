@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 8104002185775725358}
   - component: {fileID: 6799153040233618395}
   - component: {fileID: -7171279471958254774}
-  - component: {fileID: 5574970413923536102}
   m_Layer: 0
   m_Name: PorteEnfant
   m_TagString: Door
@@ -244,18 +243,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b8ca6aedeea967c40add60046a89e907, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &5574970413923536102
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6371504963038367847}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1bbb8310d19e4534590b65241c29ea02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &6448226415366415149
