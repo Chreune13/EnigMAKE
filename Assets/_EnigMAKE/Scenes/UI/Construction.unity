@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.18018606, g: 0.22559257, b: 0.30678663, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -7361,6 +7361,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8ca6aedeea967c40add60046a89e907, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stickDistance: 0.3
+  rotationLerpSpeed: 5
+  gridSize: 0.5
 --- !u!224 &2085366565088755727
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7481,6 +7484,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8ca6aedeea967c40add60046a89e907, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stickDistance: 0.3
+  rotationLerpSpeed: 5
+  gridSize: 0.5
 --- !u!65 &2136649637207274552
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10634,6 +10640,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8ca6aedeea967c40add60046a89e907, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stickDistance: 0.3
+  rotationLerpSpeed: 5
+  gridSize: 0.5
 --- !u!114 &2903657756071564584
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11629,9 +11638,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enigmes: []
-  EnigmeJeton: {fileID: 4731396475506530896, guid: 440e7a86561c0d143a170ee15b0a7f16, type: 3}
-  ActionJeton: {fileID: 4731396475506530896, guid: a70ec99fc53f2ef4f9b2e3912e2772e5, type: 3}
+  EnigmeJetonPrefab: {fileID: 0}
+  ActionJetonPrefab: {fileID: 0}
   Spawner: {fileID: 315863498541975784}
+  nextJetonID: 0
 --- !u!1 &3770029945379486484
 GameObject:
   m_ObjectHideFlags: 0
@@ -13495,15 +13505,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6371504963157150905}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.782255, y: 0.709, z: -2.506312}
+  m_LocalRotation: {x: -0, y: -0.38268274, z: -0, w: 0.9238798}
+  m_LocalPosition: {x: 2.7819095, y: 0.709, z: -2.5061064}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6579901090379973119}
   m_Father: {fileID: 0}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -45, z: 0}
 --- !u!1 &5998337118025936158
 GameObject:
   m_ObjectHideFlags: 0
@@ -16118,6 +16128,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8ca6aedeea967c40add60046a89e907, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stickDistance: 0.3
+  rotationLerpSpeed: 5
+  gridSize: 0.5
 --- !u!114 &8536781829910271284
 MonoBehaviour:
   m_ObjectHideFlags: 0

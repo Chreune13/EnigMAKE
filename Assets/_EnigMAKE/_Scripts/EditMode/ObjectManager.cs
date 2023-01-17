@@ -6,168 +6,16 @@ using UnityEngine.XR.Interaction.Toolkit;
 [RequireComponent(typeof(XRGrabInteractable))]
 public class ObjectManager : MonoBehaviour
 {
-    new Collider collider;
-    new Renderer renderer;
+    [SerializeField]
+    private float stickDistance = 0.3f;
 
-    public void Start()
-    {
-        collider = GetComponent<Collider>();
-        renderer = GetComponent<Renderer>();
-    }
+    [SerializeField]
+    private float rotationLerpSpeed = 5f;
 
+    [SerializeField]
+    private float gridSize = 0.5f;
 
-    //------------------------ Object raycast ----------------------
-
-
-    private void FixedUpdate()
-    {   
-        if ((int)PlayerState.Singleton.playerState == 2)
-        {
-            if(!isGrabbed) stickToSurface();
-        }
-    }
-
-    private void stickToSurface()
-    {
-        //Ray ray = new Ray(transform.position, -transform.up);
-        RaycastHit hit;
-
-        Transform tf=transform;
-        Debug.Log("a"+tf.rotation);
-
-        if(renderer == null && collider == null)
-        {
-            Transform parentTransform = GetComponentInParent<Transform>();
-
-            //if (Physics.Raycast(parentTransform.position /*- new Vector3(0, collider.bounds.size.y / 2, 0)*/, Vector3.down, out hit, 0.3f))
-            //{
-            //    //print("Found an object - distance: " + hit.distance);
-            //    //print("Found an object - normal: " + hit.normal);
-            //    //Debug.DrawRay(ray.origin, ray.direction, Color.blue);
-
-            //    // Change orientation of the objet
-            //    parentTransform.up = hit.transform.up;
-
-            //    //Change the position of the object so it "sticks" to a surface 
-            //    float YPos = hit.transform.position.y /*+ collider.bounds.size.y / 2*/ + hit.collider.bounds.size.y;
-            //    parentTransform.position = new Vector3(parentTransform.position.x, YPos, parentTransform.position.z);
-            //}
-        }
-
-        if(renderer != null && collider == null)
-        {
-            if (Physics.Raycast(transform.position - new Vector3(0, renderer.bounds.size.y / 2, 0), Vector3.down, out hit, 0.3f))
-            {
-                //print("Found an object - distance: " + hit.distance);
-                //print("Found an object - normal: " + hit.normal);
-                //Debug.DrawRay(ray.origin, ray.direction, Color.blue);
-
-                // Change orientation of the objet
-                transform.up = hit.transform.up;
-
-                //Change the position of the object so it "sticks" to a surface 
-                float YPos = hit.transform.position.y + renderer.bounds.size.y / 2 + hit.collider.bounds.size.y;
-                transform.position = new Vector3(transform.position.x, YPos, transform.position.z);
-                transform.rotation = tf.rotation;
-
-            }
-        }
-
-        if(renderer == null && collider != null)
-        {
-            if (Physics.Raycast(transform.position - new Vector3(0, collider.bounds.size.y / 2, 0), Vector3.down, out hit, 0.3f))
-            {
-                //print("Found an object - distance: " + hit.distance);
-                //print("Found an object - normal: " + hit.normal);
-                //Debug.DrawRay(ray.origin, ray.direction, Color.blue);
-
-                // Change orientation of the objet
-                transform.up = hit.transform.up;
-
-                //Change the position of the object so it "sticks" to a surface 
-                float YPos = hit.transform.position.y + collider.bounds.size.y / 2 + hit.collider.bounds.size.y;
-                transform.position = new Vector3(transform.position.x, YPos, transform.position.z);
-                transform.rotation = tf.rotation;
-
-            }
-        }
-
-        if(renderer != null && collider != null)
-        {
-            if (Physics.Raycast(transform.position /*- new Vector3(0, collider.bounds.size.y / 2, 0)*/, Vector3.down, out hit, 0.3f))
-            {
-                //print("Found an object - distance: " + hit.distance);
-                //print("Found an object - normal: " + hit.normal);
-                //Debug.DrawRay(ray.origin, ray.direction, Color.blue);
-
-                // Change orientation of the objet
-                transform.up = hit.transform.up;
-
-                //Change the position of the object so it "sticks" to a surface 
-                float YPos = hit.transform.position.y /*+ collider.bounds.size.y / 2*/ + hit.collider.bounds.size.y;
-                transform.position = new Vector3(transform.position.x, YPos, transform.position.z);
-                transform.rotation = tf.rotation;
-
-            }
-        }
-        Debug.Log("b" + transform.rotation);
-    }
-
-    /*private Vector3 checkTransformRotation()
-    {
-        if(transform.localRotation.eulerAngles.x <= 50 ||
-            transform.localRotation.eulerAngles.x >= -50 &
-
-            transform.localRotation.eulerAngles.z <= 50 ||
-            transform.localRotation.eulerAngles.z >= -50)
-        {
-            Debug.Log("Down");
-            return Vector3.down;
-        }
-
-        if (transform.localRotation.eulerAngles.x <= -50 ||
-            transform.localRotation.eulerAngles.x >= -100 &
-
-            transform.localRotation.eulerAngles.z <= -50 ||
-            transform.localRotation.eulerAngles.z >= -100)
-        {
-            Debug.Log("Left");
-            return Vector3.left;
-        }
-
-        if (transform.localRotation.eulerAngles.x <= 50 ||
-            transform.localRotation.eulerAngles.x >= 100 &
-
-            transform.localRotation.eulerAngles.z <= 50 ||
-            transform.localRotation.eulerAngles.z >= 100)
-        {
-            Debug.Log("Right");
-            return Vector3.right;
-        }
-
-        if (transform.localRotation.eulerAngles.x <= -100 ||
-            transform.localRotation.eulerAngles.x >= 100 &
-
-            transform.localRotation.eulerAngles.z <= -100 ||
-            transform.localRotation.eulerAngles.z >= 100)
-        {
-            Debug.Log("Up");
-            return Vector3.up;
-        }
-
-        Debug.Log("Default");
-        return Vector3.down;
-    }*/
-
-    //--------------------------------------------------------------
-
-
-
-
-    //-------------------- Object Scale on Grab --------------------
-
-    private Vector3 doorScaleFactor = new Vector3(0.8f,0.8f,0.8f);
-    private Vector3 keyScaleFactor = new Vector3(0.5f, 0.5f, 0.5f);
+    private Quaternion initialRotation;
 
     XRGrabInteractable grabInteractable;
     private bool isGrabbed = false;
@@ -186,19 +34,40 @@ public class ObjectManager : MonoBehaviour
         grabInteractable.selectExited.RemoveAllListeners();
     }
 
+    private void FixedUpdate()
+    {
+        initialRotation = transform.rotation;
+        stickToSurface();
+    }
+
+    private void stickToSurface()
+    {
+        RaycastHit hit;
+        if (!isGrabbed)
+        {
+            if (Physics.Raycast(transform.position, Vector3.down, out hit, stickDistance))
+            {
+                // Keep the last rotation
+                Vector3 target = new Vector3(0, initialRotation.eulerAngles.y, 0);
+                transform.rotation = Quaternion.Euler(target);
+
+                // Change the position of the object so it "sticks" to a surface 
+                transform.position = new Vector3(transform.position.x, hit.point.y, transform.position.z);
+                transform.position = new Vector3(Mathf.Round(transform.position.x / gridSize) * gridSize,
+                                                Mathf.Round(transform.position.y / gridSize) * gridSize,
+                                                Mathf.Round(transform.position.z / gridSize) * gridSize);
+            }
+        }
+    }
+
+    //-------------------- Object Scale on Grab --------------------
+
+    private Vector3 doorScaleFactor = new Vector3(0.8f,0.8f,0.8f);
+    private Vector3 keyScaleFactor = new Vector3(0.5f, 0.5f, 0.5f);
+
     public void ObjectIsGrabbed(SelectEnterEventArgs args)
     {
         isGrabbed = true;
-
-        if (PlayerState.Singleton.playerState == PlayerType.GAMEMASTER)
-        {
-            //
-        }
-
-        if (PlayerState.Singleton.playerState == PlayerType.PLAYER)
-        {
-            //
-        }
 
         if (PlayerState.Singleton.playerState == PlayerType.EDIT)
         {
@@ -212,16 +81,6 @@ public class ObjectManager : MonoBehaviour
     public void ObjectIsNotGrabbed(SelectExitEventArgs args)
     {
         isGrabbed = false;
-
-        if (PlayerState.Singleton.playerState == PlayerType.GAMEMASTER)
-        {
-            //
-        }
-
-        if (PlayerState.Singleton.playerState == PlayerType.PLAYER)
-        {
-            //
-        }
 
         if (PlayerState.Singleton.playerState == PlayerType.EDIT)
         {
