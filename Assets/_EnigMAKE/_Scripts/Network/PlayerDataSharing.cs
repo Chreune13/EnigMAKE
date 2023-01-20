@@ -123,6 +123,8 @@ public class PlayerDataSharing : NetworkBehaviour
         localPlayerData.TargetTriggerLeft = 0.0f;
         localPlayerData.TargetTriggerRight = 0.0f;
 
+        Debug.Log(LocalPlayerModel.HeadOffset.transform.localPosition);
+
         WriteToTransformSync(ref localPlayerData.Body, LocalPlayerModel.gameObject);
         WriteToTransformSync(ref localPlayerData.Head, LocalPlayerModel.HeadOffset);
         WriteToTransformSync(ref localPlayerData.LeftHand, LocalPlayerModel.LeftHandOffset);
