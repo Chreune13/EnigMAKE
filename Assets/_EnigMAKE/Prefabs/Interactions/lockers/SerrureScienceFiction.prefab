@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 4002159975511333206}
   - component: {fileID: 408214763114574991}
   - component: {fileID: -3054736475249811311}
+  - component: {fileID: -105617349895793495}
   m_Layer: 0
   m_Name: SerrureScienceFiction
   m_TagString: Locke
@@ -199,7 +200,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_InteractionLayers:
-    m_Bits: 6
+    m_Bits: 4
   m_SelectMode: 0
   m_CustomReticle: {fileID: 0}
   m_FirstHoverEntered:
@@ -308,3 +309,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bbb8310d19e4534590b65241c29ea02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-105617349895793495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8910917900744344681}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8ca6aedeea967c40add60046a89e907, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stickDistance: 0.3
+  rotationLerpSpeed: 5
+  gridSize: 0.5

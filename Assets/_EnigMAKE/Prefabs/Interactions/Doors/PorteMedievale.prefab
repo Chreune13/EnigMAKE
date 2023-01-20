@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 452131806163164611}
   - component: {fileID: 941297453307286869}
   - component: {fileID: 5196624659901170599}
-  - component: {fileID: 1875636577302981896}
+  - component: {fileID: 4616976603723922259}
   m_Layer: 0
   m_Name: PorteMedievale
   m_TagString: Door
@@ -71,7 +71,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_InteractionLayers:
-    m_Bits: 6
+    m_Bits: 4
   m_SelectMode: 0
   m_CustomReticle: {fileID: 0}
   m_FirstHoverEntered:
@@ -180,7 +180,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bbb8310d19e4534590b65241c29ea02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1875636577302981896
+--- !u!114 &4616976603723922259
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -189,9 +189,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 2134674546818696182}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1bbb8310d19e4534590b65241c29ea02, type: 3}
+  m_Script: {fileID: 11500000, guid: b8ca6aedeea967c40add60046a89e907, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stickDistance: 0.3
+  rotationLerpSpeed: 5
+  gridSize: 0.5
 --- !u!1 &4699963166125985552
 GameObject:
   m_ObjectHideFlags: 0

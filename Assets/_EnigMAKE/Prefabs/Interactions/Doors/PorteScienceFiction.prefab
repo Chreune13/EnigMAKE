@@ -146,6 +146,7 @@ GameObject:
   - component: {fileID: 7866240199586617706}
   - component: {fileID: 4062079304309073995}
   - component: {fileID: -5725169854701184862}
+  - component: {fileID: -368262993493869325}
   m_Layer: 0
   m_Name: PorteScienceFiction
   m_TagString: Door
@@ -267,7 +268,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_InteractionLayers:
-    m_Bits: 6
+    m_Bits: 4
   m_SelectMode: 0
   m_CustomReticle: {fileID: 0}
   m_FirstHoverEntered:
@@ -376,3 +377,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bbb8310d19e4534590b65241c29ea02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-368262993493869325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6051193312922935710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8ca6aedeea967c40add60046a89e907, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stickDistance: 0.3
+  rotationLerpSpeed: 5
+  gridSize: 0.5

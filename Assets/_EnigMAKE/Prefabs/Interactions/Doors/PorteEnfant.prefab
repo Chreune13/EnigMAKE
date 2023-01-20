@@ -137,7 +137,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_InteractionLayers:
-    m_Bits: 6
+    m_Bits: 4
   m_SelectMode: 0
   m_CustomReticle: {fileID: 0}
   m_FirstHoverEntered:
@@ -246,6 +246,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8ca6aedeea967c40add60046a89e907, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stickDistance: 0.3
+  rotationLerpSpeed: 5
+  gridSize: 0.5
 --- !u!114 &5574970413923536102
 MonoBehaviour:
   m_ObjectHideFlags: 0

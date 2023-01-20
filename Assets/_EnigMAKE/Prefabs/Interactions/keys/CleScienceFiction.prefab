@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 7168491390668820352}
   - component: {fileID: 7168491390668820353}
   - component: {fileID: 1121538444745939744}
+  - component: {fileID: 8361038223332423773}
   m_Layer: 0
   m_Name: CleScienceFiction
   m_TagString: Key
@@ -113,7 +114,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -264,3 +265,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bbb8310d19e4534590b65241c29ea02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8361038223332423773
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8051012409530249941}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8ca6aedeea967c40add60046a89e907, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stickDistance: 0.3
+  rotationLerpSpeed: 5
+  gridSize: 0.5

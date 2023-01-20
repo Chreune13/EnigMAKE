@@ -1,5 +1,67 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &146920936
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 146920937}
+  m_Layer: 0
+  m_Name: AttachPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &146920937
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 146920936}
+  m_LocalRotation: {x: -0.22107671, y: 0.008554731, z: 0.03770861, w: 0.97448957}
+  m_LocalPosition: {x: 0.0385, y: -0.0048, z: -0.005}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3029018278815084308}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -25.564, y: 0, z: 4.432}
+--- !u!1 &423669800
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 423669801}
+  m_Layer: 0
+  m_Name: SocketAttachPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &423669801
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 423669800}
+  m_LocalRotation: {x: -0.04357884, y: 0.0047383625, z: -0.10807398, w: 0.993176}
+  m_LocalPosition: {x: 0.0347, y: -0.0114, z: -0.0404}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3029018278815084308}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: -4.907, y: 1.083, z: -12.467}
 --- !u!1 &2396738260626863534
 GameObject:
   m_ObjectHideFlags: 0
@@ -17,7 +79,7 @@ GameObject:
   - component: {fileID: 3881041985515809968}
   - component: {fileID: 2616867457217772429}
   - component: {fileID: 5993632166916564086}
-  - component: {fileID: 8649626452706927280}
+  - component: {fileID: 4941731087820181178}
   m_Layer: 0
   m_Name: SerrureEnfant1
   m_TagString: Locke
@@ -36,7 +98,9 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0.12}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 1
-  m_Children: []
+  m_Children:
+  - {fileID: 146920937}
+  - {fileID: 423669801}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -133,7 +197,7 @@ MonoBehaviour:
     m_Bits: 4294967295
   m_InteractionLayers:
     m_Bits: 2
-  m_AttachTransform: {fileID: 0}
+  m_AttachTransform: {fileID: 423669801}
   m_KeepSelectedTargetValid: 1
   m_StartingSelectedInteractable: {fileID: 0}
   m_HoverEntered:
@@ -200,7 +264,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_InteractionLayers:
-    m_Bits: 6
+    m_Bits: 4
   m_SelectMode: 0
   m_CustomReticle: {fileID: 0}
   m_FirstHoverEntered:
@@ -260,7 +324,7 @@ MonoBehaviour:
   m_OnDeactivate:
     m_PersistentCalls:
       m_Calls: []
-  m_AttachTransform: {fileID: 0}
+  m_AttachTransform: {fileID: 146920937}
   m_AttachEaseInTime: 0.15
   m_MovementType: 2
   m_VelocityDamping: 1
@@ -309,15 +373,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bbb8310d19e4534590b65241c29ea02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &8649626452706927280
+--- !u!114 &4941731087820181178
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2396738260626863534}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1bbb8310d19e4534590b65241c29ea02, type: 3}
+  m_Script: {fileID: 11500000, guid: b8ca6aedeea967c40add60046a89e907, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stickDistance: 0.3
+  rotationLerpSpeed: 5
+  gridSize: 0.5
