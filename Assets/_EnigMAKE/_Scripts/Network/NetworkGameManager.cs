@@ -102,8 +102,11 @@ public class NetworkGameManager : NetworkBehaviour
             }
             else
             {
-                GameMasterNetworkData = LastConnectedPlayer;
                 GameMasterNetworkData.PlayerNetworkDataIsSet = true;
+                GameMasterNetworkData.PlayerNetworkId = LastConnectedPlayer.PlayerNetworkId;
+                GameMasterNetworkData.PlayerNetworkType = LastConnectedPlayer.PlayerNetworkType;
+
+                LastConnectedPlayer.PlayerNetworkDataIsSet = false;
             }
         }
         else if (LastConnectedPlayer.PlayerNetworkType == PlayerType.PLAYER)
@@ -114,8 +117,11 @@ public class NetworkGameManager : NetworkBehaviour
             {
                 if(!PlayersNetworkData[i].PlayerNetworkDataIsSet)
                 {
-                    PlayersNetworkData[i] = LastConnectedPlayer;
                     PlayersNetworkData[i].PlayerNetworkDataIsSet = true;
+                    PlayersNetworkData[i].PlayerNetworkId = LastConnectedPlayer.PlayerNetworkId;
+                    PlayersNetworkData[i].PlayerNetworkType = LastConnectedPlayer.PlayerNetworkType;
+
+                    LastConnectedPlayer.PlayerNetworkDataIsSet = false;
 
                     break;
                 }
