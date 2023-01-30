@@ -82,33 +82,4 @@ public class TransformNetworkSync : NetworkBehaviour
     {
         NetworkScale.Value = scale;
     }*/
-
-    public void ChangeOwner(ulong newOwnerId)
-    {
-        ChangeOwnerServerRpc(newOwnerId);
-    }
-
-    [ServerRpc(RequireOwnership=false)]
-    private void ChangeOwnerServerRpc(ulong newOwnerId)
-    {
-        if(ownerId.Value == 0)
-        {
-            ownerId.Value = newOwnerId;
-            GetComponent<NetworkObject>().ChangeOwnership(newOwnerId);
-        }
-    }
-
-    public void ResetOwner(ulong oldOwnerId)
-    {
-        ResetOwnerServerRpc(oldOwnerId);
-    }
-
-    [ServerRpc(RequireOwnership = false)]
-    private void ResetOwnerServerRpc(ulong oldOwnerId)
-    {
-        if(ownerId.Value == oldOwnerId)
-        {
-            ownerId.Value = 0;
-        }
-    }
 }

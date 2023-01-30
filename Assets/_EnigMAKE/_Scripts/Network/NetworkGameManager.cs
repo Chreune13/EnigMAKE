@@ -250,7 +250,7 @@ public class NetworkGameManager : NetworkBehaviour
         {
             ServerIsAliveClientRpc();
 
-            yield return new WaitForSeconds(1.0f);
+            yield return new WaitForSeconds(0.5f);
         }
     }
 
