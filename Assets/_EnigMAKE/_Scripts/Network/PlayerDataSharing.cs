@@ -100,7 +100,11 @@ public class PlayerDataSharing : NetworkBehaviour
         if (Singleton == null)
             Singleton = this;
         else
+        {
             Debug.LogError("Multiple instances of PlayerDataSharing Singleton!");
+
+            gameObject.SetActive(false);
+        }
     }
 
     // Update is called once per frame
@@ -122,8 +126,6 @@ public class PlayerDataSharing : NetworkBehaviour
         localPlayerData.RightHand = new TransformSync();
         localPlayerData.TargetTriggerLeft = 0.0f;
         localPlayerData.TargetTriggerRight = 0.0f;
-
-        Debug.Log(LocalPlayerModel.HeadOffset.transform.localPosition);
 
         WriteToTransformSync(ref localPlayerData.Body, LocalPlayerModel.gameObject);
         WriteToTransformSync(ref localPlayerData.Head, LocalPlayerModel.HeadOffset);
