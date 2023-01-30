@@ -24,7 +24,7 @@ public class NetworkGameManager : NetworkBehaviour
     public static NetworkGameManager Singleton;
 
     [NonSerialized]
-    public static int MAX_PLAYER = 1;
+    public static int MAX_PLAYER = 4;
 
     PlayerNetworkData LastConnectedPlayer;
 
@@ -34,6 +34,8 @@ public class NetworkGameManager : NetworkBehaviour
 
     [SerializeField]
     private bool StartAsAServer = false;
+
+    int fc = 0;
 
     private void Awake()
     {
@@ -71,17 +73,29 @@ public class NetworkGameManager : NetworkBehaviour
         if (StartAsAServer)
         {
             StartServer();
+
+            StartCoroutine(ServerIsAlive());
         }
         else
         {
             StartClient();
         }
+
+        fc = Time.frameCount;
     }
 
     // Update is called once per frame
     void Update()
     {
         ProcessLastConnectedPlayer();
+
+        if(IsClient)
+        {
+            if((Time.frameCount - fc) * Time.deltaTime > 2.0f)
+            {
+                BackToWaitingRoom();
+            }
+        }
     }
 
     private void ProcessLastConnectedPlayer()
@@ -148,8 +162,6 @@ public class NetworkGameManager : NetworkBehaviour
         if (!IsServer)
             return;
 
-        Debug.Log("Disconnect last");
-
         LastConnectedPlayer.PlayerNetworkDataIsSet = false;
 
         ClientRpcParams clientRpcParams = new ClientRpcParams
@@ -161,19 +173,16 @@ public class NetworkGameManager : NetworkBehaviour
         };
 
         DisconnectLastConnectedPlayerClientRpc(clientRpcParams);
-
-        Debug.Log("Disconnect last 2");
-
-        //NetworkManager.Singleton.DisconnectClient(LastConnectedPlayer.PlayerNetworkId);
     }
 
     [ClientRpc]
     private void DisconnectLastConnectedPlayerClientRpc(ClientRpcParams clientRpcParams = default)
     {
-        Debug.Log("Back to WaitingRoom");
+        BackToWaitingRoom();
+    }
 
-        Destroy(XROriginRoot.Singleton.gameObject);
-        Destroy(EnigmeManager.instance.gameObject);
+    void BackToWaitingRoom()
+    {
         Destroy(NetworkManagerSingleton.instance.gameObject);
 
         SceneManager.LoadScene("EnigMakeWaitingRoom");
@@ -233,5 +242,21 @@ public class NetworkGameManager : NetworkBehaviour
     public void StartClient()
     {
         NetworkManager.Singleton.StartClient();
+    }
+
+    IEnumerator ServerIsAlive()
+    {
+        while(true)
+        {
+            ServerIsAliveClientRpc();
+
+            yield return new WaitForSeconds(1.0f);
+        }
+    }
+
+    [ClientRpc]
+    void ServerIsAliveClientRpc()
+    {
+        fc = Time.frameCount;
     }
 }
