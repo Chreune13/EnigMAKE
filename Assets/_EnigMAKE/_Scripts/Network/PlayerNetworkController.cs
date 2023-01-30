@@ -32,7 +32,7 @@ public class PlayerNetworkController : NetworkBehaviour
     {
         if (IsServer)
         {
-            NetworkGameManager.Singleton.DisconnectConnectedPlayer(playerId.Value, false);
+            NetworkGameManager.Singleton.DisconnectConnectedPlayer(playerId.Value);
         }
         
         base.OnDestroy();
@@ -42,10 +42,5 @@ public class PlayerNetworkController : NetworkBehaviour
     void SyncPlayerIdServerRpc(ulong p_playerId)
     {
         playerId.Value = p_playerId;
-    }
-
-    public ulong GetPlayerId()
-    {
-        return playerId.Value;
     }
 }

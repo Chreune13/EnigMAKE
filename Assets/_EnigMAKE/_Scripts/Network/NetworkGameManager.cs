@@ -153,7 +153,7 @@ public class NetworkGameManager : NetworkBehaviour
         NetworkManager.Singleton.DisconnectClient(LastConnectedPlayer.PlayerNetworkId);
     }
 
-    public void DisconnectConnectedPlayer(ulong playerId, bool orderClientToDisconnect)
+    public void DisconnectConnectedPlayer(ulong playerId)
     {
         if (!IsServer)
             return;
@@ -163,8 +163,6 @@ public class NetworkGameManager : NetworkBehaviour
             if(GameMasterNetworkData.PlayerNetworkId == playerId)
             {
                 GameMasterNetworkData.PlayerNetworkDataIsSet = false;
-
-                if(orderClientToDisconnect) NetworkManager.Singleton.DisconnectClient(GameMasterNetworkData.PlayerNetworkId);
 
                 Debug.Log("Gamemaster disconnected");
 
@@ -181,8 +179,6 @@ public class NetworkGameManager : NetworkBehaviour
                 continue;
 
             PlayersNetworkData[i].PlayerNetworkDataIsSet = false;
-
-            if(orderClientToDisconnect) NetworkManager.Singleton.DisconnectClient(PlayersNetworkData[i].PlayerNetworkId);
 
             Debug.Log("Client disconnected");
 

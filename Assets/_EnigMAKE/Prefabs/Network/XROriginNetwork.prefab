@@ -190,6 +190,7 @@ GameObject:
   - component: {fileID: 2962543333802687255}
   - component: {fileID: 2996677898688433526}
   - component: {fileID: 299513733136234295}
+  - component: {fileID: 4067786008734797795}
   m_Layer: 0
   m_Name: XROriginNetwork
   m_TagString: Untagged
@@ -251,6 +252,18 @@ MonoBehaviour:
   RightHandOffset: {fileID: 1849516265158999145}
   RightHandAnimatorScript: {fileID: 6397278884298375398}
   LastUpdate: 0
+--- !u!114 &4067786008734797795
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8479419181835162552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb461beda6d6b14eabe295cf323a0ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &7941615982213364823
 PrefabInstance:
   m_ObjectHideFlags: 0
