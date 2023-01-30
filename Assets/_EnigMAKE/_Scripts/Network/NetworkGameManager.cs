@@ -174,6 +174,7 @@ public class NetworkGameManager : NetworkBehaviour
 
         Destroy(XROriginRoot.Singleton.gameObject);
         Destroy(EnigmeManager.instance.gameObject);
+        Destroy(NetworkManagerSingleton.instance.gameObject);
 
         SceneManager.LoadScene("EnigMakeWaitingRoom");
     }
