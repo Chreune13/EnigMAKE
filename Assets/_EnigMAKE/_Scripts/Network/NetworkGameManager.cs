@@ -22,7 +22,7 @@ public class NetworkGameManager : NetworkBehaviour
     public static NetworkGameManager Singleton;
 
     [NonSerialized]
-    public static int MAX_PLAYER = 1;
+    public static int MAX_PLAYER = 4;
 
     PlayerNetworkData LastConnectedPlayer;
 
@@ -32,6 +32,8 @@ public class NetworkGameManager : NetworkBehaviour
 
     [SerializeField]
     private bool StartAsAServer = false;
+
+    ulong ClientLocalPlayerId = 0;
 
     private void Awake()
     {
@@ -140,6 +142,9 @@ public class NetworkGameManager : NetworkBehaviour
 
     public void NewPlayerConnect(ulong playerId)
     {
+        Debug.Log(playerId);
+        ClientLocalPlayerId = playerId;
+
         NewPlayerConnectServerRpc(playerId, PlayerState.Singleton.playerState);
     }
 
@@ -148,9 +153,23 @@ public class NetworkGameManager : NetworkBehaviour
         if (!IsServer)
             return;
 
+        Debug.Log("Disconnect last");
+
         LastConnectedPlayer.PlayerNetworkDataIsSet = false;
 
+        DisconnectLastConnectedPlayerClientRpc(LastConnectedPlayer.PlayerNetworkId);
+
         NetworkManager.Singleton.DisconnectClient(LastConnectedPlayer.PlayerNetworkId);
+    }
+
+    [ClientRpc]
+    private void DisconnectLastConnectedPlayerClientRpc(ulong playerId)
+    {
+        Debug.Log(playerId + "   " + ClientLocalPlayerId);
+        if(playerId == ClientLocalPlayerId)
+        {
+            Debug.Log("Back to WaitingRoom");
+        }
     }
 
     public void DisconnectConnectedPlayer(ulong playerId)
