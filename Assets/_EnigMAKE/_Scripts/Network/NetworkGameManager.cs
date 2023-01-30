@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.Windows;
+using UnityEditor.PackageManager;
+using UnityEngine.SceneManagement;
 
 #if UNITY_EDITOR
 using ParrelSync;
@@ -22,7 +24,7 @@ public class NetworkGameManager : NetworkBehaviour
     public static NetworkGameManager Singleton;
 
     [NonSerialized]
-    public static int MAX_PLAYER = 4;
+    public static int MAX_PLAYER = 1;
 
     PlayerNetworkData LastConnectedPlayer;
 
@@ -33,15 +35,11 @@ public class NetworkGameManager : NetworkBehaviour
     [SerializeField]
     private bool StartAsAServer = false;
 
-    ulong ClientLocalPlayerId = 0;
-
     private void Awake()
     {
         if (Singleton == null)
         {
             Singleton = this;
-
-            DontDestroyOnLoad(gameObject);
 
             LastConnectedPlayer.PlayerNetworkDataIsSet = false;
             GameMasterNetworkData.PlayerNetworkDataIsSet = false;
@@ -142,9 +140,6 @@ public class NetworkGameManager : NetworkBehaviour
 
     public void NewPlayerConnect(ulong playerId)
     {
-        Debug.Log(playerId);
-        ClientLocalPlayerId = playerId;
-
         NewPlayerConnectServerRpc(playerId, PlayerState.Singleton.playerState);
     }
 
@@ -157,19 +152,30 @@ public class NetworkGameManager : NetworkBehaviour
 
         LastConnectedPlayer.PlayerNetworkDataIsSet = false;
 
-        DisconnectLastConnectedPlayerClientRpc(LastConnectedPlayer.PlayerNetworkId);
+        ClientRpcParams clientRpcParams = new ClientRpcParams
+        {
+            Send = new ClientRpcSendParams
+            {
+                TargetClientIds = new ulong[] { LastConnectedPlayer.PlayerNetworkId }
+            }
+        };
 
-        NetworkManager.Singleton.DisconnectClient(LastConnectedPlayer.PlayerNetworkId);
+        DisconnectLastConnectedPlayerClientRpc(clientRpcParams);
+
+        Debug.Log("Disconnect last 2");
+
+        //NetworkManager.Singleton.DisconnectClient(LastConnectedPlayer.PlayerNetworkId);
     }
 
     [ClientRpc]
-    private void DisconnectLastConnectedPlayerClientRpc(ulong playerId)
+    private void DisconnectLastConnectedPlayerClientRpc(ClientRpcParams clientRpcParams = default)
     {
-        Debug.Log(playerId + "   " + ClientLocalPlayerId);
-        if(playerId == ClientLocalPlayerId)
-        {
-            Debug.Log("Back to WaitingRoom");
-        }
+        Debug.Log("Back to WaitingRoom");
+
+        Destroy(XROriginRoot.Singleton.gameObject);
+        Destroy(EnigmeManager.instance.gameObject);
+
+        SceneManager.LoadScene("EnigMakeWaitingRoom");
     }
 
     public void DisconnectConnectedPlayer(ulong playerId)

@@ -15,8 +15,6 @@ public class PlayerNetworkController : NetworkBehaviour
 {
     NetworkVariable<ulong> playerId = new NetworkVariable<ulong>();
 
-    //PlayerType playerType;
-
     // Start is called before the first frame update
     void Start()
     {
