@@ -191,6 +191,7 @@ GameObject:
   - component: {fileID: 2996677898688433526}
   - component: {fileID: 299513733136234295}
   - component: {fileID: 4067786008734797795}
+  - component: {fileID: 528243008067105073}
   m_Layer: 0
   m_Name: XROriginNetwork
   m_TagString: Untagged
@@ -264,6 +265,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ceb461beda6d6b14eabe295cf323a0ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &528243008067105073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8479419181835162552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c026d3f5023f9af44b0456c82346f627, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Renderers:
+  - {fileID: 771637882393361798}
+  SkinnedRenderers:
+  - {fileID: 8277090480847121927}
+  - {fileID: 7181193275958284863}
 --- !u!1001 &7941615982213364823
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -319,6 +337,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: 2083029558965867088, guid: 04f98f286faf533479a062053a8f60e1, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6140286306923110376, guid: 04f98f286faf533479a062053a8f60e1, type: 3}
       propertyPath: m_Name
       value: LeftHand
@@ -339,6 +361,11 @@ MonoBehaviour:
 --- !u!4 &7475916509297652065 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 687225399222881590, guid: 04f98f286faf533479a062053a8f60e1, type: 3}
+  m_PrefabInstance: {fileID: 7941615982213364823}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &8277090480847121927 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 2083029558965867088, guid: 04f98f286faf533479a062053a8f60e1, type: 3}
   m_PrefabInstance: {fileID: 7941615982213364823}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &9169559070131503215
@@ -413,6 +440,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3405551d216247743a674765c0c748e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!137 &7181193275958284863 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 2083029558965867088, guid: 04f98f286faf533479a062053a8f60e1, type: 3}
+  m_PrefabInstance: {fileID: 9169559070131503215}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8559463518555344217 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 687225399222881590, guid: 04f98f286faf533479a062053a8f60e1, type: 3}
