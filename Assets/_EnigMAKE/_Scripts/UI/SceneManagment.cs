@@ -20,6 +20,9 @@ public class SceneManagment : MonoBehaviour
 {
     public static SceneManagment Singleton;
 
+    private GameObject teleporter;
+    private GameObject player;
+
     void Awake()
     {
         if (Singleton != null)
@@ -38,6 +41,11 @@ public class SceneManagment : MonoBehaviour
 
     public void SceneToLoad(string sceneName)
     {
+        if(sceneName == "EnigMakeWaitingRoom")
+        {
+            BackToMenu();
+        }
+
         SceneManager.LoadScene(sceneName);
     }
     public void ReloadCurrentScene()
@@ -47,6 +55,11 @@ public class SceneManagment : MonoBehaviour
       
       //  foreach( GameObject gameObject in scn.GetRootGameObjects())
         SceneManager.LoadScene(scn.name);
+    }
+    private void BackToMenu()
+    {
+        if (NetworkManagerSingleton.instance)
+            Destroy(NetworkManagerSingleton.instance.gameObject);
     }
 
     // --------------------------------------------------------------------------
@@ -59,11 +72,6 @@ public class SceneManagment : MonoBehaviour
     [SerializeField]
     private scenelist[] scenelists;
     
-    /// <summary>
-    /// GameMaster = 0
-    /// Player = 1
-    /// Edit mode = 2
-    /// </summary>
     public void GetAndSetPlayerStateObject(int ps)
     {
         PlayerType playerType = (PlayerType)ps; 
@@ -116,6 +124,13 @@ public class SceneManagment : MonoBehaviour
 
             //Debug.Log("Current sceneId : " + id + " sceneId list : " + scenelists[i].sceneId);
         }
+
+        teleporter = GetTeleporter();
+        player = GetPlayer();
+
+        player.transform.position = new Vector3(teleporter.transform.position.x, 
+                                                player.transform.position.y, 
+                                                teleporter.transform.position.z);
     }
 
 
@@ -129,5 +144,19 @@ public class SceneManagment : MonoBehaviour
         return SceneManager.GetSceneByName(sceneName).buildIndex;
     }
 
-    // --------------------------- InvokeOnSceneIndex ---------------------------
+    // --------------------------------------------------------------------------
+
+
+    // -------------------------- GetTeleporter ---------------------------------
+
+    private GameObject GetTeleporter()
+    {
+        return GameObject.FindGameObjectWithTag("Teleporter"); ;
+    }
+    private GameObject GetPlayer()
+    {
+        return GameObject.FindGameObjectWithTag("Player");
+    }
+
+    // --------------------------------------------------------------------------
 }

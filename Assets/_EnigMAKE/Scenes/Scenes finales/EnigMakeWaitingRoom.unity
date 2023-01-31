@@ -3746,6 +3746,38 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1836558739}
     m_Modifications:
+    - target: {fileID: 342775716684893791, guid: 4e52d76a44778ef428e707527c4c313d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 342775716684893791, guid: 4e52d76a44778ef428e707527c4c313d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 342775716684893791, guid: 4e52d76a44778ef428e707527c4c313d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 979973258}
+    - target: {fileID: 342775716684893791, guid: 4e52d76a44778ef428e707527c4c313d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 342775716684893791, guid: 4e52d76a44778ef428e707527c4c313d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SceneToLoad
+      objectReference: {fileID: 0}
+    - target: {fileID: 342775716684893791, guid: 4e52d76a44778ef428e707527c4c313d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SceneManagment, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 342775716684893791, guid: 4e52d76a44778ef428e707527c4c313d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: EnigMakeWaitingRoom
+      objectReference: {fileID: 0}
+    - target: {fileID: 342775716684893791, guid: 4e52d76a44778ef428e707527c4c313d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 515125410125996270, guid: 4e52d76a44778ef428e707527c4c313d, type: 3}
       propertyPath: objectSpawnPoint
       value: 
@@ -7634,6 +7666,37 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1814597341
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1814597342}
+  m_Layer: 0
+  m_Name: Teleport
+  m_TagString: Teleporter
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1814597342
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1814597341}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.5486734, y: 2.14, z: -8.170963}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1836558738
 GameObject:
   m_ObjectHideFlags: 0
@@ -7707,7 +7770,7 @@ GameObject:
   - component: {fileID: 1841406972}
   m_Layer: 0
   m_Name: XR Origin
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -25,6 +25,7 @@ TagManager:
   - Destruction
   - Tutorial2Grab
   - Hand
+  - Teleporter
   layers:
   - Default
   - TransparentFX
