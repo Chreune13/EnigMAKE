@@ -154,7 +154,7 @@ public class NetworkGameManager : NetworkBehaviour
 
     public void NewPlayerConnect(ulong playerId)
     {
-        NewPlayerConnectServerRpc(playerId, PlayerState.Singleton.playerState);
+        NewPlayerConnectServerRpc(playerId, SceneManagment.Singleton.playerState);
     }
 
     private void DisconnectLastConnectedPlayer()
@@ -181,7 +181,7 @@ public class NetworkGameManager : NetworkBehaviour
         BackToWaitingRoom();
     }
 
-    void BackToWaitingRoom()
+    public void BackToWaitingRoom()
     {
         Destroy(NetworkManagerSingleton.instance.gameObject);
 

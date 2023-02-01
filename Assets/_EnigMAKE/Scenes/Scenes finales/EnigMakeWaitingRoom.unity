@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.38585782, g: 0.53675014, b: 0.63388, a: 1}
+  m_IndirectSpecularColor: {r: 0.38317412, g: 0.53448117, b: 0.6325048, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -479,7 +479,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9cdc8631459ff3449f3cfcf363934f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerState: 0
 --- !u!4 &92718145
 Transform:
   m_ObjectHideFlags: 0
@@ -4687,6 +4686,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b90f850b058d124499516ac3d37caaf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerState: 0
+  sceneTheme: 0
   scenelists:
   - sceneName: EnigMakeWaitingRoom
     sceneTheme: 0

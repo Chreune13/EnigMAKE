@@ -16,6 +16,13 @@ struct sceneMetaData
     public UnityEvent invokeEditionMethod;
 }
 
+public enum PlayerType
+{
+    GAMEMASTER = 0,
+    PLAYER = 1,
+    EDIT = 2
+}
+
 public enum Theme
 {
     MEDIEVAL,
@@ -28,9 +35,11 @@ public class SceneManagment : MonoBehaviour
 {
     public static SceneManagment Singleton;
 
+    public PlayerType playerState;
+
     private GameObject teleporter;
     private GameObject player;
-    private Theme sceneTheme;
+    public Theme sceneTheme;
 
     void Awake()
     {
@@ -94,7 +103,7 @@ public class SceneManagment : MonoBehaviour
     
     public void SetPlayerState(int ps)
     {
-        PlayerState.Singleton.playerState = (PlayerType)ps;
+        playerState = (PlayerType)ps;
     }
 
     public void SetThemeState(int ts)
@@ -128,17 +137,17 @@ public class SceneManagment : MonoBehaviour
 
                 scenelists[i].invokeDefaultMethod.Invoke();
 
-                if (PlayerState.Singleton.playerState == PlayerType.GAMEMASTER)
+                if (playerState == PlayerType.GAMEMASTER)
                 {
                     scenelists[i].invokeGameMasterMethod.Invoke();
                 }
 
-                if (PlayerState.Singleton.playerState == PlayerType.PLAYER)
+                if (playerState == PlayerType.PLAYER)
                 {
                     scenelists[i].invokePlayerMethod.Invoke();
                 }
 
-                if (PlayerState.Singleton.playerState == PlayerType.EDIT)
+                if (playerState == PlayerType.EDIT)
                 {
                     scenelists[i].invokeEditionMethod.Invoke();
                 }
