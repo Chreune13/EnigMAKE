@@ -15,18 +15,14 @@ public class PlayerNetworkController : NetworkBehaviour
 {
     NetworkVariable<ulong> playerId = new NetworkVariable<ulong>();
 
-    //PlayerType playerType;
-
     // Start is called before the first frame update
     void Start()
     {
         if (IsOwner && IsClient)
         {
             SyncPlayerIdServerRpc(OwnerClientId);
-            //playerType = NetworkGameManager.Singleton.GetSelectedClientType();
 
-            NetworkGameManager.Singleton.LocalPlayerIsSpawned();
-            NetworkGameManager.Singleton.NewPlayerConnect(OwnerClientId/*, playerType*/);
+            NetworkGameManager.Singleton.NewPlayerConnect(OwnerClientId);
         }
     }
 
@@ -34,7 +30,7 @@ public class PlayerNetworkController : NetworkBehaviour
     {
         if (IsServer)
         {
-            NetworkGameManager.Singleton.DisconnectConnectedPlayer(playerId.Value, false);
+            NetworkGameManager.Singleton.DisconnectConnectedPlayer(playerId.Value);
         }
         
         base.OnDestroy();
@@ -45,14 +41,4 @@ public class PlayerNetworkController : NetworkBehaviour
     {
         playerId.Value = p_playerId;
     }
-
-    public ulong GetPlayerId()
-    {
-        return playerId.Value;
-    }
-    /*
-    public PlayerType GetPlayerType()
-    {
-        return playerType;
-    }*/
 }

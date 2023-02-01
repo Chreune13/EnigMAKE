@@ -44,11 +44,6 @@ public struct PlayerDataToSync : INetworkSerializable, System.IEquatable<PlayerD
     public TransformSync LeftHand;
     public TransformSync RightHand;
 
-    /*public Transform Body;
-    public Transform Head;
-    public Transform LeftHand;
-    public Transform RightHand;*/
-
     public float TargetTriggerLeft;
     public float TargetTriggerRight;
 
@@ -100,7 +95,11 @@ public class PlayerDataSharing : NetworkBehaviour
         if (Singleton == null)
             Singleton = this;
         else
+        {
             Debug.LogError("Multiple instances of PlayerDataSharing Singleton!");
+
+            gameObject.SetActive(false);
+        }
     }
 
     // Update is called once per frame

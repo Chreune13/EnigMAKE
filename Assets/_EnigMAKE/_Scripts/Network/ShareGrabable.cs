@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
 [RequireComponent(typeof(XRGrabInteractable))]
-public class ShareGrabable : MonoBehaviour
+public class ShareGrabable : NetworkBehaviour
 {
     XRGrabInteractable grabInteractable;
 
@@ -25,21 +25,40 @@ public class ShareGrabable : MonoBehaviour
 
     public void ObjectIsGrabbed(SelectEnterEventArgs args)
     {
-        TransformNetworkSync netSync = GetComponent<TransformNetworkSync>();
+        ChangeOwnerServerRpc(NetworkManager.Singleton.LocalClientId);
+    }
 
-        if(netSync != null)
+    [ServerRpc(RequireOwnership = false)]
+    private void ChangeOwnerServerRpc(ulong newOwnerId)
+    {
+        GetComponent<NetworkObject>().ChangeOwnership(newOwnerId);
+
+        ChangeOwnerClientRpc(newOwnerId);
+    }
+
+    [ClientRpc]
+    void ChangeOwnerClientRpc(ulong newOwnerId)
+    {
+        if(newOwnerId != NetworkManager.Singleton.LocalClientId)
         {
-            netSync.ChangeOwner(NetworkManager.Singleton.LocalClientId);
+            GetComponent<XRGrabInteractable>().enabled = false;
         }
     }
 
     void ObjectIsNotGrabbed(SelectExitEventArgs args)
     {
-        TransformNetworkSync netSync = GetComponent<TransformNetworkSync>();
+        ResetOwnerServerRpc();
+    }
 
-        if (netSync != null)
-        {
-            netSync.ResetOwner(NetworkManager.Singleton.LocalClientId);
-        }
+    [ServerRpc(RequireOwnership = false)]
+    private void ResetOwnerServerRpc()
+    {
+        ResetOwnerClientRpc();
+    }
+
+    [ClientRpc]
+    void ResetOwnerClientRpc()
+    {
+        GetComponent<XRGrabInteractable>().enabled = true;
     }
 }

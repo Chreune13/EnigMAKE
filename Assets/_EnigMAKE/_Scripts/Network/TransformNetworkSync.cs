@@ -93,6 +93,7 @@ public class TransformNetworkSync : NetworkBehaviour
     {
         if(ownerId.Value == 0)
         {
+            Debug.Log("Change Ownership");
             ownerId.Value = newOwnerId;
             GetComponent<NetworkObject>().ChangeOwnership(newOwnerId);
         }

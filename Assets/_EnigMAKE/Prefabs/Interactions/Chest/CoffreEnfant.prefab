@@ -192,6 +192,9 @@ GameObject:
   - component: {fileID: 5368836457497705778}
   - component: {fileID: 5368836457497705781}
   - component: {fileID: 2675229688476426059}
+  - component: {fileID: 6198147763844112224}
+  - component: {fileID: -7046273892939125626}
+  - component: {fileID: 7830348986818016669}
   m_Layer: 0
   m_Name: CoffreEnfant
   m_TagString: Chest
@@ -359,6 +362,46 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bbb8310d19e4534590b65241c29ea02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6198147763844112224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4740637826761189262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e2da99e97568e147a759cd7d6a09ee3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-7046273892939125626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4740637826761189262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1765aa6a578f6f4bbe430513d151872, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7830348986818016669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4740637826761189262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlobalObjectIdHash: 951099334
+  AlwaysReplicateAsRoot: 0
+  DontDestroyWithOwner: 1
+  AutoObjectParentSync: 1
 --- !u!1 &6519372897277744830
 GameObject:
   m_ObjectHideFlags: 0
