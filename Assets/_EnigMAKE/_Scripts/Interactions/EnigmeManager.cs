@@ -37,7 +37,7 @@ public class EnigmeManager : MonoBehaviour
     public void OnClick()
     {
         InstantiateEnigmeJetonFromExternal(nextJetonID, Spawner.transform);
-        InstantiateActionJetonFromExternal(nextJetonID, Spawner.transform);
+        InstantiateActionJetonFromExternal(0, Spawner.transform);
 
         nextJetonID++;
     }
@@ -60,11 +60,12 @@ public class EnigmeManager : MonoBehaviour
     public void InstantiateActionJetonFromExternal(int jetonId, Transform JetonActionPosition)
     {
         EnigmesClassement actionsClassement = ActionJetonPrefab.GetComponentInChildren<EnigmesClassement>();
+        EnigmesClassement enigmesClassement = EnigmeJetonPrefab.GetComponentInChildren<EnigmesClassement>();
         TMPro.TextMeshProUGUI action_textMeshProUGUI = ActionJetonPrefab.GetComponentInChildren<TMPro.TextMeshProUGUI>();
 
         actionsClassement.SetID(jetonId);
 
-        action_textMeshProUGUI.text = "A" + actionsClassement.GetID().ToString();
+        action_textMeshProUGUI.text = "A" + enigmesClassement.GetID().ToString();
 
         Instantiate(ActionJetonPrefab, JetonActionPosition);
 

@@ -29,6 +29,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_EnigMAKE/Scenes/Network/EnigMakeWaitingRoom Tony.unity
     guid: 143a2fe5ade8e7d4dafd4c8f3314bcb9
+  - enabled: 1
+    path: Assets/_EnigMAKE/Scenes/Scenes finales/Default_Scene.unity
+    guid: 849247ea58a0c824cbf9901953a15ef8
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 5142216a48e2be444a669f584d65600d, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 911ef7c24711d794eb15fcb6b0012cb8, type: 2}

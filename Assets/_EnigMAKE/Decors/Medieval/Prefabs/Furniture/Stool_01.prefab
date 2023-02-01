@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 65541090695710492}
   - component: {fileID: 2117606663}
   - component: {fileID: 2117606662}
+  - component: {fileID: 7126560307374205177}
   m_Layer: 0
   m_Name: Stool_01
   m_TagString: Untagged
@@ -262,3 +263,15 @@ MonoBehaviour:
   m_ForceGravityOnDetach: 0
   m_RetainTransformParent: 1
   m_AttachPointCompatibilityMode: 0
+--- !u!114 &7126560307374205177
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1156470949020172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bbb8310d19e4534590b65241c29ea02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
