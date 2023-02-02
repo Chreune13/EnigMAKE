@@ -10,9 +10,6 @@ public class ObjectManager : MonoBehaviour
     private float stickDistance = 0.3f;
 
     [SerializeField]
-    private float rotationLerpSpeed = 5f;
-
-    [SerializeField]
     private float gridSize = 0.5f;
 
     private Quaternion initialRotation;
@@ -69,7 +66,7 @@ public class ObjectManager : MonoBehaviour
     {
         isGrabbed = true;
 
-        if (PlayerState.Singleton.playerState == PlayerType.EDIT)
+        if (SceneManagment.Singleton.playerState == PlayerType.EDIT)
         {
             if (gameObject.tag == "Door")
                 transform.localScale -= doorScaleFactor;
@@ -82,7 +79,7 @@ public class ObjectManager : MonoBehaviour
     {
         isGrabbed = false;
 
-        if (PlayerState.Singleton.playerState == PlayerType.EDIT)
+        if (SceneManagment.Singleton.playerState == PlayerType.EDIT)
         {
             if (gameObject.tag == "Door")
                 transform.localScale += doorScaleFactor;

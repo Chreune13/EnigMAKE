@@ -89,7 +89,7 @@ public class NetworkGameManager : NetworkBehaviour
     {
         ProcessLastConnectedPlayer();
 
-        if(IsClient)
+        if(IsClient) // Server Crash Timeout
         {
             if((Time.frameCount - fc) * Time.deltaTime > 2.0f)
             {
@@ -108,7 +108,7 @@ public class NetworkGameManager : NetworkBehaviour
 
         if (LastConnectedPlayer.PlayerNetworkType == PlayerType.GAMEMASTER)
         {
-            if (GameMasterNetworkData.PlayerNetworkDataIsSet)
+            if (GameMasterNetworkData.PlayerNetworkDataIsSet) // GameMaster is already set
             {
                 Debug.LogWarning("A GameMaster is already connected");
 
@@ -119,33 +119,40 @@ public class NetworkGameManager : NetworkBehaviour
                 GameMasterNetworkData.PlayerNetworkDataIsSet = true;
                 GameMasterNetworkData.PlayerNetworkId = LastConnectedPlayer.PlayerNetworkId;
                 GameMasterNetworkData.PlayerNetworkType = LastConnectedPlayer.PlayerNetworkType;
-
-                LastConnectedPlayer.PlayerNetworkDataIsSet = false;
             }
         }
         else if (LastConnectedPlayer.PlayerNetworkType == PlayerType.PLAYER)
         {
-            int i;
-
-            for (i = 0; i < MAX_PLAYER; i++)
+            if (!GameMasterNetworkData.PlayerNetworkDataIsSet) // GameMaster is not set
             {
-                if(!PlayersNetworkData[i].PlayerNetworkDataIsSet)
-                {
-                    PlayersNetworkData[i].PlayerNetworkDataIsSet = true;
-                    PlayersNetworkData[i].PlayerNetworkId = LastConnectedPlayer.PlayerNetworkId;
-                    PlayersNetworkData[i].PlayerNetworkType = LastConnectedPlayer.PlayerNetworkType;
-
-                    LastConnectedPlayer.PlayerNetworkDataIsSet = false;
-
-                    break;
-                }
-            }
-
-            if(i == MAX_PLAYER)
-            {
-                Debug.LogWarning("Cannot connect a new Player, limit reach");
+                Debug.LogWarning("No GameMaster connected");
 
                 DisconnectLastConnectedPlayer();
+            }
+            else
+            {
+                int i;
+
+                for (i = 0; i < MAX_PLAYER; i++)
+                {
+                    if (!PlayersNetworkData[i].PlayerNetworkDataIsSet)
+                    {
+                        PlayersNetworkData[i].PlayerNetworkDataIsSet = true;
+                        PlayersNetworkData[i].PlayerNetworkId = LastConnectedPlayer.PlayerNetworkId;
+                        PlayersNetworkData[i].PlayerNetworkType = LastConnectedPlayer.PlayerNetworkType;
+
+                        DecorsManager.Singleton.DisplayDecor(SceneManagment.Singleton.sceneTheme);
+
+                        break;
+                    }
+                }
+
+                if (i == MAX_PLAYER) // Max count of players
+                {
+                    Debug.LogWarning("Cannot connect a new Player, limit reach");
+
+                    DisconnectLastConnectedPlayer();
+                }
             }
         }
 
@@ -154,7 +161,7 @@ public class NetworkGameManager : NetworkBehaviour
 
     public void NewPlayerConnect(ulong playerId)
     {
-        NewPlayerConnectServerRpc(playerId, PlayerState.Singleton.playerState);
+        NewPlayerConnectServerRpc(playerId, SceneManagment.Singleton.playerState);
     }
 
     private void DisconnectLastConnectedPlayer()
@@ -172,16 +179,16 @@ public class NetworkGameManager : NetworkBehaviour
             }
         };
 
-        DisconnectLastConnectedPlayerClientRpc(clientRpcParams);
+        DisconnectConnectedPlayerClientRpc(clientRpcParams);
     }
 
     [ClientRpc]
-    private void DisconnectLastConnectedPlayerClientRpc(ClientRpcParams clientRpcParams = default)
+    private void DisconnectConnectedPlayerClientRpc(ClientRpcParams clientRpcParams = default)
     {
         BackToWaitingRoom();
     }
 
-    void BackToWaitingRoom()
+    public void BackToWaitingRoom()
     {
         Destroy(NetworkManagerSingleton.instance.gameObject);
 
@@ -198,6 +205,8 @@ public class NetworkGameManager : NetworkBehaviour
             if(GameMasterNetworkData.PlayerNetworkId == playerId)
             {
                 GameMasterNetworkData.PlayerNetworkDataIsSet = false;
+
+                DisconnectEveryone();
 
                 Debug.Log("Gamemaster disconnected");
 
@@ -218,6 +227,42 @@ public class NetworkGameManager : NetworkBehaviour
             Debug.Log("Client disconnected");
 
             break;
+        }
+    }
+
+    private void DisconnectEveryone()
+    {
+        if (GameMasterNetworkData.PlayerNetworkDataIsSet)
+        {
+            GameMasterNetworkData.PlayerNetworkDataIsSet = false;
+
+            ClientRpcParams clientRpcParams = new ClientRpcParams
+            {
+                Send = new ClientRpcSendParams
+                {
+                    TargetClientIds = new ulong[] { GameMasterNetworkData.PlayerNetworkId }
+                }
+            };
+
+            DisconnectConnectedPlayerClientRpc(clientRpcParams);
+        }
+
+        for (int i = 0; i < MAX_PLAYER; i++)
+        {
+            if (!PlayersNetworkData[i].PlayerNetworkDataIsSet)
+                continue;
+
+            PlayersNetworkData[i].PlayerNetworkDataIsSet = false;
+
+            ClientRpcParams clientRpcParams = new ClientRpcParams
+            {
+                Send = new ClientRpcSendParams
+                {
+                    TargetClientIds = new ulong[] { PlayersNetworkData[i].PlayerNetworkId }
+                }
+            };
+
+            DisconnectConnectedPlayerClientRpc(clientRpcParams);
         }
     }
 

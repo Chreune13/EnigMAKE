@@ -4,12 +4,6 @@ using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEngine;
 
-public enum PlayerType
-{
-    GAMEMASTER = 0,
-    PLAYER = 1,
-    EDIT = 2
-}
 
 public class PlayerNetworkController : NetworkBehaviour
 {
