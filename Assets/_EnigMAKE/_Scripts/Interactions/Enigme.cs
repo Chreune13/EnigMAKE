@@ -8,11 +8,14 @@ public class Enigme : MonoBehaviour
    private static int nextID=0;
    protected int ID = 0;
 
+    private static int score=0;
+
     private bool enigmeSolved=false;
 
     private void Awake()
     {
         ID = nextID++;
+        SetScore(0);
     }
 
     public int getID()
@@ -22,9 +25,17 @@ public class Enigme : MonoBehaviour
     protected void SetSolved()
     {
         enigmeSolved = true;
-
+        SetScore(GetScore() + 1);
         EnigmeManager.instance.goToNext(ID);
-    }    
+    }
+    public void SetScore(int sc)
+    {
+        score = sc;
+    }
+    public int GetScore()
+    {
+        return score;
+    }
     public bool isSolved()
     {
         return enigmeSolved; 
