@@ -141,7 +141,15 @@ public class NetworkGameManager : NetworkBehaviour
                         PlayersNetworkData[i].PlayerNetworkId = LastConnectedPlayer.PlayerNetworkId;
                         PlayersNetworkData[i].PlayerNetworkType = LastConnectedPlayer.PlayerNetworkType;
 
-                        DecorsManager.Singleton.DisplayDecor(SceneManagment.Singleton.sceneTheme);
+                        ClientRpcParams clientRpcParams = new ClientRpcParams
+                        {
+                            Send = new ClientRpcSendParams
+                            {
+                                TargetClientIds = new ulong[] { PlayersNetworkData[i].PlayerNetworkId }
+                            }
+                        };
+
+                        SetDecorClientRpc(clientRpcParams);
 
                         break;
                     }
@@ -157,6 +165,12 @@ public class NetworkGameManager : NetworkBehaviour
         }
 
         LastConnectedPlayer.PlayerNetworkDataIsSet = false;
+    }
+
+    [ClientRpc]
+    void SetDecorClientRpc(ClientRpcParams clientRpcParams = default)
+    {
+        DecorsManager.Singleton.DisplayDecor(SceneManagment.Singleton.sceneTheme);
     }
 
     public void NewPlayerConnect(ulong playerId)
