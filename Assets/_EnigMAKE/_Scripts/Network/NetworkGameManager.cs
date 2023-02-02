@@ -37,6 +37,8 @@ public class NetworkGameManager : NetworkBehaviour
 
     int fc = 0;
 
+    Theme currentTheme;
+
     private void Awake()
     {
         if (Singleton == null)
@@ -170,7 +172,18 @@ public class NetworkGameManager : NetworkBehaviour
     [ClientRpc]
     void SetDecorClientRpc(ClientRpcParams clientRpcParams = default)
     {
-        DecorsManager.Singleton.DisplayDecor(SceneManagment.Singleton.sceneTheme);
+        DecorsManager.Singleton.DisplayDecor(currentTheme);
+    }
+
+    public void SetDecor(Theme theme)
+    {
+        SetDecoreServerRpc(theme);
+    }
+
+    [ServerRpc]
+    private void SetDecoreServerRpc(Theme theme)
+    {
+        currentTheme = theme;
     }
 
     public void NewPlayerConnect(ulong playerId)
