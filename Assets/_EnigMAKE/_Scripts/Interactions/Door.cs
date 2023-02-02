@@ -9,7 +9,7 @@ public class Door : Enigme
         
         GetComponent<Animator>().SetBool("DoorOpened", true);
         SetSolved();
-
+        SetScore(GetScore() + 1);
     }
     //private void OnTriggerEnter(Collider other)
     //{

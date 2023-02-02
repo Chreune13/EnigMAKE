@@ -9,6 +9,6 @@ public class Chest : Enigme
 
         GetComponent<Animator>().SetBool("ChestOpen", true);
         SetSolved();
-
+        SetScore(GetScore() + 1);
     }
 }

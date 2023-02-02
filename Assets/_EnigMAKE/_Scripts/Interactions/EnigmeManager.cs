@@ -34,6 +34,9 @@ public class EnigmeManager : MonoBehaviour
     [SerializeField]
     private int nextJetonID=0;
 
+    [SerializeField]
+    private TMP_Text score;
+
     public void OnClick()
     {
         InstantiateEnigmeJetonFromExternal(nextJetonID, Spawner.transform);
@@ -81,12 +84,14 @@ public class EnigmeManager : MonoBehaviour
             Debug.LogError("Multiple instance of singleton EnigmeManager!");
             return;
         }
-        enigmes = new enigmlistelem[5];
+        enigmes = new enigmlistelem[2];
         for(int i = 0; i < enigmes.Length; i++)
         {
-            enigmes[i].a = new actions[3];
+            enigmes[i].a = new actions[1];
         }
         instance = this;
+        
+        Debug.Log("awake " + score.text);
     }
     public void SetEnigmElem(Enigme enigme)
     {
@@ -123,6 +128,10 @@ public class EnigmeManager : MonoBehaviour
                 break;
             }
         }
+
+        score.text = enigmes[enigmes.Length-1].reff_e.GetScore().ToString();
+        Debug.Log("goToNext " + score.text);
+
     }
 
     public void SetJetonID(int id)

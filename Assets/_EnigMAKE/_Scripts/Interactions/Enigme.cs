@@ -25,7 +25,7 @@ public class Enigme : MonoBehaviour
     protected void SetSolved()
     {
         enigmeSolved = true;
-        SetScore(GetScore() + 1);
+       
         EnigmeManager.instance.goToNext(ID);
     }
     public void SetScore(int sc)
@@ -49,10 +49,10 @@ public class Enigme : MonoBehaviour
                 ExecuteAction1();
                 break;
             case 2:
-                ExecuteAction2();
+                ExecuteAction1();
                 break;
             case 3:
-                ExecuteAction3();
+                ExecuteAction1();
                 break;
             default:
                 break;
