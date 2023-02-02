@@ -4,10 +4,11 @@ using UnityEngine.Events;
 using Unity.Netcode;
 
 [System.Serializable]
-struct scenelist
+struct sceneMetaData
 {
     //public int sceneId;
     public string sceneName;
+    public Theme sceneTheme;
 
     public UnityEvent invokeDefaultMethod;
     public UnityEvent invokeGameMasterMethod;
@@ -15,16 +16,35 @@ struct scenelist
     public UnityEvent invokeEditionMethod;
 }
 
+public enum PlayerType
+{
+    GAMEMASTER = 0,
+    PLAYER = 1,
+    EDIT = 2
+}
+
+public enum Theme
+{
+    MEDIEVAL,
+    SCIENCE,
+    CHAMBRE,
+    NOTHING
+}
 
 public class SceneManagment : MonoBehaviour
 {
     public static SceneManagment Singleton;
 
+    public PlayerType playerState;
+
     private GameObject teleporter;
     private GameObject player;
+    public Theme sceneTheme;
 
     void Awake()
     {
+        sceneTheme = Theme.NOTHING;
+
         if (Singleton != null)
         {
             Debug.LogWarning("Multiple instance of SceneManagementSingleton");
@@ -59,7 +79,16 @@ public class SceneManagment : MonoBehaviour
     private void BackToMenu()
     {
         if (NetworkManagerSingleton.instance)
+        {
             Destroy(NetworkManagerSingleton.instance.gameObject);
+            sceneTheme = Theme.NOTHING;
+        }
+    }
+
+    private void ThemeToLoad(sceneMetaData scene)
+    {
+        if (DecorsManager.Singleton)
+            DecorsManager.Singleton.DisplayDecor(scene.sceneTheme);
     }
 
     // --------------------------------------------------------------------------
@@ -70,12 +99,16 @@ public class SceneManagment : MonoBehaviour
 
 
     [SerializeField]
-    private scenelist[] scenelists;
+    private sceneMetaData[] scenelists;
     
-    public void GetAndSetPlayerStateObject(int ps)
+    public void SetPlayerState(int ps)
     {
-        PlayerType playerType = (PlayerType)ps; 
-        PlayerState.Singleton.playerState = playerType;
+        playerState = (PlayerType)ps;
+    }
+
+    public void SetThemeState(int ts)
+    {
+        sceneTheme = (Theme)ts;
     }
 
     void OnEnable()
@@ -104,21 +137,24 @@ public class SceneManagment : MonoBehaviour
 
                 scenelists[i].invokeDefaultMethod.Invoke();
 
-                if (PlayerState.Singleton.playerState == PlayerType.GAMEMASTER)
+                if (playerState == PlayerType.GAMEMASTER)
                 {
                     scenelists[i].invokeGameMasterMethod.Invoke();
                 }
 
-                if (PlayerState.Singleton.playerState == PlayerType.PLAYER)
+                if (playerState == PlayerType.PLAYER)
                 {
                     scenelists[i].invokePlayerMethod.Invoke();
                 }
 
-                if (PlayerState.Singleton.playerState == PlayerType.EDIT)
+                if (playerState == PlayerType.EDIT)
                 {
                     scenelists[i].invokeEditionMethod.Invoke();
                 }
 
+                scenelists[i].sceneTheme = sceneTheme;
+                ThemeToLoad(scenelists[i]);
+                Debug.Log(sceneTheme);
                 //Debug.Log("Current sceneId : " + id + " sceneId list : " + scenelists[i].sceneId);
             }
 
