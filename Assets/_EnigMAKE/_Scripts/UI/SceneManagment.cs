@@ -99,7 +99,7 @@ public class SceneManagment : MonoBehaviour
 
 
     [SerializeField]
-    private sceneMetaData[] scenelists;
+    private sceneMetaData[] scenes;
     
     public void SetPlayerState(int ps)
     {
@@ -127,38 +127,38 @@ public class SceneManagment : MonoBehaviour
     private void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)
     {
         
-        if (scenelists == null)
+        if (scenes == null)
             return;
 
-        for (int i = 0; i < scenelists.Length; i++)
+        for (int i = 0; i < scenes.Length; i++)
         {
-            if (GetSceneIndexFromName(scenelists[i].sceneName) == GetCurrentSceneIndex())
+            if (GetSceneIndexFromName(scenes[i].sceneName) == GetCurrentSceneIndex())
             {
 
-                scenelists[i].invokeDefaultMethod.Invoke();
+                scenes[i].invokeDefaultMethod.Invoke();
 
                 if (playerState == PlayerType.GAMEMASTER)
                 {
-                    scenelists[i].invokeGameMasterMethod.Invoke();
+                    scenes[i].invokeGameMasterMethod.Invoke();
                 }
 
                 if (playerState == PlayerType.PLAYER)
                 {
-                    scenelists[i].invokePlayerMethod.Invoke();
+                    scenes[i].invokePlayerMethod.Invoke();
                 }
 
                 if (playerState == PlayerType.EDIT)
                 {
-                    scenelists[i].invokeEditionMethod.Invoke();
+                    scenes[i].invokeEditionMethod.Invoke();
                 }
 
-                scenelists[i].sceneTheme = sceneTheme;
-                ThemeToLoad(scenelists[i]);
+                scenes[i].sceneTheme = sceneTheme;
+                ThemeToLoad(scenes[i]);
                 Debug.Log(sceneTheme);
-                //Debug.Log("Current sceneId : " + id + " sceneId list : " + scenelists[i].sceneId);
+                //Debug.Log("Current sceneId : " + id + " sceneId list : " + scenes[i].sceneId);
             }
 
-            //Debug.Log("Current sceneId : " + id + " sceneId list : " + scenelists[i].sceneId);
+            //Debug.Log("Current sceneId : " + id + " sceneId list : " + scenes[i].sceneId);
         }
 
         teleporter = GetTeleporter();
