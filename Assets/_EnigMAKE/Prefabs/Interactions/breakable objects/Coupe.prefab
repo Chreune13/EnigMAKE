@@ -593,6 +593,7 @@ GameObject:
   - component: {fileID: -3531736342536138246}
   - component: {fileID: -8570309293140138212}
   - component: {fileID: 7109981683253933120}
+  - component: {fileID: 7706041669294328510}
   m_Layer: 0
   m_Name: Coupe
   m_TagString: Destruction
@@ -868,6 +869,18 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 3364046789922135116, guid: a130719b5d4b7654f991878c78e7117b, type: 3}
+--- !u!114 &7706041669294328510
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5782104122182524170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd739204d823e1d49af0cba764c33997, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &9007461657238237318
 GameObject:
   m_ObjectHideFlags: 0

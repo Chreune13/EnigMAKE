@@ -49,7 +49,7 @@ GameObject:
   - component: {fileID: 2087757051}
   m_Layer: 0
   m_Name: MarteauEnfant
-  m_TagString: Untagged
+  m_TagString: hammer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

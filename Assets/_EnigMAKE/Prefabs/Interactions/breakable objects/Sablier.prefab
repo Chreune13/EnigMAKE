@@ -1283,6 +1283,7 @@ GameObject:
   - component: {fileID: -9096793818280670101}
   - component: {fileID: 4801489946733770197}
   - component: {fileID: 1864336232860824484}
+  - component: {fileID: 54866619310692131}
   m_Layer: 0
   m_Name: Sablier
   m_TagString: Destruction
@@ -1565,6 +1566,18 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -8855424465492398110, guid: dc7735bcab8247842bb0e61fe616969f, type: 3}
+--- !u!114 &54866619310692131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7505156167445918442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd739204d823e1d49af0cba764c33997, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7562657347259617081
 GameObject:
   m_ObjectHideFlags: 0
