@@ -36,10 +36,11 @@ public class EnigmeManager : MonoBehaviour
     private int nextJetonID=0;
 
 
-    private String scoreString = "Bravo ! Vous avez résolu ";
+    private String scoreString_ = "Bravo ! Vous avez résolu ";
     [SerializeField]
     private GameObject score;
-    private String scoreString_ = " énigmes !";
+    private TMP_Text score_TMP;
+    private String _scoreString = " énigmes !";
 
     public void OnClick()
     {
@@ -95,8 +96,9 @@ public class EnigmeManager : MonoBehaviour
         }
         instance = this;
 
+        score_TMP = score.transform.GetChild(2).GetComponent<TMP_Text>();
         score.SetActive(false);
-        //Debug.Log("awake " + score.text);
+        Debug.Log("awake " + score_TMP.text);
     }
     public void SetEnigmElem(Enigme enigme)
     {
@@ -135,8 +137,8 @@ public class EnigmeManager : MonoBehaviour
         }
 
         score.SetActive(true);
-        score.GetComponent<TMP_Text>().text = scoreString + enigmes[enigmes.Length-1].reff_e.GetScore().ToString() + scoreString_;
-        //Debug.Log("goToNext " + score.text);
+        score_TMP.text = scoreString_ + enigmes[enigmes.Length-1].reff_e.GetScore().ToString() + _scoreString;
+        Debug.Log("goToNext " + score_TMP.text);
 
     }
 

@@ -1616,17 +1616,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &115114306 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2423123460471744015, guid: f328f405a9a016a4e9b9e28052ca8126, type: 3}
-  m_PrefabInstance: {fileID: 2423123460441630541}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &126982906
 Transform:
   m_ObjectHideFlags: 0
@@ -18703,6 +18692,11 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!1 &1875868942 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2423123459891997421, guid: f328f405a9a016a4e9b9e28052ca8126, type: 3}
+  m_PrefabInstance: {fileID: 2423123460441630541}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1877771828
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32066,6 +32060,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Score Panel
       objectReference: {fileID: 0}
+    - target: {fileID: 2423123460471744013, guid: f328f405a9a016a4e9b9e28052ca8126, type: 3}
+      propertyPath: m_Name
+      value: Score_TMP
+      objectReference: {fileID: 0}
     - target: {fileID: 2423123460471744015, guid: f328f405a9a016a4e9b9e28052ca8126, type: 3}
       propertyPath: m_fontColor.b
       value: 0.6226415
@@ -35770,7 +35768,7 @@ MonoBehaviour:
   ActionJetonPrefab: {fileID: 4731396475506530896, guid: a70ec99fc53f2ef4f9b2e3912e2772e5, type: 3}
   Spawner: {fileID: 109684119719416134}
   nextJetonID: 0
-  score: {fileID: 115114306}
+  score: {fileID: 1875868942}
 --- !u!114 &5694403551886494635
 MonoBehaviour:
   m_ObjectHideFlags: 0
