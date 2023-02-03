@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Events;
 using Unity.Netcode;
+using System.Collections;
 
 [System.Serializable]
 struct sceneMetaData
@@ -78,9 +79,9 @@ public class SceneManagment : MonoBehaviour
     }
     private void BackToMenu()
     {
-        if (NetworkManagerSingleton.instance)
+        if (NetworkManager.Singleton)
         {
-            Destroy(NetworkManagerSingleton.instance.gameObject);
+            Destroy(NetworkManager.Singleton.gameObject);
             sceneTheme = Theme.NOTHING;
         }
     }
@@ -89,6 +90,16 @@ public class SceneManagment : MonoBehaviour
     {
         if (DecorsManager.Singleton)
             DecorsManager.Singleton.DisplayDecor(scene.sceneTheme);
+
+        StartCoroutine(SetDecoreRpcCoroutine(scene.sceneTheme));
+    }
+
+    IEnumerator SetDecoreRpcCoroutine(Theme theme)
+    {
+        yield return new WaitForSeconds(0.5f);
+
+        if (NetworkGameManager.Singleton)
+            NetworkGameManager.Singleton.SetDecoreServerRpc(theme);
     }
 
     // --------------------------------------------------------------------------
