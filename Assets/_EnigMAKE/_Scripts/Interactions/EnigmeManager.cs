@@ -38,7 +38,7 @@ public class EnigmeManager : MonoBehaviour
 
     private String scoreString = "Bravo ! Vous avez résolu ";
     [SerializeField]
-    private TMP_Text score;
+    private GameObject score;
     private String scoreString_ = " énigmes !";
 
     public void OnClick()
@@ -94,8 +94,9 @@ public class EnigmeManager : MonoBehaviour
             enigmes[i].a = new actions[1];
         }
         instance = this;
-        
-        Debug.Log("awake " + score.text);
+
+        score.SetActive(false);
+        //Debug.Log("awake " + score.text);
     }
     public void SetEnigmElem(Enigme enigme)
     {
@@ -133,8 +134,9 @@ public class EnigmeManager : MonoBehaviour
             }
         }
 
-        score.text = scoreString + enigmes[enigmes.Length-1].reff_e.GetScore().ToString() + scoreString_;
-        Debug.Log("goToNext " + score.text);
+        score.SetActive(true);
+        score.GetComponent<TMP_Text>().text = scoreString + enigmes[enigmes.Length-1].reff_e.GetScore().ToString() + scoreString_;
+        //Debug.Log("goToNext " + score.text);
 
     }
 
