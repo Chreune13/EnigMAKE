@@ -23,10 +23,8 @@ public class EnigmesClassement : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        print("OnTriggerEnter");
         if (other.tag == "Chest" || other.tag == "Locke" || other.tag == "Door" || other.tag == "Digicode" || other.tag == "Breakable")
         {
-            print("Untagged");
             if (gameObject.tag == "Enigmes" && (other.gameObject.tag != "Enigmes" || other.gameObject.tag != "Actions" /*|| other.gameObject.tag != "Key" )*/))
             {
                 

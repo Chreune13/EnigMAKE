@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
 using System.IO;
 using UnityEngine;
 
@@ -20,6 +21,8 @@ public class SaveAndLoadScene : MonoBehaviour
         else
         {
             Debug.LogWarning("Multiple instance of type SaveAndLoadScene");
+            gameObject.SetActive(false);
+            return;
         }
 
        
@@ -33,7 +36,14 @@ public class SaveAndLoadScene : MonoBehaviour
             }
         }
     }
-    public void Save()
+
+    public void Save(string fileName)
+    {
+        SaveServerRpc(fileName);
+    }
+
+    [ServerRpc(RequireOwnership = false)]
+    private void SaveServerRpc(string fileName)
     {
         string dir = Application.persistentDataPath + "/Saves";
         if(!Directory.Exists(dir))
@@ -65,55 +75,68 @@ public class SaveAndLoadScene : MonoBehaviour
                 savedList += "\n;\n";
         }
 
-        File.WriteAllText(dir + "/save1.txt", savedList);
+        File.WriteAllText(dir + "/" + fileName, savedList);
     }
 
     public static string NormalizeName(string originalName)
     {
         string name = originalName;
 
-        if (name.Contains("(Clone)"))
+        if (name.Contains(" ("))
         {
-            string[] tmp = name.Split("(Clone)");
+            string[] tmp = name.Split(" (");
             name = tmp[0];
         }
 
         return name;
     }
 
-    public void Load()
+    public void Load(string fileName)
     {
-        
-        string saveFilePath = Application.persistentDataPath + "/Saves/save1.txt";
-        
+        LoadServerRpc(fileName);
+    }
+
+    [ServerRpc(RequireOwnership = false)]
+    private void LoadServerRpc(string fileName)
+    {
+        StartCoroutine(LoadCoroutine(fileName));
+    }
+
+    IEnumerator LoadCoroutine(string fileName)
+    {
+        string saveFilePath = Application.persistentDataPath + "/Saves/" + fileName;
+
         if (File.Exists(saveFilePath))
         {
-            
-           
-            string json= File.ReadAllText(saveFilePath);
+
+
+            string json = File.ReadAllText(saveFilePath);
             string[] jsonArray = json.Split(';');
             int index = 0;
 
-            int IDmax=-1;
+            int IDmax = -1;
+            if (autoRegisterSaves != null)
+            {
+                foreach (AutoRegisterSave reg in autoRegisterSaves)
+                {
+                    Destroy(reg.gameObject);
+                }
+                autoRegisterSaves.Clear();
+            }
+            
             foreach (string str in jsonArray)
             {
                 int jetonId = 0;
                 DataSaved data = JsonUtility.FromJson<DataSaved>(jsonArray[index]);
                 if (data != null)
-                 jetonId = data.enigmeID; 
-
-                if (PrefabToSave.ContainsKey(data.PrefabName))
+                    jetonId = data.enigmeID;
+                string normName = NormalizeName(data.PrefabName);
+                if (PrefabToSave.ContainsKey(normName))
                 {
-                    if(autoRegisterSaves != null)
-                    {
-                        foreach (AutoRegisterSave reg in autoRegisterSaves)
-                        {
-                            Destroy(reg.gameObject);
-                        }
-                        autoRegisterSaves.Clear();
-                    }
-                    
-                    GameObject AutoRegisterObject = Instantiate(PrefabToSave[data.PrefabName]);
+                    data.PrefabName = normName;
+                    GameObject AutoRegisterObject = Instantiate(PrefabToSave[normName]);
+                    Debug.Log(AutoRegisterObject.name);
+                    AutoRegisterObject.GetComponent<NetworkObject>().Spawn();
 
                     AutoRegisterObject.GetComponent<AutoRegisterSave>().GenerateLoaded<DataSaved>(data);
                 }
@@ -121,7 +144,7 @@ public class SaveAndLoadScene : MonoBehaviour
                     IDmax = jetonId;
                 index++;
             }
-           
+
             for (int i = 0; i < IDmax; i++)
             {
                 EnigmeManager.instance.OnClick();
@@ -132,5 +155,7 @@ public class SaveAndLoadScene : MonoBehaviour
         {
             Debug.Log("Le fichier n'existe pas...");
         }
+
+        yield return null;
     }
 }

@@ -106,8 +106,6 @@ public class EnigmeManager : MonoBehaviour
         enigmes[nextJetonID - 1].reff_e = enigme;
 
         Debug.Log(enigmes[nextJetonID - 1].reff_e);
-
-
     }
     public void SetActionElem(Enigme action,int id)
     {

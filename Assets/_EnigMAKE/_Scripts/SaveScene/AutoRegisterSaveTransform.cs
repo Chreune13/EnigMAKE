@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class AutoRegisterSaveTransform : AutoRegisterSave
 {
+    static int a = 0;
+
     public override void GenerateLoaded<T>(T saved)
     {
-        //name = saved.prefab;
+        name = saved.PrefabName;
         transform.position = new Vector3(saved.posX,saved.posY,saved.posZ);
         transform.rotation = new Quaternion(saved.rotaX, saved.rotaY, saved.rotaZ, saved.rotaW);
         transform.localScale=new Vector3(saved.scaleX,saved.scaleY,saved.scaleZ);

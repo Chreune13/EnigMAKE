@@ -174,7 +174,6 @@ public class NetworkGameManager : NetworkBehaviour
 
     public void SetDecor(Theme theme)
     {
-        Debug.Log(theme);
         SetDecoreServerRpc(theme);
     }
 
@@ -183,7 +182,9 @@ public class NetworkGameManager : NetworkBehaviour
     {
         DecorsManager.Singleton.DisplayDecor(theme);
         currentTheme = theme;
-        Debug.Log(currentTheme);
+
+        if (theme == Theme.MEDIEVAL)
+            SaveAndLoadScene.Singleton.Load("medieval.txt");
     }
 
     public void NewPlayerConnect(ulong playerId)

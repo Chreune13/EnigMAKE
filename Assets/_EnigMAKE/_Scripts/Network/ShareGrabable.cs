@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
 [RequireComponent(typeof(XRGrabInteractable))]
+[RequireComponent(typeof(TransformNetworkSync))]
 public class ShareGrabable : NetworkBehaviour
 {
     XRGrabInteractable grabInteractable;
