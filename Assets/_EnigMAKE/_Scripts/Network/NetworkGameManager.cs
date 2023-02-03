@@ -1,10 +1,7 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEngine;
-using UnityEngine.Windows;
-using UnityEditor.PackageManager;
 using UnityEngine.SceneManagement;
 
 #if UNITY_EDITOR
@@ -36,6 +33,8 @@ public class NetworkGameManager : NetworkBehaviour
     private bool StartAsAServer = false;
 
     int fc = 0;
+
+    Theme currentTheme = Theme.NOTHING;
 
     private void Awake()
     {
@@ -141,7 +140,15 @@ public class NetworkGameManager : NetworkBehaviour
                         PlayersNetworkData[i].PlayerNetworkId = LastConnectedPlayer.PlayerNetworkId;
                         PlayersNetworkData[i].PlayerNetworkType = LastConnectedPlayer.PlayerNetworkType;
 
-                        DecorsManager.Singleton.DisplayDecor(SceneManagment.Singleton.sceneTheme);
+                        ClientRpcParams clientRpcParams = new ClientRpcParams
+                        {
+                            Send = new ClientRpcSendParams
+                            {
+                                TargetClientIds = new ulong[] { PlayersNetworkData[i].PlayerNetworkId }
+                            }
+                        };
+
+                        SetDecorClientRpc(currentTheme, clientRpcParams);
 
                         break;
                     }
@@ -157,6 +164,26 @@ public class NetworkGameManager : NetworkBehaviour
         }
 
         LastConnectedPlayer.PlayerNetworkDataIsSet = false;
+    }
+
+    [ClientRpc]
+    void SetDecorClientRpc(Theme theme, ClientRpcParams clientRpcParams = default)
+    {
+        DecorsManager.Singleton.DisplayDecor(theme);
+    }
+
+    public void SetDecor(Theme theme)
+    {
+        Debug.Log(theme);
+        SetDecoreServerRpc(theme);
+    }
+
+    [ServerRpc(RequireOwnership = false)]
+    public void SetDecoreServerRpc(Theme theme)
+    {
+        DecorsManager.Singleton.DisplayDecor(theme);
+        currentTheme = theme;
+        Debug.Log(currentTheme);
     }
 
     public void NewPlayerConnect(ulong playerId)
