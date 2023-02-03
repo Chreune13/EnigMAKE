@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2217199590339132257}
   m_Layer: 0
   m_Name: Vase08
-  m_TagString: Untagged
+  m_TagString: Destruction
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -130,7 +130,7 @@ GameObject:
   - component: {fileID: 1528008194627856476}
   m_Layer: 0
   m_Name: Vase05
-  m_TagString: Untagged
+  m_TagString: Destruction
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -245,7 +245,7 @@ GameObject:
   - component: {fileID: 8837692756387747066}
   m_Layer: 0
   m_Name: Vase06
-  m_TagString: Untagged
+  m_TagString: Destruction
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -360,7 +360,7 @@ GameObject:
   - component: {fileID: 1303464881678708032}
   m_Layer: 0
   m_Name: Vase13
-  m_TagString: Untagged
+  m_TagString: Destruction
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -475,7 +475,7 @@ GameObject:
   - component: {fileID: 5523800625879063310}
   m_Layer: 0
   m_Name: Vase11
-  m_TagString: Untagged
+  m_TagString: Destruction
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -590,7 +590,7 @@ GameObject:
   - component: {fileID: 2492199973367099563}
   m_Layer: 0
   m_Name: Vase10
-  m_TagString: Untagged
+  m_TagString: Destruction
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -705,7 +705,7 @@ GameObject:
   - component: {fileID: 3534013561119106558}
   m_Layer: 0
   m_Name: Vase12
-  m_TagString: Untagged
+  m_TagString: Destruction
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -820,7 +820,7 @@ GameObject:
   - component: {fileID: 5297084930140805020}
   m_Layer: 0
   m_Name: Vase02
-  m_TagString: Untagged
+  m_TagString: Destruction
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -935,7 +935,7 @@ GameObject:
   - component: {fileID: 5791245829679309912}
   m_Layer: 0
   m_Name: Vase09
-  m_TagString: Untagged
+  m_TagString: Destruction
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1299,7 +1299,7 @@ GameObject:
   - component: {fileID: 4459159510017606578}
   m_Layer: 0
   m_Name: Vase03
-  m_TagString: Untagged
+  m_TagString: Destruction
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1414,7 +1414,7 @@ GameObject:
   - component: {fileID: 5483998337063604747}
   m_Layer: 0
   m_Name: Vase
-  m_TagString: Untagged
+  m_TagString: Destruction
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1529,7 +1529,7 @@ GameObject:
   - component: {fileID: 1044906159692317734}
   m_Layer: 0
   m_Name: Vase04
-  m_TagString: Untagged
+  m_TagString: Destruction
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1644,7 +1644,7 @@ GameObject:
   - component: {fileID: 5987304514198294669}
   m_Layer: 0
   m_Name: Vase07
-  m_TagString: Untagged
+  m_TagString: Destruction
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1759,7 +1759,7 @@ GameObject:
   - component: {fileID: 3290677465560116738}
   m_Layer: 0
   m_Name: Vase01
-  m_TagString: Untagged
+  m_TagString: Destruction
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
