@@ -1,10 +1,7 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEngine;
-using UnityEngine.Windows;
-using UnityEditor.PackageManager;
 using UnityEngine.SceneManagement;
 
 #if UNITY_EDITOR
@@ -37,7 +34,7 @@ public class NetworkGameManager : NetworkBehaviour
 
     int fc = 0;
 
-    Theme currentTheme;
+    Theme currentTheme = Theme.NOTHING;
 
     private void Awake()
     {
@@ -151,7 +148,7 @@ public class NetworkGameManager : NetworkBehaviour
                             }
                         };
 
-                        SetDecorClientRpc(clientRpcParams);
+                        SetDecorClientRpc(currentTheme, clientRpcParams);
 
                         break;
                     }
@@ -170,20 +167,23 @@ public class NetworkGameManager : NetworkBehaviour
     }
 
     [ClientRpc]
-    void SetDecorClientRpc(ClientRpcParams clientRpcParams = default)
+    void SetDecorClientRpc(Theme theme, ClientRpcParams clientRpcParams = default)
     {
-        DecorsManager.Singleton.DisplayDecor(currentTheme);
+        DecorsManager.Singleton.DisplayDecor(theme);
     }
 
     public void SetDecor(Theme theme)
     {
+        Debug.Log(theme);
         SetDecoreServerRpc(theme);
     }
 
-    [ServerRpc]
-    private void SetDecoreServerRpc(Theme theme)
+    [ServerRpc(RequireOwnership = false)]
+    public void SetDecoreServerRpc(Theme theme)
     {
+        DecorsManager.Singleton.DisplayDecor(theme);
         currentTheme = theme;
+        Debug.Log(currentTheme);
     }
 
     public void NewPlayerConnect(ulong playerId)
