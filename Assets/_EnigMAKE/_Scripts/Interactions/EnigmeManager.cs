@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System;
 
 [System.Serializable]
 struct enigmlistelem
@@ -34,8 +35,11 @@ public class EnigmeManager : MonoBehaviour
     [SerializeField]
     private int nextJetonID=0;
 
+
+    private String scoreString = "Bravo ! Vous avez résolu ";
     [SerializeField]
     private TMP_Text score;
+    private String scoreString_ = " énigmes !";
 
     public void OnClick()
     {
@@ -129,7 +133,7 @@ public class EnigmeManager : MonoBehaviour
             }
         }
 
-        score.text = enigmes[enigmes.Length-1].reff_e.GetScore().ToString();
+        score.text = scoreString + enigmes[enigmes.Length-1].reff_e.GetScore().ToString() + scoreString_;
         Debug.Log("goToNext " + score.text);
 
     }
