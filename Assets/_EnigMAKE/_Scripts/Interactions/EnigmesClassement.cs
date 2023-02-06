@@ -23,7 +23,8 @@ public class EnigmesClassement : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Chest" || other.tag == "Locke" || other.tag == "Door" || other.tag == "Digicode" || other.tag == "Breakable")
+        print("OnTriggerEnter");
+        if (other.tag == "Chest" || other.tag == "Locke" || other.tag == "Door" || other.tag == "Digicode" || other.tag == "Destruction" || other.tag=="hammer")
         {
             if (gameObject.tag == "Enigmes" && (other.gameObject.tag != "Enigmes" || other.gameObject.tag != "Actions" /*|| other.gameObject.tag != "Key" )*/))
             {
@@ -47,24 +48,28 @@ public class EnigmesClassement : MonoBehaviour
                 {
                     EnigmeManager.instance.SetEnigmElem(enigme);
                     gameObject.GetComponent<MeshRenderer>().enabled = false;
-                    for(int i = 0;i<transform.childCount;i++)
+                    gameObject.GetComponent<Collider>().enabled = false;
+                    for (int i = 0;i<transform.childCount;i++)
                     {
                         transform.GetChild(i).gameObject.SetActive(false);
                     }
+                    
                 }
                 if (gameObject.tag == "Actions" && (other.gameObject.tag != "Enigmes" || other.gameObject.tag != "Actions"))
                 {
                     EnigmeManager.instance.SetActionElem(action, ID - 1); //enigme.getID()
                     gameObject.GetComponent<MeshRenderer>().enabled = false;
+                    gameObject.GetComponent<Collider>().enabled = false;
                     for (int i = 0; i < transform.childCount; i++)
                     {
                         transform.GetChild(i).gameObject.SetActive(false);
                     }
                 }
-                trigger =false;
+
+                trigger = false;
             }
-            
-            
+           
+
         }
         Debug.Log(ID);
 
