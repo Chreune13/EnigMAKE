@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class Break : Enigme
 {
+
+    //private void Start()
+    //{
+    //    GetComponent<MeshCollider>().enabled = false;
+    //    //GetComponent<BoxCollider>().enabled = true;
+    //}
+
     override protected void ExecuteAction1()
     {
         Rigidbody[] rigibObject = GetComponentsInChildren<Rigidbody>();
@@ -14,4 +21,11 @@ public class Break : Enigme
         }
         SetSolved();
     }
+
+    //private void OnCollideEnter(Collision collision)
+    //{
+    //    GetComponent<MeshCollider>().enabled = true;
+    //    GetComponent<BoxCollider>().enabled = false;
+       
+    //}
 }

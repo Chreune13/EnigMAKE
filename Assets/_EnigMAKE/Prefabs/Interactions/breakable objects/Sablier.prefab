@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8801926409142358519}
   m_Layer: 0
   m_Name: Sablier05
-  m_TagString: Destruction
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -130,7 +130,7 @@ GameObject:
   - component: {fileID: 4424854228743281655}
   m_Layer: 0
   m_Name: Sablier06
-  m_TagString: Destruction
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -245,7 +245,7 @@ GameObject:
   - component: {fileID: 8164468678118484883}
   m_Layer: 0
   m_Name: Sablier04
-  m_TagString: Destruction
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -360,7 +360,7 @@ GameObject:
   - component: {fileID: 5989398181071823496}
   m_Layer: 0
   m_Name: Base06
-  m_TagString: Destruction
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -475,7 +475,7 @@ GameObject:
   - component: {fileID: 8130450446153017072}
   m_Layer: 0
   m_Name: Base05
-  m_TagString: Destruction
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -590,7 +590,7 @@ GameObject:
   - component: {fileID: 4659524461597250674}
   m_Layer: 0
   m_Name: Sablier01
-  m_TagString: Destruction
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -705,7 +705,7 @@ GameObject:
   - component: {fileID: 6229918187367723713}
   m_Layer: 0
   m_Name: Sablier02
-  m_TagString: Destruction
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -820,7 +820,7 @@ GameObject:
   - component: {fileID: 7725985297903969227}
   m_Layer: 0
   m_Name: Base03
-  m_TagString: Destruction
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -935,7 +935,7 @@ GameObject:
   - component: {fileID: 4677078161408640325}
   m_Layer: 0
   m_Name: Base07
-  m_TagString: Destruction
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1050,7 +1050,7 @@ GameObject:
   - component: {fileID: 1921338116146051945}
   m_Layer: 0
   m_Name: Sable
-  m_TagString: Destruction
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1165,7 +1165,7 @@ GameObject:
   - component: {fileID: 7945187598605862623}
   m_Layer: 0
   m_Name: Base02
-  m_TagString: Destruction
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1593,7 +1593,7 @@ GameObject:
   - component: {fileID: 4368390113482375643}
   m_Layer: 0
   m_Name: Base04
-  m_TagString: Destruction
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1708,7 +1708,7 @@ GameObject:
   - component: {fileID: 8524468276219689156}
   m_Layer: 0
   m_Name: Sablier03
-  m_TagString: Destruction
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

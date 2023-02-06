@@ -134,18 +134,6 @@ PrefabInstance:
       propertyPath: GlobalObjectIdHash
       value: 1139817057
       objectReference: {fileID: 0}
-    - target: {fileID: -7742986560787549528, guid: 25c1c8572271e50408aea46e1541e8e1, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -2047314466902192517, guid: 25c1c8572271e50408aea46e1541e8e1, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1632730466715221732, guid: 25c1c8572271e50408aea46e1541e8e1, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4010155248726735640, guid: 25c1c8572271e50408aea46e1541e8e1, type: 3}
       propertyPath: m_Name
       value: Vase
@@ -193,10 +181,6 @@ PrefabInstance:
     - target: {fileID: 4390233790240661922, guid: 25c1c8572271e50408aea46e1541e8e1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6322112543193116678, guid: 25c1c8572271e50408aea46e1541e8e1, type: 3}
-      propertyPath: m_Convex
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 25c1c8572271e50408aea46e1541e8e1, type: 3}
@@ -2775,6 +2759,34 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 774653677078776045, guid: 4106e25bf5752c042acbcaa72d7add68, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 1711582851628574199, guid: 4106e25bf5752c042acbcaa72d7add68, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 1912652088799053686, guid: 4106e25bf5752c042acbcaa72d7add68, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 2006963601767474178, guid: 4106e25bf5752c042acbcaa72d7add68, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 2168116853746288513, guid: 4106e25bf5752c042acbcaa72d7add68, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 3628806802192250008, guid: 4106e25bf5752c042acbcaa72d7add68, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 6981990637138010309, guid: 4106e25bf5752c042acbcaa72d7add68, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 7243723584904299513, guid: 4106e25bf5752c042acbcaa72d7add68, type: 3}
       propertyPath: m_RootOrder
       value: 18
@@ -2819,6 +2831,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7530083215187924598, guid: 4106e25bf5752c042acbcaa72d7add68, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 8056148721251342659, guid: 4106e25bf5752c042acbcaa72d7add68, type: 3}
       propertyPath: m_Name
       value: fox
@@ -2826,6 +2842,14 @@ PrefabInstance:
     - target: {fileID: 8056148721251342659, guid: 4106e25bf5752c042acbcaa72d7add68, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8573465406611944560, guid: 4106e25bf5752c042acbcaa72d7add68, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 9213852331198892131, guid: 4106e25bf5752c042acbcaa72d7add68, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4106e25bf5752c042acbcaa72d7add68, type: 3}

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3374927892968695422}
   m_Layer: 0
   m_Name: Coupe02
-  m_TagString: Destruction
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -130,7 +130,7 @@ GameObject:
   - component: {fileID: 8467718314869542043}
   m_Layer: 0
   m_Name: Coupe05
-  m_TagString: Destruction
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -245,7 +245,7 @@ GameObject:
   - component: {fileID: 7237473450251150887}
   m_Layer: 0
   m_Name: Coupe04
-  m_TagString: Destruction
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -360,7 +360,7 @@ GameObject:
   - component: {fileID: 7390918271834269865}
   m_Layer: 0
   m_Name: Coupe06
-  m_TagString: Destruction
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -475,7 +475,7 @@ GameObject:
   - component: {fileID: 9181400057904965844}
   m_Layer: 0
   m_Name: Coupe01
-  m_TagString: Destruction
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -896,7 +896,7 @@ GameObject:
   - component: {fileID: 3612943392155182535}
   m_Layer: 0
   m_Name: Coupe03
-  m_TagString: Destruction
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
