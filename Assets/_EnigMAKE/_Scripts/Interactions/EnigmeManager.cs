@@ -19,6 +19,9 @@ struct actions
 
 public class EnigmeManager : MonoBehaviour
 {
+
+    private int score = 0;
+
     public static EnigmeManager instance;
 
     [SerializeField]
@@ -29,21 +32,23 @@ public class EnigmeManager : MonoBehaviour
     [SerializeField]
     private GameObject ActionJetonPrefab;
 
-    [SerializeField]
-    private GameObject Spawner;
+    /*[SerializeField]
+    private GameObject Spawner;*/
 
     [SerializeField]
-    private int nextJetonID=0;
+    private int nextJetonID=1;
 
 
     private String scoreString_ = "Bravo ! Vous avez résolu ";
-    [SerializeField]
-    private GameObject score;
+   // [SerializeField]
+    private GameObject scoreGo;
     private TMP_Text score_TMP;
     private String _scoreString = " énigmes !";
 
     public void OnClick()
     {
+        GameObject Spawner = TokenSpawnPointSingleton.instance.gameObject;
+
         InstantiateEnigmeJetonFromExternal(nextJetonID, Spawner.transform);
         InstantiateActionJetonFromExternal(0, Spawner.transform);
 
@@ -89,17 +94,22 @@ public class EnigmeManager : MonoBehaviour
             Debug.LogError("Multiple instance of singleton EnigmeManager!");
             return;
         }
-        enigmes = new enigmlistelem[2];
+        enigmes = new enigmlistelem[3];
         for(int i = 0; i < enigmes.Length; i++)
         {
             enigmes[i].a = new actions[1];
         }
         instance = this;
 
-        score_TMP = score.transform.GetChild(2).GetComponent<TMP_Text>();
-        score.SetActive(false);
-        Debug.Log("awake " + score_TMP.text);
+        if(ScorePanelSingleton.instance)
+        {
+            scoreGo = ScorePanelSingleton.instance.gameObject;
+            score_TMP = scoreGo.transform.GetChild(2).GetComponent<TMP_Text>();
+            scoreGo.SetActive(false);
+            Debug.Log("awake " + score_TMP.text);
+        }
     }
+
     public void SetEnigmElem(Enigme enigme)
     {
 
@@ -109,7 +119,7 @@ public class EnigmeManager : MonoBehaviour
     }
     public void SetActionElem(Enigme action,int id)
     {
-        
+        Debug.Log(nextJetonID + "  " + id);
         
         enigmes[nextJetonID - 1].a[id].reff_a = action;
         Debug.Log(enigmes[nextJetonID - 1].a[id].reff_a);
@@ -127,15 +137,16 @@ public class EnigmeManager : MonoBehaviour
 
                 for (int j = 0; j < enigmes[i].a.Length; j++)
                 {
-                    enigmes[i].a[j].reff_a.ExecuteAction(enigmes[i].a[j].actionId);
+                    enigmes[i].a[j].reff_a.ExecuteAction();
                 }
 
                 break;
             }
         }
 
-        score.SetActive(true);
-        score_TMP.text = scoreString_ + enigmes[enigmes.Length-1].reff_e.GetScore().ToString() + _scoreString;
+        //GameObject score = ScorePanelSingleton.instance.gameObject;
+        scoreGo.SetActive(true);
+        score_TMP.text = scoreString_ + GetScore().ToString() + _scoreString;
         Debug.Log("goToNext " + score_TMP.text);
 
     }
@@ -147,6 +158,15 @@ public class EnigmeManager : MonoBehaviour
     public int GetJetonID()
     {
         return nextJetonID;
+    }
+    public void IncrementScore()
+    {
+        score++;
+    }
+
+    public int GetScore()
+    {
+        return score;
     }
 
 }

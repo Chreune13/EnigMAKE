@@ -143,9 +143,10 @@ GameObject:
   - component: {fileID: 7345370274488663120}
   - component: {fileID: 7345370274488663119}
   - component: {fileID: -1511734590592870544}
-  - component: {fileID: 386736280790391199}
-  - component: {fileID: -4809645698823304505}
-  - component: {fileID: 5181662099232753758}
+  - component: {fileID: -40795917378604221}
+  - component: {fileID: -3668180238827122605}
+  - component: {fileID: 3258905343877428139}
+  - component: {fileID: 8318720213538697732}
   m_Layer: 0
   m_Name: CoffreMedieval
   m_TagString: Chest
@@ -204,7 +205,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_InteractionLayers:
-    m_Bits: 6
+    m_Bits: 4
   m_SelectMode: 0
   m_CustomReticle: {fileID: 0}
   m_FirstHoverEntered:
@@ -313,7 +314,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bbb8310d19e4534590b65241c29ea02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &386736280790391199
+--- !u!114 &-40795917378604221
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -322,10 +323,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 7345370274488663118}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e2da99e97568e147a759cd7d6a09ee3, type: 3}
+  m_Script: {fileID: 11500000, guid: c73b3d883499bdc4d814774177caecf9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &-4809645698823304505
+--- !u!114 &-3668180238827122605
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -337,7 +338,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1765aa6a578f6f4bbe430513d151872, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &5181662099232753758
+--- !u!114 &3258905343877428139
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7345370274488663118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e2da99e97568e147a759cd7d6a09ee3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8318720213538697732
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -351,7 +364,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GlobalObjectIdHash: 951099334
   AlwaysReplicateAsRoot: 0
-  DontDestroyWithOwner: 1
+  DontDestroyWithOwner: 0
   AutoObjectParentSync: 1
 --- !u!1 &8179236946069723600
 GameObject:
@@ -370,7 +383,6 @@ GameObject:
   - component: {fileID: 8179236946069723603}
   - component: {fileID: 8179236946069723602}
   - component: {fileID: 8179236946069723601}
-  - component: {fileID: 3264497148207746013}
   m_Layer: 0
   m_Name: CoffreMediaval_Bas
   m_TagString: Untagged
@@ -521,15 +533,3 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.290115, y: 0.13402247, z: 0.1971671}
   m_Center: {x: 0.0011722445, y: 0.06513941, z: -0.0034607202}
---- !u!114 &3264497148207746013
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8179236946069723600}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 868cdfe5816e1ad48af06b8ca886d8bb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

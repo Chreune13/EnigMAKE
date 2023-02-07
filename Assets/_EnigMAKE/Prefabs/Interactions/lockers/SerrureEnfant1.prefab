@@ -16,11 +16,11 @@ GameObject:
   - component: {fileID: 2136649636901757106}
   - component: {fileID: 3881041985515809968}
   - component: {fileID: 2616867457217772429}
-  - component: {fileID: 5993632166916564086}
   - component: {fileID: 8649626452706927280}
   - component: {fileID: 6886235536074631854}
   - component: {fileID: -5103603724707159528}
   - component: {fileID: -341153403274830711}
+  - component: {fileID: 8731893131107196124}
   m_Layer: 0
   m_Name: SerrureEnfant1
   m_TagString: Locke
@@ -203,7 +203,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_InteractionLayers:
-    m_Bits: 6
+    m_Bits: 4
   m_SelectMode: 0
   m_CustomReticle: {fileID: 0}
   m_FirstHoverEntered:
@@ -300,18 +300,6 @@ MonoBehaviour:
   m_ForceGravityOnDetach: 0
   m_RetainTransformParent: 1
   m_AttachPointCompatibilityMode: 0
---- !u!114 &5993632166916564086
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2396738260626863534}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1bbb8310d19e4534590b65241c29ea02, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &8649626452706927280
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -362,5 +350,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0e2da99e97568e147a759cd7d6a09ee3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8731893131107196124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2396738260626863534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c73b3d883499bdc4d814774177caecf9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

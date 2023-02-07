@@ -8,14 +8,11 @@ public class Enigme : MonoBehaviour
    private static int nextID=0;
    protected int ID = 0;
 
-    private static int score=0;
-
     private bool enigmeSolved=false;
 
     private void Awake()
     {
         ID = nextID++;
-        SetScore(0);
     }
 
     public int getID()
@@ -24,53 +21,22 @@ public class Enigme : MonoBehaviour
     }  
     protected void SetSolved()
     {
+        if (enigmeSolved)
+            return;
+
         enigmeSolved = true;
-       
+        EnigmeManager.instance.IncrementScore();
         EnigmeManager.instance.goToNext(ID);
     }
-    public void SetScore(int sc)
-    {
-        score = sc;
-    }
-    public int GetScore()
-    {
-        return score;
-    }
+
+   
     public bool isSolved()
     {
         return enigmeSolved; 
     }
 
-    public void ExecuteAction(int actionId)
+    virtual public void ExecuteAction()
     {
-        switch (actionId)
-        {
-            case 1:
-                ExecuteAction1();
-                break;
-            case 2:
-                ExecuteAction1();
-                break;
-            case 3:
-                ExecuteAction1();
-                break;
-            default:
-                break;
-        }
-    }
-
-    virtual protected void ExecuteAction1()
-    {
-
-    }
-
-    virtual protected void ExecuteAction2()
-    {
-
-    }
-
-    virtual protected void ExecuteAction3()
-    {
-
+        
     }
 }

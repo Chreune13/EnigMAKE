@@ -20,6 +20,7 @@ GameObject:
   - component: {fileID: -2506580813927087305}
   - component: {fileID: -6419605687578474230}
   - component: {fileID: -384567416076428070}
+  - component: {fileID: -1482640600263552089}
   m_Layer: 0
   m_Name: CleEnfant
   m_TagString: Key
@@ -269,7 +270,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stickDistance: 0.3
-  rotationLerpSpeed: 5
   gridSize: 0.5
 --- !u!114 &7640873703275531027
 MonoBehaviour:
@@ -323,3 +323,15 @@ MonoBehaviour:
   AlwaysReplicateAsRoot: 0
   DontDestroyWithOwner: 1
   AutoObjectParentSync: 1
+--- !u!114 &-1482640600263552089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7454921536221629676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c73b3d883499bdc4d814774177caecf9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

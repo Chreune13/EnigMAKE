@@ -42,6 +42,9 @@ public class SceneManagment : MonoBehaviour
     private GameObject player;
     public Theme sceneTheme;
 
+
+    public string[] sceneSaveFiles = { "medieval.txt", "science.txt", "chambre.txt" };
+
     void Awake()
     {
         sceneTheme = Theme.NOTHING;
@@ -69,14 +72,16 @@ public class SceneManagment : MonoBehaviour
 
         SceneManager.LoadScene(sceneName);
     }
+
     public void ReloadCurrentScene()
     {
-        GetComponent<SaveAndLoadScene>().autoRegisterSaves.Clear();
+        SaveAndLoadScene.Singleton.autoRegisterSaves.Clear();
         Scene scn = SceneManager.GetActiveScene();
       
       //  foreach( GameObject gameObject in scn.GetRootGameObjects())
         SceneManager.LoadScene(scn.name);
     }
+
     private void BackToMenu()
     {
         if (NetworkManager.Singleton)
@@ -102,6 +107,29 @@ public class SceneManagment : MonoBehaviour
             NetworkGameManager.Singleton.SetDecoreServerRpc(theme);
     }
 
+    public void GetSave()
+    {
+        if (SaveAndLoadScene.Singleton)
+        {
+            SaveAndLoadScene.Singleton.Save(sceneTheme);
+        }
+    }
+
+    public void GetLoad()
+    {
+        if (SaveAndLoadScene.Singleton)
+        {
+            SaveAndLoadScene.Singleton.Load(sceneTheme);
+        }
+    }
+
+    public void GetJetons()
+    {
+        if (EnigmeManager.instance)
+        {
+            EnigmeManager.instance.OnClick();
+        }
+    }
     // --------------------------------------------------------------------------
 
 

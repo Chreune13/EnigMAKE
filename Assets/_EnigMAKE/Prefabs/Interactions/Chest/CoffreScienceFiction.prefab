@@ -142,7 +142,6 @@ GameObject:
   - component: {fileID: 4772440596706963993}
   - component: {fileID: 4151864373257803747}
   - component: {fileID: 1809377999182148461}
-  - component: {fileID: 4772440596706963991}
   - component: {fileID: 4772440596706963990}
   - component: {fileID: 4772440596706963984}
   - component: {fileID: 4772440596706963987}
@@ -221,18 +220,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &4772440596706963991
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1072659926479012542}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 868cdfe5816e1ad48af06b8ca886d8bb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &4772440596706963990
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -309,8 +296,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.14558196, y: 0.1483573, z: 0.15157148}
-  m_Center: {x: 0.0009133816, y: 0.07100804, z: -0.0003055483}
+  m_Size: {x: 0.1344583, y: 0.14221466, z: 0.14698389}
+  m_Center: {x: 0.003321886, y: 0.074079335, z: -0.0010360032}
 --- !u!1 &3556543735260649133
 GameObject:
   m_ObjectHideFlags: 0
@@ -326,6 +313,7 @@ GameObject:
   - component: {fileID: -1157358163751747944}
   - component: {fileID: -1339852333483080554}
   - component: {fileID: -5914272947197373122}
+  - component: {fileID: 1243505111077063393}
   m_Layer: 0
   m_Name: CoffreScienceFiction
   m_TagString: Chest
@@ -384,7 +372,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_InteractionLayers:
-    m_Bits: 6
+    m_Bits: 4
   m_SelectMode: 0
   m_CustomReticle: {fileID: 0}
   m_FirstHoverEntered:
@@ -533,3 +521,15 @@ MonoBehaviour:
   AlwaysReplicateAsRoot: 0
   DontDestroyWithOwner: 1
   AutoObjectParentSync: 1
+--- !u!114 &1243505111077063393
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3556543735260649133}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c73b3d883499bdc4d814774177caecf9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -24,7 +24,7 @@ public class DecorsManager : MonoBehaviour
 
     public void DisplayDecor(Theme id)
     {
-        for(int i = 0; i < decors.Length; i++)
+        /*for(int i = 0; i < decors.Length; i++)
         {
             if(i == (int)id)
             {
@@ -33,7 +33,7 @@ public class DecorsManager : MonoBehaviour
             {
                 decors[i].gameObject.SetActive(false);
             }
-        }
+        }*/
     }
 
 }

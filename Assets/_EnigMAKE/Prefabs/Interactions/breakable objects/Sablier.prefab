@@ -1284,6 +1284,7 @@ GameObject:
   - component: {fileID: 4801489946733770197}
   - component: {fileID: 1864336232860824484}
   - component: {fileID: 54866619310692131}
+  - component: {fileID: 3528597261834312415}
   m_Layer: 0
   m_Name: Sablier
   m_TagString: Destruction
@@ -1415,7 +1416,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_InteractionLayers:
-    m_Bits: 1
+    m_Bits: 4
   m_SelectMode: 0
   m_CustomReticle: {fileID: 0}
   m_FirstHoverEntered:
@@ -1576,6 +1577,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fd739204d823e1d49af0cba764c33997, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3528597261834312415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7505156167445918442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c73b3d883499bdc4d814774177caecf9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &7562657347259617081

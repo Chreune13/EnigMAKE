@@ -10,7 +10,7 @@ public class Locker: Enigme
         if(other.tag =="Key")
         {
             StartCoroutine(Unlock(other));
-            
+
         }
     }
 
@@ -18,12 +18,10 @@ public class Locker: Enigme
     {
         other.gameObject.GetComponent<Animator>().SetBool("OPEN", true);
         
-        yield return new WaitForSeconds(1.5f);
-
-        
-
+        yield return new WaitForSeconds(1f);
         gameObject.GetComponent<XRSocketInteractor>().socketActive = true;
       
+        
         SetSolved();
     }
 

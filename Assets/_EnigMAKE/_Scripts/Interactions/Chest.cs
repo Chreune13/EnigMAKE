@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Chest : Enigme
 {
-    override protected void ExecuteAction1()
+    override public void ExecuteAction()
     {
 
         GetComponent<Animator>().SetBool("ChestOpen", true);
-        SetSolved();
-        SetScore(GetScore() + 1);
+        //SetSolved();
+        
     }
 }

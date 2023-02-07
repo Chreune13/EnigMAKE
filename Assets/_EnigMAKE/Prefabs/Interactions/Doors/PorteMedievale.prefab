@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5196624659901170599}
   - component: {fileID: 3524372075020175357}
   - component: {fileID: 845911259956763828}
+  - component: {fileID: 4648016740431672605}
   m_Layer: 0
   m_Name: PorteMedievale
   m_TagString: Door
@@ -209,6 +210,18 @@ MonoBehaviour:
   AlwaysReplicateAsRoot: 0
   DontDestroyWithOwner: 1
   AutoObjectParentSync: 1
+--- !u!114 &4648016740431672605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2134674546818696182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c73b3d883499bdc4d814774177caecf9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4699963166125985552
 GameObject:
   m_ObjectHideFlags: 0

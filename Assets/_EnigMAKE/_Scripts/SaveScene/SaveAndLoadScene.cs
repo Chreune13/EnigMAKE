@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.Netcode;
 using System.IO;
 using UnityEngine;
 
@@ -37,16 +36,10 @@ public class SaveAndLoadScene : MonoBehaviour
         }
     }
 
-    public void Save(string fileName)
-    {
-        SaveServerRpc(fileName);
-    }
-
-    [ServerRpc(RequireOwnership = false)]
-    private void SaveServerRpc(string fileName)
+    public void Save(Theme sceneTheme)
     {
         string dir = Application.persistentDataPath + "/Saves";
-        if(!Directory.Exists(dir))
+        if (!Directory.Exists(dir))
         {
             Directory.CreateDirectory(dir);
         }
@@ -60,14 +53,14 @@ public class SaveAndLoadScene : MonoBehaviour
 
         foreach (AutoRegisterSave save in autoRegisterSaves)
         {
-           
-           saved.Add(JsonUtility.ToJson(save.GenerateSaved<DataSaved>(), true));
-           
+
+            saved.Add(JsonUtility.ToJson(save.GenerateSaved<DataSaved>(), true));
+
         }
 
         string savedList = "";
 
-        for(int i = 0; i < saved.Count; i++)
+        for (int i = 0; i < saved.Count; i++)
         {
             savedList += saved[i];
 
@@ -75,7 +68,7 @@ public class SaveAndLoadScene : MonoBehaviour
                 savedList += "\n;\n";
         }
 
-        File.WriteAllText(dir + "/" + fileName, savedList);
+        File.WriteAllText(dir + "/" + SceneManagment.Singleton.sceneSaveFiles[(int)sceneTheme], savedList);
     }
 
     public static string NormalizeName(string originalName)
@@ -91,25 +84,12 @@ public class SaveAndLoadScene : MonoBehaviour
         return name;
     }
 
-    public void Load(string fileName)
+    public void Load(Theme sceneTheme)
     {
-        LoadServerRpc(fileName);
-    }
-
-    [ServerRpc(RequireOwnership = false)]
-    private void LoadServerRpc(string fileName)
-    {
-        StartCoroutine(LoadCoroutine(fileName));
-    }
-
-    IEnumerator LoadCoroutine(string fileName)
-    {
-        string saveFilePath = Application.persistentDataPath + "/Saves/" + fileName;
+        string saveFilePath = Application.persistentDataPath + "/Saves/" + SceneManagment.Singleton.sceneSaveFiles[(int)sceneTheme];
 
         if (File.Exists(saveFilePath))
         {
-
-
             string json = File.ReadAllText(saveFilePath);
             string[] jsonArray = json.Split(';');
             int index = 0;
@@ -123,26 +103,28 @@ public class SaveAndLoadScene : MonoBehaviour
                 }
                 autoRegisterSaves.Clear();
             }
-            
+
             foreach (string str in jsonArray)
             {
                 int jetonId = 0;
                 DataSaved data = JsonUtility.FromJson<DataSaved>(jsonArray[index]);
                 if (data != null)
-                    jetonId = data.enigmeID;
-                string normName = NormalizeName(data.PrefabName);
-                if (PrefabToSave.ContainsKey(normName))
                 {
-                    data.PrefabName = normName;
-                    GameObject AutoRegisterObject = Instantiate(PrefabToSave[normName]);
-                    Debug.Log(AutoRegisterObject.name);
-                    AutoRegisterObject.GetComponent<NetworkObject>().Spawn();
+                    jetonId = data.enigmeID;
+                    string normName = NormalizeName(data.PrefabName);
+                    if (PrefabToSave.ContainsKey(normName))
+                    {
+                        data.PrefabName = normName;
+                        GameObject AutoRegisterObject = Instantiate(PrefabToSave[data.PrefabName], new Vector3(data.posX, data.posY, data.posZ), new Quaternion(data.rotaX, data.rotaY, data.rotaZ, data.rotaW));
 
-                    AutoRegisterObject.GetComponent<AutoRegisterSave>().GenerateLoaded<DataSaved>(data);
-                }
-                if (IDmax < jetonId)
-                    IDmax = jetonId;
-                index++;
+                        AutoRegisterObject.transform.position = new Vector3(data.posX, data.posY, data.posZ);
+
+                        AutoRegisterObject.GetComponent<AutoRegisterSave>().GenerateLoaded<DataSaved>(data);
+                    }
+                    if (IDmax < jetonId)
+                        IDmax = jetonId;
+                    index++;
+                }   
             }
 
             for (int i = 0; i < IDmax; i++)
@@ -155,7 +137,5 @@ public class SaveAndLoadScene : MonoBehaviour
         {
             Debug.Log("Le fichier n'existe pas...");
         }
-
-        yield return null;
     }
 }

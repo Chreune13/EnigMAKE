@@ -47,9 +47,10 @@ GameObject:
   - component: {fileID: 7888452686319643445}
   - component: {fileID: 4351900038787294655}
   - component: {fileID: 1056601041}
+  - component: {fileID: -2202911877358568664}
   m_Layer: 0
   m_Name: MarteauMedieval
-  m_TagString: Untagged
+  m_TagString: hammer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -289,3 +290,15 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.073827475, y: 0.06657449, z: 0.21324742}
   m_Center: {x: -0.0012065619, y: 0.0015257262, z: -0.016744316}
+--- !u!114 &-2202911877358568664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3292350310956905774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c73b3d883499bdc4d814774177caecf9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -183,8 +183,7 @@ public class NetworkGameManager : NetworkBehaviour
         DecorsManager.Singleton.DisplayDecor(theme);
         currentTheme = theme;
 
-        if (theme == Theme.MEDIEVAL)
-            SaveAndLoadScene.Singleton.Load("medieval.txt");
+        //SaveAndLoadScene.Singleton.Load(theme);
     }
 
     public void NewPlayerConnect(ulong playerId)
@@ -220,7 +219,7 @@ public class NetworkGameManager : NetworkBehaviour
     {
         Destroy(NetworkManagerSingleton.instance.gameObject);
 
-        SceneManager.LoadScene("EnigMakeWaitingRoom");
+        SceneManager.LoadScene("Reseau - EnigMakeWaitingRoom");
     }
 
     public void DisconnectConnectedPlayer(ulong playerId)

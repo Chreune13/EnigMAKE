@@ -16,7 +16,6 @@ GameObject:
   - component: {fileID: 46068021470938474}
   - component: {fileID: 2055718366895748884}
   - component: {fileID: 2088176120189240864}
-  - component: {fileID: 2482361798970946943}
   - component: {fileID: 263948664785880048}
   m_Layer: 0
   m_Name: CoffreEnfant_Bas
@@ -101,8 +100,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.25114, y: 0.12749998, z: 0.030915063}
-  m_Center: {x: 0.0018474907, y: 0.06374999, z: 0.051782466}
+  m_Size: {x: 0.25114, y: 0.12749998, z: 0.028504401}
+  m_Center: {x: 0.0018474907, y: 0.06374999, z: 0.0529878}
 --- !u!65 &7350350103595725965
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -155,18 +154,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.25114, y: 0.021782756, z: 0.1364225}
   m_Center: {x: 0.0018474907, y: 0.010891378, z: -0.00097125024}
---- !u!114 &2482361798970946943
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1077147572617330547}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 868cdfe5816e1ad48af06b8ca886d8bb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &263948664785880048
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -178,8 +165,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.19762975, y: 0.10475004, z: 0.07849729}
-  m_Center: {x: 0.0030770004, y: 0.07440287, z: -0.0033984855}
+  m_Size: {x: 0.17922479, y: 0.10475004, z: 0.04984457}
+  m_Center: {x: -0.00074729323, y: 0.07440287, z: -0.013716821}
 --- !u!1 &4740637826761189262
 GameObject:
   m_ObjectHideFlags: 0
@@ -195,6 +182,7 @@ GameObject:
   - component: {fileID: 6198147763844112224}
   - component: {fileID: -7046273892939125626}
   - component: {fileID: 7830348986818016669}
+  - component: {fileID: 8850425048007860050}
   m_Layer: 0
   m_Name: CoffreEnfant
   m_TagString: Chest
@@ -253,7 +241,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_InteractionLayers:
-    m_Bits: 6
+    m_Bits: 4
   m_SelectMode: 0
   m_CustomReticle: {fileID: 0}
   m_FirstHoverEntered:
@@ -402,6 +390,18 @@ MonoBehaviour:
   AlwaysReplicateAsRoot: 0
   DontDestroyWithOwner: 1
   AutoObjectParentSync: 1
+--- !u!114 &8850425048007860050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4740637826761189262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c73b3d883499bdc4d814774177caecf9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6519372897277744830
 GameObject:
   m_ObjectHideFlags: 0

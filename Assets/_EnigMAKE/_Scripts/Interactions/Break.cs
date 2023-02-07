@@ -5,9 +5,7 @@ using UnityEngine;
 public class Break : Enigme
 {
 
-
-
-    override protected void ExecuteAction1()
+    override public void ExecuteAction()
     {
         Rigidbody[] rigibObject = GetComponentsInChildren<Rigidbody>();
 
@@ -15,7 +13,8 @@ public class Break : Enigme
         {
             rigib.isKinematic = false;
         }
-        SetSolved();
+        //SetSolved();
+        
     }
 
    

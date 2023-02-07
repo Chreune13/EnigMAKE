@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: 722450768532631707}
   - component: {fileID: 5355705823068910613}
   - component: {fileID: -5272921454182845454}
+  - component: {fileID: 7966349313992005581}
   m_Layer: 0
   m_Name: PorteEnfant
   m_TagString: Door
@@ -250,7 +251,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stickDistance: 0.3
-  rotationLerpSpeed: 5
   gridSize: 0.5
 --- !u!114 &5574970413923536102
 MonoBehaviour:
@@ -304,6 +304,18 @@ MonoBehaviour:
   AlwaysReplicateAsRoot: 0
   DontDestroyWithOwner: 1
   AutoObjectParentSync: 1
+--- !u!114 &7966349313992005581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6371504963038367847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c73b3d883499bdc4d814774177caecf9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6448226415366415149
 GameObject:
   m_ObjectHideFlags: 0

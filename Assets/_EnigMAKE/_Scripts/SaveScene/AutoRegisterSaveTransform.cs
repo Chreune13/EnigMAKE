@@ -9,8 +9,8 @@ public class AutoRegisterSaveTransform : AutoRegisterSave
     public override void GenerateLoaded<T>(T saved)
     {
         name = saved.PrefabName;
-        transform.position = new Vector3(saved.posX,saved.posY,saved.posZ);
-        transform.rotation = new Quaternion(saved.rotaX, saved.rotaY, saved.rotaZ, saved.rotaW);
+        //transform.position = new Vector3(saved.posX,saved.posY,saved.posZ);
+        //transform.rotation = new Quaternion(saved.rotaX, saved.rotaY, saved.rotaZ, saved.rotaW);
         transform.localScale=new Vector3(saved.scaleX,saved.scaleY,saved.scaleZ);
     }
 

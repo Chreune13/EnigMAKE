@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class Door : Enigme
 {
-    override protected void ExecuteAction1()
+    override public void ExecuteAction()
     {
         
         GetComponent<Animator>().SetBool("DoorOpened", true);
-        SetSolved();
-        SetScore(GetScore() + 1);
+        //SetSolved();
+        
     }
     //private void OnTriggerEnter(Collider other)
     //{

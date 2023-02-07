@@ -1053,6 +1053,7 @@ GameObject:
   - component: {fileID: 6322112543193116678}
   - component: {fileID: 4121585503126444484}
   - component: {fileID: 126890821}
+  - component: {fileID: 1984366114419417303}
   m_Layer: 0
   m_Name: Vase
   m_TagString: Destruction
@@ -1134,7 +1135,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_InteractionLayers:
-    m_Bits: 1
+    m_Bits: 4
   m_SelectMode: 0
   m_CustomReticle: {fileID: 0}
   m_FirstHoverEntered:
@@ -1310,6 +1311,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.28208292, y: 0.5048424, z: 0.29607326}
   m_Center: {x: 0.001285851, y: 0.2475788, z: 0.0051604807}
+--- !u!114 &1984366114419417303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4010155248726735640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c73b3d883499bdc4d814774177caecf9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5600843399501702466
 GameObject:
   m_ObjectHideFlags: 0

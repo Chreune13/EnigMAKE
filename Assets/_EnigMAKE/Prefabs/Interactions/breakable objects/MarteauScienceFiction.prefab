@@ -47,9 +47,10 @@ GameObject:
   - component: {fileID: 4778449115867272690}
   - component: {fileID: 6850946434540582742}
   - component: {fileID: 648429967}
+  - component: {fileID: 1052274729870562137}
   m_Layer: 0
   m_Name: MarteauScienceFiction
-  m_TagString: Untagged
+  m_TagString: hammer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -289,3 +290,15 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.050417602, y: 0.036523435, z: 0.28558955}
   m_Center: {x: 0.00032107532, y: 0.000000029802322, z: -0.01888068}
+--- !u!114 &1052274729870562137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4673307855840017561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c73b3d883499bdc4d814774177caecf9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

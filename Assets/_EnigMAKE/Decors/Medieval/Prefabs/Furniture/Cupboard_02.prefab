@@ -267,6 +267,7 @@ GameObject:
   - component: {fileID: -2831962836813215845}
   - component: {fileID: -5233515447162689109}
   - component: {fileID: 3529802039973008222}
+  - component: {fileID: 1152906114799793318}
   m_Layer: 0
   m_Name: Cupboard_02
   m_TagString: Untagged
@@ -552,6 +553,18 @@ MonoBehaviour:
   AlwaysReplicateAsRoot: 0
   DontDestroyWithOwner: 0
   AutoObjectParentSync: 1
+--- !u!114 &1152906114799793318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1863259736905990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c73b3d883499bdc4d814774177caecf9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1864919357723306
 GameObject:
   m_ObjectHideFlags: 0
