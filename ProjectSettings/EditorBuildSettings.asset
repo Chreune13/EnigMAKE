@@ -5,10 +5,10 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
+  - enabled: 1
     path: "Assets/_EnigMAKE/Scenes/R\xE9seau - Scenes finales/Reseau - EnigMakeWaitingRoom.unity"
     guid: ae4c513382813b14b9027494483cb808
-  - enabled: 0
+  - enabled: 1
     path: "Assets/_EnigMAKE/Scenes/R\xE9seau - Scenes finales/Reseau - AllScenes.unity"
     guid: 62eb013e855463c439c10f9816347cc9
   - enabled: 0
@@ -20,10 +20,10 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/_EnigMAKE/Scenes/Edition - Scenes finales/Edition - Default_Scene.unity
     guid: 3d8d03ae0ef13d54ca2099804daa8b1b
-  - enabled: 1
+  - enabled: 0
     path: Assets/_EnigMAKE/Scenes/Scenes finales/EnigMakeWaitingRoom.unity
     guid: 1282ebc0aa96d04418a37b68ad1b8cc3
-  - enabled: 1
+  - enabled: 0
     path: Assets/_EnigMAKE/Scenes/Scenes finales/AllScenes.unity
     guid: b95f8d261a9e4ca46b8f37d859680512
   - enabled: 0
